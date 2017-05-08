@@ -1,6 +1,6 @@
 {
     "name": "jblv/daimakuai",
-    "description": "Dai Ma Kuai ",
+    "description": "`daimakuai` is administrative interface builder for laravel which can help you build CRUD backends just with few lines of code.",
     "type": "library",
     "keywords": ["laravel", "admin", "grid", "chart", "form","manage"],
     "homepage": "https://github.com/happyonion/daimakuai",
