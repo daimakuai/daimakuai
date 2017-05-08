@@ -16,7 +16,7 @@ daimakuai
 截图
 ------------
 
-![daimakuai](https://raw.githubusercontent.com/happyonion/daimakuai/3bd025810850f0e896a7a24844c2d1dfdb537e1e/screen.png)
+![daimakuai](https://raw.githubusercontent.com/happyonion/daimakuai/master/screen.png)
 
 安装
 ------------
