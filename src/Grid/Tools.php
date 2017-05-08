@@ -2,12 +2,12 @@
 
 namespace Jblv\Admin\Grid;
 
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Support\Collection;
 use Jblv\Admin\Grid;
 use Jblv\Admin\Grid\Tools\AbstractTool;
 use Jblv\Admin\Grid\Tools\BatchActions;
 use Jblv\Admin\Grid\Tools\RefreshButton;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Collection;
 
 class Tools implements Renderable
 {

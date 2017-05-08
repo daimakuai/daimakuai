@@ -2,12 +2,12 @@
 
 namespace Jblv\Admin\Form;
 
-use Jblv\Admin\Admin;
-use Jblv\Admin\Form;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
+use Jblv\Admin\Admin;
+use Jblv\Admin\Form;
 
 /**
  * Class Field.

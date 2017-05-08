@@ -2,11 +2,11 @@
 
 namespace Jblv\Admin\Form;
 
-use Jblv\Admin\Admin;
-use Jblv\Admin\Form;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use Jblv\Admin\Admin;
+use Jblv\Admin\Form;
 
 /**
  * Class Builder.

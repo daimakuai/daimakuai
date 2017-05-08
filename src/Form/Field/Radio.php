@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Form\Field;
 
-use Jblv\Admin\Form\Field;
 use Illuminate\Contracts\Support\Arrayable;
+use Jblv\Admin\Form\Field;
 
 class Radio extends Field
 {

@@ -2,13 +2,13 @@
 
 namespace Jblv\Admin\Controllers;
 
+use Illuminate\Routing\Controller;
 use Jblv\Admin\Auth\Database\Permission;
 use Jblv\Admin\Auth\Database\Role;
 use Jblv\Admin\Facades\Admin;
 use Jblv\Admin\Form;
 use Jblv\Admin\Grid;
 use Jblv\Admin\Layout\Content;
-use Illuminate\Routing\Controller;
 
 class RoleController extends Controller
 {

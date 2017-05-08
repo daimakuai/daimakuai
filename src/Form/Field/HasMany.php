@@ -2,13 +2,13 @@
 
 namespace Jblv\Admin\Form\Field;
 
+use Illuminate\Database\Eloquent\Relations\HasMany as Relation;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Jblv\Admin\Admin;
 use Jblv\Admin\Form;
 use Jblv\Admin\Form\Field;
 use Jblv\Admin\Form\NestedForm;
-use Illuminate\Database\Eloquent\Relations\HasMany as Relation;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 /**
  * Class HasMany.

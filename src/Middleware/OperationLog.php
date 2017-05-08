@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Middleware;
 
-use Jblv\Admin\Facades\Admin;
 use Illuminate\Http\Request;
+use Jblv\Admin\Facades\Admin;
 
 class OperationLog
 {

@@ -2,10 +2,10 @@
 
 namespace Jblv\Admin\Widgets\Chart;
 
-use Jblv\Admin\Admin;
-use Jblv\Admin\Widgets\Widget;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Renderable;
+use Jblv\Admin\Admin;
+use Jblv\Admin\Widgets\Widget;
 
 class Chart extends Widget implements Renderable
 {

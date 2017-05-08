@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Commands;
 
-use Jblv\Admin\Facades\Admin;
 use Illuminate\Console\Command;
+use Jblv\Admin\Facades\Admin;
 
 class MenuCommand extends Command
 {

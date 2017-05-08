@@ -2,8 +2,6 @@
 
 namespace Jblv\Admin\Controllers;
 
-use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Layout\Content;
 use Exception;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Routing\Controller;
@@ -12,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
+use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Layout\Content;
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Manager;
 use Symfony\Component\Console\Helper\Table;

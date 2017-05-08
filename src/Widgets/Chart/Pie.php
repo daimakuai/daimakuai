@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Widgets\Chart;
 
-use Jblv\Admin\Admin;
 use Illuminate\Support\Arr;
+use Jblv\Admin\Admin;
 
 class Pie extends Chart
 {

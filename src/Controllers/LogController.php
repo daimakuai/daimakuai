@@ -2,12 +2,12 @@
 
 namespace Jblv\Admin\Controllers;
 
+use Illuminate\Routing\Controller;
 use Jblv\Admin\Auth\Database\Administrator;
 use Jblv\Admin\Auth\Database\OperationLog;
 use Jblv\Admin\Facades\Admin;
 use Jblv\Admin\Grid;
 use Jblv\Admin\Layout\Content;
-use Illuminate\Routing\Controller;
 
 class LogController extends Controller
 {

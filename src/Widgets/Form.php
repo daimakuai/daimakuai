@@ -2,9 +2,9 @@
 
 namespace Jblv\Admin\Widgets;
 
-use Jblv\Admin\Form\Field;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Renderable;
+use Jblv\Admin\Form\Field;
 
 /**
  * Class Form.

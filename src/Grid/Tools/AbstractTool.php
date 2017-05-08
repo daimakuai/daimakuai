@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Grid\Tools;
 
-use Jblv\Admin\Grid;
 use Illuminate\Contracts\Support\Renderable;
+use Jblv\Admin\Grid;
 
 abstract class AbstractTool implements Renderable
 {

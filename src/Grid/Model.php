@@ -2,7 +2,6 @@
 
 namespace Jblv\Admin\Grid;
 
-use Jblv\Admin\Middleware\PjaxMiddleware;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,6 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
+use Jblv\Admin\Middleware\PjaxMiddleware;
 
 class Model
 {

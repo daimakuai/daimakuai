@@ -2,10 +2,10 @@
 
 namespace Jblv\Admin\Auth\Database;
 
-use Jblv\Admin\Traits\AdminBuilder;
-use Jblv\Admin\Traits\ModelTree;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Jblv\Admin\Traits\AdminBuilder;
+use Jblv\Admin\Traits\ModelTree;
 
 /**
  * Class Menu.

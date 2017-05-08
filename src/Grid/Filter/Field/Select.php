@@ -2,9 +2,9 @@
 
 namespace Jblv\Admin\Grid\Filter\Field;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Jblv\Admin\Facades\Admin;
 use Jblv\Admin\Grid\Filter\AbstractFilter;
-use Illuminate\Contracts\Support\Arrayable;
 
 class Select
 {

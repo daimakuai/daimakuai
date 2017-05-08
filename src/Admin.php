@@ -3,14 +3,14 @@
 namespace Jblv\Admin;
 
 use Closure;
-use Jblv\Admin\Auth\Database\Menu;
-use Jblv\Admin\Layout\Content;
-use Jblv\Admin\Widgets\Navbar;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use InvalidArgumentException;
+use Jblv\Admin\Auth\Database\Menu;
+use Jblv\Admin\Layout\Content;
+use Jblv\Admin\Widgets\Navbar;
 
 /**
  * Class Admin.
