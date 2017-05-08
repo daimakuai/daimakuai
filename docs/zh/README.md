@@ -2,7 +2,7 @@ daimakuai
 =====
 
 [![Build Status](https://travis-ci.org/happyonion/daimakuai.svg?branch=master)](https://travis-ci.org/happyonion/daimakuai)
-[![StyleCI](https://styleci.io/repos/90438148/shield)](https://styleci.io/repos/90438148)
+[![StyleCI](https://styleci.io/repos/90438148/shield)](https://styleci.io/repos/90640492)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/happyonion/daimakuai/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/happyonion/daimakuai/?branch=master)
 [![Packagist](https://img.shields.io/packagist/l/jblv/daimakuai.svg?maxAge=2592000)](https://packagist.org/packages/jblv/daimakuai)
 [![Total Downloads](https://img.shields.io/packagist/dt/jblv/daimakuai.svg?style=flat-square)](https://packagist.org/packages/jblv/daimakuai)
@@ -24,14 +24,17 @@ daimakuai
 首先确保安装好了`laravel`，并且数据库连接设置正确。
 
 ```
-Laravel 5.2
+Laravel 5.1
 composer require jblv/daimakuai "dev-master"
 
-Laravel 5.3
-composer require jblv/daimakuai "1.3.x-dev"
+Laravel 5.2
+composer require jblv/daimakuai "1.2.*"
 
-Laravel 5.1
-composer require jblv/daimakuai "1.1.x-dev"
+Laravel 5.3
+composer require jblv/daimakuai "1.3.*"
+
+Laravel 5.4
+composer require jblv/daimakuai "1.4.*"
 ```
 
 在`config/app.php`加入`ServiceProvider`:
