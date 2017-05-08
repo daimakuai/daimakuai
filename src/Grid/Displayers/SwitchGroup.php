@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Grid\Displayers;
 
-use Jblv\Admin\Facades\Admin;
 use Illuminate\Support\Arr;
+use Jblv\Admin\Facades\Admin;
 
 class SwitchGroup extends AbstractDisplayer
 {

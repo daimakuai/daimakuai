@@ -2,12 +2,12 @@
 
 namespace Jblv\Admin\Form;
 
-use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Form;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Form;
 
 class Tools implements Renderable
 {

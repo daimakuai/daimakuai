@@ -3,8 +3,8 @@
 namespace Jblv\Admin\Middleware;
 
 use Closure;
-use Jblv\Admin\Admin;
 use Illuminate\Support\Facades\Auth;
+use Jblv\Admin\Admin;
 
 class Authenticate
 {

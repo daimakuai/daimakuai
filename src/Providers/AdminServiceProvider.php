@@ -2,9 +2,9 @@
 
 namespace Jblv\Admin\Providers;
 
-use Jblv\Admin\Facades\Admin;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Jblv\Admin\Facades\Admin;
 
 class AdminServiceProvider extends ServiceProvider
 {

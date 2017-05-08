@@ -2,16 +2,16 @@
 
 namespace Jblv\Admin\Controllers;
 
-use Jblv\Admin\Auth\Database\Administrator;
-use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Form;
-use Jblv\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Jblv\Admin\Auth\Database\Administrator;
+use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Form;
+use Jblv\Admin\Layout\Content;
 
 class AuthController extends Controller
 {

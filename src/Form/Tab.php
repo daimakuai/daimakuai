@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Form;
 
-use Jblv\Admin\Form;
 use Illuminate\Support\Collection;
+use Jblv\Admin\Form;
 
 class Tab
 {

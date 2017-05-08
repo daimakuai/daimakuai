@@ -2,9 +2,9 @@
 
 namespace Jblv\Admin\Middleware;
 
+use Illuminate\Http\Request;
 use Jblv\Admin\Form;
 use Jblv\Admin\Grid;
-use Illuminate\Http\Request;
 
 class BootstrapMiddleware
 {

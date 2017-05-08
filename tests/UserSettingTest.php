@@ -1,7 +1,7 @@
 <?php
 
-use Jblv\Admin\Auth\Database\Administrator;
 use Illuminate\Support\Facades\File;
+use Jblv\Admin\Auth\Database\Administrator;
 
 class UserSettingTest extends TestCase
 {

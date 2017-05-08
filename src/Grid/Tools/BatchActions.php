@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Grid\Tools;
 
-use Jblv\Admin\Admin;
 use Illuminate\Support\Collection;
+use Jblv\Admin\Admin;
 
 class BatchActions extends AbstractTool
 {

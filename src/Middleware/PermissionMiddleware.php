@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Middleware;
 
-use Jblv\Admin\Auth\Permission;
 use Illuminate\Http\Request;
+use Jblv\Admin\Auth\Permission;
 
 class PermissionMiddleware
 {

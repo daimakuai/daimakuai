@@ -2,10 +2,10 @@
 
 namespace Jblv\Admin\Form\Field;
 
-use Jblv\Admin\Form;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\MessageBag;
+use Jblv\Admin\Form;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 trait UploadField

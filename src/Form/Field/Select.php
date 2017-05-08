@@ -2,10 +2,10 @@
 
 namespace Jblv\Admin\Form\Field;
 
-use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Form\Field;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Str;
+use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Form\Field;
 
 class Select extends Field
 {

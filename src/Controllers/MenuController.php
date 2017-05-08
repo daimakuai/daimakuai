@@ -2,6 +2,7 @@
 
 namespace Jblv\Admin\Controllers;
 
+use Illuminate\Routing\Controller;
 use Jblv\Admin\Auth\Database\Menu;
 use Jblv\Admin\Auth\Database\Role;
 use Jblv\Admin\Facades\Admin;
@@ -11,7 +12,6 @@ use Jblv\Admin\Layout\Content;
 use Jblv\Admin\Layout\Row;
 use Jblv\Admin\Tree;
 use Jblv\Admin\Widgets\Box;
-use Illuminate\Routing\Controller;
 
 class MenuController extends Controller
 {

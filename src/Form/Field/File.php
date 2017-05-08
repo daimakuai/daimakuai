@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Form\Field;
 
-use Jblv\Admin\Form\Field;
 use Illuminate\Support\Facades\Validator;
+use Jblv\Admin\Form\Field;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class File extends Field

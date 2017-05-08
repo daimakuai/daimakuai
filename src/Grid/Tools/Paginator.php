@@ -2,9 +2,9 @@
 
 namespace Jblv\Admin\Grid\Tools;
 
-use Jblv\Admin\Grid;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Input;
+use Jblv\Admin\Grid;
 
 class Paginator extends AbstractTool
 {

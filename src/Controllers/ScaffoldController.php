@@ -2,16 +2,16 @@
 
 namespace Jblv\Admin\Controllers;
 
-use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Layout\Content;
-use Jblv\Admin\Scaffold\ControllerCreator;
-use Jblv\Admin\Scaffold\MigrationCreator;
-use Jblv\Admin\Scaffold\ModelCreator;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\MessageBag;
+use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Layout\Content;
+use Jblv\Admin\Scaffold\ControllerCreator;
+use Jblv\Admin\Scaffold\MigrationCreator;
+use Jblv\Admin\Scaffold\ModelCreator;
 
 class ScaffoldController extends Controller
 {
