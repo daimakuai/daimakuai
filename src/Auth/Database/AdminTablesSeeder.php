@@ -83,34 +83,6 @@ class AdminTablesSeeder extends Seeder
                 'icon'      => 'fa-history',
                 'uri'       => 'auth/logs',
             ],
-            [
-                'parent_id' => 0,
-                'order'     => 8,
-                'title'     => '助手',
-                'icon'      => 'fa-gears',
-                'uri'       => '',
-            ],
-            [
-                'parent_id' => 8,
-                'order'     => 9,
-                'title'     => '脚手架',
-                'icon'      => 'fa-keyboard-o',
-                'uri'       => 'helpers/scaffold',
-            ],
-            [
-                'parent_id' => 8,
-                'order'     => 10,
-                'title'     => '数据库命令',
-                'icon'      => 'fa-database',
-                'uri'       => 'helpers/terminal/database',
-            ],
-            [
-                'parent_id' => 8,
-                'order'     => 11,
-                'title'     => '脚本命令',
-                'icon'      => 'fa-terminal',
-                'uri'       => 'helpers/terminal/artisan',
-            ],
         ]);
 
         // add role to menu.
