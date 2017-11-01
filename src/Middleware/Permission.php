@@ -3,7 +3,7 @@
 namespace Jblv\Admin\Middleware;
 
 use Illuminate\Http\Request;
-use Jblv\Admin\Auth\Permission;
+use Jblv\Admin\Facades\Admin;
 
 class Permission
 {
