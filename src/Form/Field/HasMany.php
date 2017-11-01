@@ -134,7 +134,7 @@ class HasMany extends Field
             }
         }
 
-        return Validator::make($input, $newRules, [], $attributes);
+        return Validator::make($input, $newRules, $this->validationMessages, $attributes);
     }
 
     /**
@@ -332,8 +332,8 @@ class HasMany extends Field
 
         $relation = call_user_func([$model, $this->relationName]);
 
-        if (!$relation instanceof Relation) {
-            throw new \Exception('hasMany field must be a HasMany relation.');
+        if (!$relation instanceof Relation && !$relation instanceof MorphMany) {
+            throw new \Exception('hasMany field must be a HasMany or MorphMany relation.');
         }
 
         $forms = [];

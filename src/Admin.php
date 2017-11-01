@@ -38,6 +38,11 @@ class Admin
     public static $js = [];
 
     /**
+     * @var array
+     */
+    public static $extensions = [];
+
+    /**
      * @param $model
      * @param Closure $callable
      *
@@ -97,21 +102,6 @@ class Admin
         }
 
         throw new InvalidArgumentException("$model is not a valid model");
-    }
-
-    /**
-     * Get namespace of controllers.
-     *
-     * @return string
-     */
-    public function controllerNamespace()
-    {
-        $directory = config('admin.directory');
-
-        return ltrim(implode('\\',
-              array_map('ucfirst',
-                  explode(DIRECTORY_SEPARATOR, str_replace(app()->basePath(), '', $directory)))), '\\')
-              .'\\Controllers';
     }
 
     /**
@@ -175,24 +165,6 @@ class Admin
     }
 
     /**
-     * Admin url.
-     *
-     * @param $url
-     *
-     * @return string
-     */
-    public static function url($url)
-    {
-        $prefix = (string) config('admin.prefix');
-
-        if (empty($prefix) || $prefix == '/') {
-            return '/'.trim($url, '/');
-        }
-
-        return "/$prefix/".trim($url, '/');
-    }
-
-    /**
      * Left sider-bar menu.
      *
      * @return array
@@ -227,8 +199,12 @@ class Admin
      *
      * @param Closure $builder
      */
-    public function navbar(Closure $builder)
+    public function navbar(Closure $builder = null)
     {
+        if (is_null($builder)) {
+            return $this->getNavbar();
+        }
+
         call_user_func($builder, $this->getNavbar());
     }
 
@@ -246,19 +222,25 @@ class Admin
         return $this->navbar;
     }
 
+    /**
+     * Register the auth routes.
+     *
+     * @return void
+     */
     public function registerAuthRoutes()
     {
         $attributes = [
-            'prefix'        => config('admin.prefix'),
+            'prefix'        => config('admin.route.prefix'),
             'namespace'     => 'Jblv\Admin\Controllers',
-            'middleware'    => ['web', 'admin'],
+            'middleware'    => config('admin.route.middleware'),
         ];
 
         Route::group($attributes, function ($router) {
-            $attributes = ['middleware' => 'admin.permission:allow,administrator'];
 
             /* @var \Illuminate\Routing\Router $router */
-            $router->group($attributes, function ($router) {
+            $router->group([], function ($router) {
+
+                /* @var \Illuminate\Routing\Router $router */
                 $router->resource('auth/users', 'UserController');
                 $router->resource('auth/roles', 'RoleController');
                 $router->resource('auth/permissions', 'PermissionController');
@@ -274,22 +256,8 @@ class Admin
         });
     }
 
-    public function registerHelpersRoutes($attributes = [])
+    public static function extend($name, $class)
     {
-        $attributes = array_merge([
-            'prefix'     => trim(config('admin.prefix'), '/').'/helpers',
-            'middleware' => ['web', 'admin'],
-        ], $attributes);
-
-        Route::group($attributes, function ($router) {
-
-            /* @var \Illuminate\Routing\Router $router */
-            $router->get('terminal/database', 'Jblv\Admin\Controllers\TerminalController@database');
-            $router->post('terminal/database', 'Jblv\Admin\Controllers\TerminalController@runDatabase');
-            $router->get('terminal/artisan', 'Jblv\Admin\Controllers\TerminalController@artisan');
-            $router->post('terminal/artisan', 'Jblv\Admin\Controllers\TerminalController@runArtisan');
-            $router->get('scaffold', 'Jblv\Admin\Controllers\ScaffoldController@index');
-            $router->post('scaffold', 'Jblv\Admin\Controllers\ScaffoldController@store');
-        });
+        static::$extensions[$name] = $class;
     }
 }

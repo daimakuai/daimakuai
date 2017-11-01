@@ -2,8 +2,10 @@
 
 namespace Jblv\Admin;
 
+use Closure;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Database\Eloquent\Model;
+use Jblv\Admin\Tree\Tools;
 
 class Tree implements Renderable
 {
@@ -53,9 +55,26 @@ class Tree implements Renderable
     public $useCreate = true;
 
     /**
+     * @var bool
+     */
+    public $useSave = true;
+
+    /**
+     * @var bool
+     */
+    public $useRefresh = true;
+
+    /**
      * @var array
      */
     protected $nestableOptions = [];
+
+    /**
+     * Header tools.
+     *
+     * @var Tools
+     */
+    public $tools;
 
     /**
      * Menu constructor.
@@ -69,11 +88,21 @@ class Tree implements Renderable
         $this->path = app('request')->getPathInfo();
         $this->elementId .= uniqid();
 
+        $this->setupTools();
+
         if ($callback instanceof \Closure) {
             call_user_func($callback, $this);
         }
 
         $this->initBranchCallback();
+    }
+
+    /**
+     * Setup tree tools.
+     */
+    public function setupTools()
+    {
+        $this->tools = new Tools($this);
     }
 
     /**
@@ -144,6 +173,26 @@ class Tree implements Renderable
     }
 
     /**
+     * Disable save.
+     *
+     * @return void
+     */
+    public function disableSave()
+    {
+        $this->useSave = false;
+    }
+
+    /**
+     * Disable refresh.
+     *
+     * @return void
+     */
+    public function disableRefresh()
+    {
+        $this->useRefresh = false;
+    }
+
+    /**
      * Save tree order from a input.
      *
      * @param string $serialize
@@ -170,10 +219,12 @@ class Tree implements Renderable
      */
     protected function script()
     {
-        $confirm = trans('admin::lang.delete_confirm');
-        $saveSucceeded = trans('admin::lang.save_succeeded');
-        $refreshSucceeded = trans('admin::lang.refresh_succeeded');
-        $deleteSucceeded = trans('admin::lang.delete_succeeded');
+        $deleteConfirm = trans('admin.delete_confirm');
+        $saveSucceeded = trans('admin.save_succeeded');
+        $refreshSucceeded = trans('admin.refresh_succeeded');
+        $deleteSucceeded = trans('admin.delete_succeeded');
+        $confirm = trans('admin.confirm');
+        $cancel = trans('admin.cancel');
 
         $nestableOptions = json_encode($this->nestableOptions);
 
@@ -183,12 +234,36 @@ class Tree implements Renderable
 
         $('.tree_branch_delete').click(function() {
             var id = $(this).data('id');
-            if(confirm("{$confirm}")) {
-                $.post('{$this->path}/' + id, {_method:'delete','_token':LA.token}, function(data){
-                    $.pjax.reload('#pjax-container');
-                    toastr.success('{$deleteSucceeded}');
+            swal({
+              title: "$deleteConfirm",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "$confirm",
+              closeOnConfirm: false,
+              cancelButtonText: "$cancel"
+            },
+            function(){
+                $.ajax({
+                    method: 'post',
+                    url: '{$this->path}/' + id,
+                    data: {
+                        _method:'delete',
+                        _token:LA.token,
+                    },
+                    success: function (data) {
+                        $.pjax.reload('#pjax-container');
+
+                        if (typeof data === 'object') {
+                            if (data.status) {
+                                swal(data.message, '', 'success');
+                            } else {
+                                swal(data.message, '', 'error');
+                            }
+                        }
+                    }
                 });
-            }
+            });
         });
 
         $('.{$this->elementId}-save').click(function () {
@@ -235,6 +310,16 @@ SCRIPT;
     }
 
     /**
+     * Return all items of the tree.
+     *
+     * @param array $items
+     */
+    public function getItems()
+    {
+        return $this->model->withQuery($this->queryCallback)->toTree();
+    }
+
+    /**
      * Variables in tree template.
      *
      * @return array
@@ -243,9 +328,24 @@ SCRIPT;
     {
         return [
             'id'        => $this->elementId,
-            'items'     => $this->model->withQuery($this->queryCallback)->toTree(),
+            'tools'     => $this->tools->render(),
+            'items'     => $this->getItems(),
             'useCreate' => $this->useCreate,
+            'useSave'   => $this->useSave,
+            'useRefresh'=> $this->useRefresh,
         ];
+    }
+
+    /**
+     * Setup grid tools.
+     *
+     * @param Closure $callback
+     *
+     * @return void
+     */
+    public function tools(Closure $callback)
+    {
+        call_user_func($callback, $this->tools);
     }
 
     /**

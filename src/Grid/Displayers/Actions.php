@@ -32,6 +32,11 @@ class Actions extends AbstractDisplayer
     protected $resource;
 
     /**
+     * @var
+     */
+    protected $key;
+
+    /**
      * Append a action.
      *
      * @param $action
@@ -107,8 +112,7 @@ class Actions extends AbstractDisplayer
     public function display($callback = null)
     {
         if ($callback instanceof \Closure) {
-            $callback = $callback->bindTo($this);
-            call_user_func($callback, $this);
+            $callback->call($this, $this);
         }
 
         $actions = $this->prepends;
@@ -123,6 +127,22 @@ class Actions extends AbstractDisplayer
         $actions = array_merge($actions, $this->appends);
 
         return implode('', $actions);
+    }
+
+    public function setKey($key)
+    {
+        $this->key = $key;
+
+        return $this;
+    }
+
+    public function getKey()
+    {
+        if ($this->key) {
+            return $this->key;
+        }
+
+        return parent::getKey();
     }
 
     /**
@@ -146,15 +166,29 @@ EOT;
      */
     protected function deleteAction()
     {
-        $confirm = trans('admin::lang.delete_confirm');
+        $deleteConfirm = trans('admin.delete_confirm');
+        $confirm = trans('admin.confirm');
+        $cancel = trans('admin.cancel');
 
         $script = <<<SCRIPT
 
 $('.grid-row-delete').unbind('click').click(function() {
-    if(confirm("{$confirm}")) {
+
+    var id = $(this).data('id');
+
+    swal({
+      title: "$deleteConfirm",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "$confirm",
+      closeOnConfirm: false,
+      cancelButtonText: "$cancel"
+    },
+    function(){
         $.ajax({
             method: 'post',
-            url: '{$this->getResource()}/' + $(this).data('id'),
+            url: '{$this->getResource()}/' + id,
             data: {
                 _method:'delete',
                 _token:LA.token,
@@ -164,14 +198,14 @@ $('.grid-row-delete').unbind('click').click(function() {
 
                 if (typeof data === 'object') {
                     if (data.status) {
-                        toastr.success(data.message);
+                        swal(data.message, '', 'success');
                     } else {
-                        toastr.error(data.message);
+                        swal(data.message, '', 'error');
                     }
                 }
             }
         });
-    }
+    });
 });
 
 SCRIPT;

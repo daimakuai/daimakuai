@@ -2,7 +2,7 @@ daimakuai
 =====
 
 [![Build Status](https://travis-ci.org/happyonion/daimakuai.svg?branch=master)](https://travis-ci.org/happyonion/daimakuai)
-[![StyleCI](https://styleci.io/repos/90640492/shield)](https://styleci.io/repos/90640492)
+[![StyleCI](https://styleci.io/repos/90438148/shield)](https://styleci.io/repos/90640492)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/happyonion/daimakuai/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/happyonion/daimakuai/?branch=master)
 [![Packagist](https://img.shields.io/packagist/l/jblv/daimakuai.svg?maxAge=2592000)](https://packagist.org/packages/jblv/daimakuai)
 [![Total Downloads](https://img.shields.io/packagist/dt/jblv/daimakuai.svg?style=flat-square)](https://packagist.org/packages/jblv/daimakuai)

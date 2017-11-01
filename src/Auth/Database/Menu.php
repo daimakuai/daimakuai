@@ -3,6 +3,7 @@
 namespace Jblv\Admin\Auth\Database;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
 use Jblv\Admin\Traits\AdminBuilder;
 use Jblv\Admin\Traits\ModelTree;
@@ -44,9 +45,9 @@ class Menu extends Model
     /**
      * A Menu belongs to many roles.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function roles()
+    public function roles() : BelongsToMany
     {
         $pivotTable = config('admin.database.role_menu_table');
 
@@ -58,7 +59,7 @@ class Menu extends Model
     /**
      * @return array
      */
-    public function allNodes()
+    public function allNodes() : array
     {
         $orderColumn = DB::getQueryGrammar()->wrap($this->orderColumn);
         $byOrder = $orderColumn.' = 0,'.$orderColumn;

@@ -25,15 +25,15 @@ class PermissionsTest extends TestCase
     {
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-edit', 'name' => 'Can edit'])
+            ->submitForm('Submit', ['slug' => 'can-edit', 'name' => 'Can edit', 'http_path' => 'users/1/edit', 'http_method' => ['GET']])
             ->seePageIs('admin/auth/permissions')
             ->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-delete', 'name' => 'Can delete'])
+            ->submitForm('Submit', ['slug' => 'can-delete', 'name' => 'Can delete', 'http_path' => 'users/1', 'http_method' => ['DELETE']])
             ->seePageIs('admin/auth/permissions')
-            ->seeInDatabase(config('admin.database.permissions_table'), ['slug' => 'can-edit', 'name' => 'Can edit'])
-            ->seeInDatabase(config('admin.database.permissions_table'), ['slug' => 'can-delete', 'name' => 'Can delete'])
-            ->assertEquals(2, Permission::count());
+            ->seeInDatabase(config('admin.database.permissions_table'), ['slug' => 'can-edit', 'name' => 'Can edit', 'http_path' => 'users/1/edit', 'http_method' => 'GET'])
+            ->seeInDatabase(config('admin.database.permissions_table'), ['slug' => 'can-delete', 'name' => 'Can delete', 'http_path' => 'users/1', 'http_method' => 'DELETE'])
+            ->assertEquals(7, Permission::count());
 
         $this->assertTrue(Administrator::first()->can('can-edit'));
         $this->assertTrue(Administrator::first()->can('can-delete'));
@@ -49,7 +49,7 @@ class PermissionsTest extends TestCase
     {
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-create', 'name' => 'Can Create'])
+            ->submitForm('Submit', ['slug' => 'can-create', 'name' => 'Can Create', 'http_path' => 'users/create', 'http_method' => ['GET']])
             ->seePageIs('admin/auth/permissions');
 
         $this->assertEquals(1, Permission::count());
@@ -65,7 +65,7 @@ class PermissionsTest extends TestCase
     {
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-create', 'name' => 'Can Create'])
+            ->submitForm('Submit', ['slug' => 'can-create', 'name' => 'Can Create', 'http_path' => 'users/create', 'http_method' => ['GET']])
             ->seePageIs('admin/auth/permissions');
 
         $this->assertEquals(1, Permission::count());
@@ -97,14 +97,14 @@ class PermissionsTest extends TestCase
 
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-update', 'name' => 'Can Update'])
+            ->submitForm('Submit', ['slug' => 'can-update', 'name' => 'Can Update', 'http_path' => 'users/*/edit', 'http_method' => ['GET']])
             ->seePageIs('admin/auth/permissions');
 
         $this->assertEquals(1, Permission::count());
 
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-remove', 'name' => 'Can Remove'])
+            ->submitForm('Submit', ['slug' => 'can-remove', 'name' => 'Can Remove', 'http_path' => 'users/*', 'http_method' => ['DELETE']])
             ->seePageIs('admin/auth/permissions');
 
         $this->assertEquals(2, Permission::count());
@@ -177,7 +177,7 @@ class PermissionsTest extends TestCase
         //  4.add a permission
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-remove', 'name' => 'Can Remove'])
+            ->submitForm('Submit', ['slug' => 'can-remove', 'name' => 'Can Remove', 'http_path' => 'users/*', 'http_method' => ['DELETE']])
             ->seePageIs('admin/auth/permissions');
 
         $this->assertEquals(1, Permission::count());
@@ -198,7 +198,7 @@ class PermissionsTest extends TestCase
     {
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-edit', 'name' => 'Can edit'])
+            ->submitForm('Submit', ['slug' => 'can-edit', 'name' => 'Can edit', 'http_path' => 'users/1/edit', 'http_method' => ['GET']])
             ->seePageIs('admin/auth/permissions')
             ->seeInDatabase(config('admin.database.permissions_table'), ['slug' => 'can-edit'])
             ->seeInDatabase(config('admin.database.permissions_table'), ['name' => 'Can edit'])

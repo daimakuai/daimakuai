@@ -14,7 +14,7 @@ use Jblv\Admin\Traits\AdminBuilder;
  */
 class Administrator extends Model implements AuthenticatableContract
 {
-    use Authenticatable, AdminBuilder, AdminPermission;
+    use Authenticatable, AdminBuilder, HasPermissions;
 
     protected $fillable = ['username', 'password', 'name', 'avatar'];
 

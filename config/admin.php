@@ -20,7 +20,14 @@ return [
     /*
      * Daimakuai url prefix.
      */
-    'prefix'    => 'admin',
+    'route' => [
+
+        'prefix' => 'admin',
+
+        'namespace'     => 'App\\Admin\\Controllers',
+
+        'middleware'    => ['web', 'admin'],
+    ],
 
     /*
      * Daimakuai install directory.
@@ -33,12 +40,27 @@ return [
     'title'  => 'Admin',
 
     /*
-     * Daimakuai auth setting.
+     * Use `https`.
+     */
+    'secure' => false,
+
+    /*
+     * Laravel-admin auth setting.
      */
     'auth' => [
-        'driver'   => 'session',
-        'provider' => '',
-        'model'    => Jblv\Admin\Auth\Database\Administrator::class,
+        'guards' => [
+            'admin' => [
+                'driver'   => 'session',
+                'provider' => 'admin',
+            ],
+        ],
+
+        'providers' => [
+            'admin' => [
+                'driver' => 'eloquent',
+                'model'  => Jblv\Admin\Auth\Database\Administrator::class,
+            ],
+        ],
     ],
 
     /*
@@ -91,19 +113,25 @@ return [
     /*
      * By setting this option to open or close operation log in daimakuai.
      */
-    'operation_log'   => true,
+    'operation_log'   => [
+
+        'enable' => true,
+
+        /*
+         * Routes that will not log to database.
+         *
+         * All method to path like: admin/auth/logs
+         * or specific method to path like: get:admin/auth/logs
+         */
+        'except' => [
+            'admin/auth/logs*',
+        ],
+    ],
 
     /*
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
+     * @see https://adminlte.io/docs/2.4/layout
      */
-    'skin'    => 'skin-blue',
+    'skin'    => 'skin-blue-light',
 
     /*
     |---------------------------------------------------------|
@@ -114,10 +142,17 @@ return [
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
      */
-    'layout'  => ['sidebar-mini'],
+    'layout'  => ['sidebar-mini', 'sidebar-collapse'],
 
     /*
      * Version displayed in footer.
      */
-    'version'   => '1.0',
+    'version'   => '1.2.x',
+
+    /*
+     * Settings for extensions.
+     */
+    'extensions' => [
+
+    ],
 ];

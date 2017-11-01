@@ -35,7 +35,7 @@ abstract class AbstractDisplayer
      * @param Column    $column
      * @param \stdClass $row
      */
-    public function __construct($value, Grid $grid, Column $column, \stdClass $row)
+    public function __construct($value, Grid $grid, Column $column, $row)
     {
         $this->value = $value;
         $this->grid = $grid;
@@ -72,7 +72,7 @@ abstract class AbstractDisplayer
      */
     protected function trans($text)
     {
-        return trans("admin::lang.$text");
+        return trans("admin.$text");
     }
 
     /**

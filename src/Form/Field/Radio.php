@@ -7,6 +7,8 @@ use Jblv\Admin\Form\Field;
 
 class Radio extends Field
 {
+    protected $inline = true;
+
     protected static $css = [
         '/packages/admin/AdminLTE/plugins/iCheck/all.css',
     ];
@@ -34,6 +36,30 @@ class Radio extends Field
     }
 
     /**
+     * Draw inline radios.
+     *
+     * @return $this
+     */
+    public function inline()
+    {
+        $this->inline = true;
+
+        return $this;
+    }
+
+    /**
+     * Draw stacked radios.
+     *
+     * @return $this
+     */
+    public function stacked()
+    {
+        $this->inline = false;
+
+        return $this;
+    }
+
+    /**
      * Set options.
      *
      * @param array|callable|string $values
@@ -52,6 +78,6 @@ class Radio extends Field
     {
         $this->script = "$('{$this->getElementClassSelector()}').iCheck({radioClass:'iradio_minimal-blue'});";
 
-        return parent::render()->with(['options' => $this->options]);
+        return parent::render()->with(['options' => $this->options, 'inline' => $this->inline]);
     }
 }

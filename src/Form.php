@@ -65,13 +65,14 @@ use Symfony\Component\HttpFoundation\Response;
  * @method Field\MultipleImage  multipleImage($column, $label = '')
  * @method Field\MultipleFile   multipleFile($column, $label = '')
  * @method Field\Captcha        captcha($column, $label = '')
+ * @method Field\Listbox        listbox($column, $label = '')
  */
 class Form
 {
     /**
      * Eloquent model of the form.
      *
-     * @var
+     * @var Model
      */
     protected $model;
 
@@ -84,6 +85,13 @@ class Form
      * @var Builder
      */
     protected $builder;
+
+    /**
+     * Submitted callback.
+     *
+     * @var Closure
+     */
+    protected $submitted;
 
     /**
      * Saving callback.
@@ -150,6 +158,13 @@ class Form
      * Remove flag in `has many` form.
      */
     const REMOVE_FLAG_NAME = '_remove_';
+
+    /**
+     * Field rows in form.
+     *
+     * @var array
+     */
+    public $rows = [];
 
     /**
      * Create a new form instance.
@@ -332,7 +347,7 @@ class Form
             return $response;
         }
 
-        if ($response = $this->ajaxResponse(trans('admin::lang.save_succeeded'))) {
+        if ($response = $this->ajaxResponse(trans('admin.save_succeeded'))) {
             return $response;
         }
 
@@ -346,7 +361,7 @@ class Form
      */
     protected function redirectAfterStore()
     {
-        admin_toastr(trans('admin::lang.save_succeeded'));
+        admin_toastr(trans('admin.save_succeeded'));
 
         $url = Input::get(Builder::PREVIOUS_URL_KEY) ?: $this->resource(0);
 
@@ -384,6 +399,10 @@ class Form
      */
     protected function prepare($data = [])
     {
+        if (($response = $this->callSubmitted()) instanceof Response) {
+            return $response;
+        }
+
         $this->inputs = $this->removeIgnoredFields($data);
 
         if (($response = $this->callSaving()) instanceof Response) {
@@ -434,6 +453,18 @@ class Form
     }
 
     /**
+     * Call submitted callback.
+     *
+     * @return mixed
+     */
+    protected function callSubmitted()
+    {
+        if ($this->submitted instanceof Closure) {
+            return call_user_func($this->submitted, $this);
+        }
+    }
+
+    /**
      * Call saving callback.
      *
      * @return mixed
@@ -477,7 +508,7 @@ class Form
         if ($this->handleOrderable($id, $data)) {
             return response([
                 'status'  => true,
-                'message' => trans('admin::lang.update_succeeded'),
+                'message' => trans('admin.update_succeeded'),
             ]);
         }
 
@@ -512,7 +543,7 @@ class Form
             return $result;
         }
 
-        if ($response = $this->ajaxResponse(trans('admin::lang.update_succeeded'))) {
+        if ($response = $this->ajaxResponse(trans('admin.update_succeeded'))) {
             return $response;
         }
 
@@ -526,7 +557,7 @@ class Form
      */
     protected function redirectAfterUpdate()
     {
-        admin_toastr(trans('admin::lang.update_succeeded'));
+        admin_toastr(trans('admin.update_succeeded'));
 
         $url = Input::get(Builder::PREVIOUS_URL_KEY) ?: $this->resource(-1);
 
@@ -609,9 +640,10 @@ class Form
 
             $relation = $this->model->$name();
 
-            $hasDot = $relation instanceof \Illuminate\Database\Eloquent\Relations\HasOne;
+            $oneToOneRelation = $relation instanceof \Illuminate\Database\Eloquent\Relations\HasOne
+                || $relation instanceof \Illuminate\Database\Eloquent\Relations\MorphOne;
 
-            $prepared = $this->prepareUpdate([$name => $values], $hasDot);
+            $prepared = $this->prepareUpdate([$name => $values], $oneToOneRelation);
 
             if (empty($prepared)) {
                 continue;
@@ -640,7 +672,18 @@ class Form
 
                     $related->save();
                     break;
+                case \Illuminate\Database\Eloquent\Relations\MorphOne::class:
+                    $related = $this->model->$name;
+                    if (is_null($related)) {
+                        $related = $relation->make();
+                    }
+                    foreach ($prepared[$name] as $column => $value) {
+                        $related->setAttribute($column, $value);
+                    }
+                    $related->save();
+                    break;
                 case \Illuminate\Database\Eloquent\Relations\HasMany::class:
+                case \Illuminate\Database\Eloquent\Relations\MorphMany::class:
 
                     foreach ($prepared[$name] as $related) {
                         $relation = $this->model()->$name();
@@ -671,39 +714,36 @@ class Form
      * Prepare input data for update.
      *
      * @param array $updates
-     * @param bool  $hasDot  If column name contains a 'dot', only has-one relation column use this.
+     * @param bool  $oneToOneRelation If column is one-to-one relation.
      *
      * @return array
      */
-    protected function prepareUpdate(array $updates, $hasDot = false)
+    protected function prepareUpdate(array $updates, $oneToOneRelation = false)
     {
         $prepared = [];
 
         foreach ($this->builder->fields() as $field) {
             $columns = $field->column();
 
-            if ($this->invalidColumn($columns, $hasDot)) {
+            // If column not in input array data, then continue.
+            if (!array_has($updates, $columns)) {
+                continue;
+            }
+
+            if ($this->invalidColumn($columns, $oneToOneRelation)) {
                 continue;
             }
 
             $value = $this->getDataByColumn($updates, $columns);
 
-            if ($value !== '' && $value !== '0' && empty($value)) {
-                continue;
-            }
+            $value = $field->prepare($value);
 
-            if (method_exists($field, 'prepare')) {
-                $value = $field->prepare($value);
-            }
-
-            if ($value != $field->original()) {
-                if (is_array($columns)) {
-                    foreach ($columns as $name => $column) {
-                        array_set($prepared, $column, $value[$name]);
-                    }
-                } elseif (is_string($columns)) {
-                    array_set($prepared, $columns, $value);
+            if (is_array($columns)) {
+                foreach ($columns as $name => $column) {
+                    array_set($prepared, $column, $value[$name]);
                 }
+            } elseif (is_string($columns)) {
+                array_set($prepared, $columns, $value);
             }
         }
 
@@ -712,15 +752,15 @@ class Form
 
     /**
      * @param string|array $columns
-     * @param bool         $hasDot
+     * @param bool         $oneToOneRelation
      *
      * @return bool
      */
-    public function invalidColumn($columns, $hasDot = false)
+    protected function invalidColumn($columns, $oneToOneRelation = false)
     {
         foreach ((array) $columns as $column) {
-            if ((!$hasDot && Str::contains($column, '.')) ||
-                ($hasDot && !Str::contains($column, '.'))) {
+            if ((!$oneToOneRelation && Str::contains($column, '.')) ||
+                ($oneToOneRelation && !Str::contains($column, '.'))) {
                 return true;
             }
         }
@@ -747,9 +787,7 @@ class Form
                 continue;
             }
 
-            if (method_exists($field, 'prepare')) {
-                $inserts[$column] = $field->prepare($value);
-            }
+            $inserts[$column] = $field->prepare($value);
         }
 
         $prepared = [];
@@ -781,6 +819,18 @@ class Form
         }
 
         return Arr::isAssoc($first);
+    }
+
+    /**
+     * Set submitted callback.
+     *
+     * @param Closure $callback
+     *
+     * @return void
+     */
+    public function submitted(Closure $callback)
+    {
+        $this->submitted = $callback;
     }
 
     /**
@@ -873,6 +923,8 @@ class Form
      */
     protected function setFieldOriginalValue()
     {
+//        static::doNotSnakeAttributes($this->model);
+
         $values = $this->model->toArray();
 
         $this->builder->fields()->each(function (Field $field) use ($values) {
@@ -893,11 +945,27 @@ class Form
 
         $this->model = $this->model->with($relations)->findOrFail($id);
 
+//        static::doNotSnakeAttributes($this->model);
+
         $data = $this->model->toArray();
 
         $this->builder->fields()->each(function (Field $field) use ($data) {
             $field->fill($data);
         });
+    }
+
+    /**
+     * Don't snake case attributes.
+     *
+     * @param Model $model
+     *
+     * @return void
+     */
+    protected static function doNotSnakeAttributes(Model $model)
+    {
+        $class = get_class($model);
+
+        $class::$snakeAttributes = false;
     }
 
     /**
@@ -966,7 +1034,9 @@ class Form
                 ) {
                     $relations[] = $relation;
                 }
-            } elseif (method_exists($this->model, $column)) {
+            } elseif (method_exists($this->model, $column) &&
+                !method_exists(Model::class, $column)
+            ) {
                 $relations[] = $column;
             }
         }
@@ -1023,15 +1093,27 @@ class Form
     }
 
     /**
+     * Add a row in form.
+     *
+     * @param Closure $callback
+     *
+     * @return $this
+     */
+    public function row(Closure $callback)
+    {
+        $this->rows[] = new Row($callback, $this);
+
+        return $this;
+    }
+
+    /**
      * Tools setting for form.
      *
      * @param Closure $callback
      */
     public function tools(Closure $callback)
     {
-        $callback = $callback->bindTo($this);
-
-        call_user_func($callback, $this->builder->getTools());
+        $callback->call($this, $this->builder->getTools());
     }
 
     /**
@@ -1086,7 +1168,7 @@ class Form
         try {
             return $this->builder->render();
         } catch (\Exception $e) {
-            return Handle::renderException($e);
+            return Handler::renderException($e);
         }
     }
 
@@ -1160,6 +1242,7 @@ class Form
             'multipleFile'      => \Jblv\Admin\Form\Field\MultipleFile::class,
             'multipleImage'     => \Jblv\Admin\Form\Field\MultipleImage::class,
             'captcha'           => \Jblv\Admin\Form\Field\Captcha::class,
+	    'listbox'           => \Jblv\Admin\Form\Field\Listbox::class,
         ];
 
         foreach ($map as $abstract => $class) {

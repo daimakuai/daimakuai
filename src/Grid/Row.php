@@ -26,13 +26,6 @@ class Row
     protected $attributes = [];
 
     /**
-     * The primary key name.
-     *
-     * @var string
-     */
-    protected $keyName = 'id';
-
-    /**
      * Constructor.
      *
      * @param $number
@@ -46,23 +39,13 @@ class Row
     }
 
     /**
-     * Set primary key name.
+     * Get the value of the model's primary key.
      *
-     * @param $keyName
+     * @return mixed
      */
-    public function setKeyName($keyName)
+    public function getKey()
     {
-        $this->keyName = $keyName;
-    }
-
-    /**
-     * Get id of this row.
-     *
-     * @return null
-     */
-    public function id()
-    {
-        return $this->__get($this->keyName);
+        return $this->model->getKey();
     }
 
     /**
@@ -70,10 +53,38 @@ class Row
      *
      * @return string
      */
-    public function getHtmlAttributes()
+    public function getRowAttributes()
+    {
+        return $this->formatHtmlAttribute($this->attributes);
+    }
+
+    /**
+     * Get column attributes.
+     *
+     * @param string $column
+     *
+     * @return string
+     */
+    public function getColumnAttributes($column)
+    {
+        if ($attributes = Column::getAttributes($column)) {
+            return $this->formatHtmlAttribute($attributes);
+        }
+
+        return '';
+    }
+
+    /**
+     * Format attributes to html.
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
+    private function formatHtmlAttribute($attributes = [])
     {
         $attrArr = [];
-        foreach ($this->attributes as $name => $val) {
+        foreach ($attributes as $name => $val) {
             $attrArr[] = "$name=\"$val\"";
         }
 
@@ -115,7 +126,7 @@ class Row
      *
      * @return mixed
      */
-    public function cells()
+    public function model()
     {
         return $this->data;
     }
@@ -148,9 +159,8 @@ class Row
             return $this->dump($column);
         }
 
-        if (is_callable($value)) {
-            $value = $value->bindTo($this);
-            $value = $value($this->column($name));
+        if ($value instanceof \Closure) {
+            $value = $value->call($this, $this->column($name));
         }
 
         array_set($this->data, $name, $value);

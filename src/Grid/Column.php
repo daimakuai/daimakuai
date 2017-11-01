@@ -99,6 +99,18 @@ class Column
     public static $defined = [];
 
     /**
+     * @var array
+     */
+    protected static $htmlAttributes = [];
+
+    /**
+     * @var
+     */
+    protected static $model;
+
+    const SELECT_COLUMN_NAME = '__row_selector__';
+
+    /**
      * @param string $name
      * @param string $label
      */
@@ -139,6 +151,20 @@ class Column
     public function setGrid(Grid $grid)
     {
         $this->grid = $grid;
+
+        $this->setModel($grid->model()->eloquent());
+    }
+
+    /**
+     * Set model for column.
+     *
+     * @param $model
+     */
+    public function setModel($model)
+    {
+        if (is_null(static::$model) && ($model instanceof Model)) {
+            static::$model = $model->newInstance();
+        }
     }
 
     /**
@@ -149,6 +175,44 @@ class Column
     public static function setOriginalGridData(array $input)
     {
         static::$originalGridData = $input;
+    }
+
+    /**
+     * Set column attributes.
+     *
+     * @param array $attributes
+     *
+     * @return $this
+     */
+    public function setAttributes($attributes = [])
+    {
+        static::$htmlAttributes[$this->name] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Get column attributes.
+     *
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public static function getAttributes($name)
+    {
+        return array_get(static::$htmlAttributes, $name, '');
+    }
+
+    /**
+     * Set style of this column.
+     *
+     * @param string $style
+     *
+     * @return Column
+     */
+    public function style($style)
+    {
+        return $this->setAttributes(compact('style'));
     }
 
     /**
@@ -224,20 +288,6 @@ class Column
     }
 
     /**
-     * Alias for `display()` method.
-     *
-     * @param Closure $callable
-     *
-     * @deprecated please use `display()` method instead.
-     *
-     * @return $this
-     */
-    public function value(Closure $callable)
-    {
-        return $this->display($callable);
-    }
-
-    /**
      * Add a display callback.
      *
      * @param Closure $callback
@@ -291,7 +341,7 @@ class Column
     {
         $originalRow = static::$originalGridData[$key];
 
-        return $callback->bindTo((object) $originalRow);
+        return $callback->bindTo(static::$model->newFromBuilder($originalRow));
     }
 
     /**
@@ -480,7 +530,7 @@ class Column
     {
         if ($abstract instanceof Closure) {
             return $this->display(function ($value) use ($abstract, $arguments) {
-                return call_user_func_array($abstract->bindTo($this), array_merge([$value], $arguments));
+                return $abstract->call($this, ...array_merge([$value], $arguments));
             });
         }
 

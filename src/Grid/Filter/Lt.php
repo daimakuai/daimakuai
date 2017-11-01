@@ -5,6 +5,11 @@ namespace Jblv\Admin\Grid\Filter;
 class Lt extends AbstractFilter
 {
     /**
+     * {@inheritdoc}
+     */
+    protected $view = 'admin::filter.lt';
+
+    /**
      * Get condition of this filter.
      *
      * @param array $inputs

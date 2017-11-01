@@ -66,6 +66,7 @@ return [
             'driver'     => 'local',
             'root'       => public_path('upload'),
             'visibility' => 'public',
+            'url'        => 'http://localhost:8000/uploads/',
         ],
 
         'qiniu' => [

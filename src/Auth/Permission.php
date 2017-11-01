@@ -73,11 +73,11 @@ class Permission
     /**
      * Send error response page.
      */
-    protected static function error()
+    public static function error()
     {
-        $response = response(Admin::content()->withError(trans('admin::lang.deny')));
+        $response = response(Admin::content()->withError(trans('admin.deny')));
 
-        PjaxMiddleware::respond($response);
+        Pjax::respond($response);
     }
 
     /**
