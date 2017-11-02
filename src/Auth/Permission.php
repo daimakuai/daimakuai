@@ -4,7 +4,7 @@ namespace Jblv\Admin\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Middleware\PjaxMiddleware;
+use Jblv\Admin\Middleware\Pjax;
 
 class Permission
 {

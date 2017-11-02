@@ -330,7 +330,7 @@
             });
         });
     });
-    
+
     $(document).on('pjax:send', function(xhr) {
         if(xhr.relatedTarget && xhr.relatedTarget.tagName && xhr.relatedTarget.tagName.toLowerCase() === 'form') {
             $submit_btn = $('form[pjax-container] :submit');
@@ -339,7 +339,7 @@
             }
         }
     })
-    
+
     $(document).on('pjax:complete', function(xhr) {
         if(xhr.relatedTarget && xhr.relatedTarget.tagName && xhr.relatedTarget.tagName.toLowerCase() === 'form') {
             $submit_btn = $('form[pjax-container] :submit');
@@ -355,7 +355,7 @@
         App.setGlobalImgPath("dist/img/");
         App.setRememberTabs(true);
 
-        addTabs({id: '999999999',title: '欢迎页',close: false,url: '/welcome/'});
+        addTabs({id: '999999999',title: '欢迎页',close: false,url: '/welcome'});
 
         /* if($.cookie('tabs_cookies')){
             tabs_cookies = $.cookie('tabs_cookies').split('||');
