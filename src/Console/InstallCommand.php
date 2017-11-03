@@ -3,7 +3,7 @@
 namespace Jblv\Admin\Console;
 
 use Illuminate\Console\Command;
-use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Auth\Database\Administrator;
 
 class InstallCommand extends Command
 {

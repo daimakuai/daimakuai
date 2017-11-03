@@ -40,7 +40,7 @@ class OperationLog extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function user() : BelongsTo
     {
         return $this->belongsTo(Administrator::class);
     }

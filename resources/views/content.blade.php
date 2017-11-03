@@ -1,4 +1,4 @@
-@extends('admin::index')
+@extends('admin::right')
 
 @section('content')
     <section class="content-header">
@@ -6,6 +6,12 @@
             {{ $header or trans('admin.title') }}
             <small>{{ $description or trans('admin.description') }}</small>
         </h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">Simple</li>
+        </ol>
 
     </section>
 
