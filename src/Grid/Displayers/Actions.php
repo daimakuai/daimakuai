@@ -153,7 +153,7 @@ class Actions extends AbstractDisplayer
     protected function editAction()
     {
         return <<<EOT
-<a href="{$this->getResource()}/{$this->getKey()}/edit">
+<a href="{$this->getResource()}/{$this->getKey()}/edit" class="openTab">
     <i class="fa fa-edit"></i>
 </a>
 EOT;

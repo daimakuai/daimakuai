@@ -82,6 +82,7 @@
 
             </div>
         </div>
+
     </div>
 
     @include('admin::partials.footer')
@@ -353,9 +354,36 @@
 
         App.setbasePath("/packages/admin/AdminLTE/");
         App.setGlobalImgPath("dist/img/");
-        App.setRememberTabs(true);
+        //App.setRememberTabs(true);
 
-        addTabs({id: '999999999',title: '欢迎页',close: false,url: '/welcome'});
+        //addTabs({id: '999999999',title: '欢迎页',close: false,url: '{{ route('welcome') }}'});
+
+        $('body').delegate('a','click',function(event){
+            if(this.href!="#" && this.href){
+                href = this.href;
+                id = this.id;
+                if(id==""){
+                    id = Math.random() * 200;
+                }
+                title = this.innerText;
+                if(title==""){
+                    title = '新页面';
+                }
+                $.get(this.href, function(result){
+                    if(result){
+                        addTabs({id: id,title: title,close: true,url: href,content:result});
+                    }else{
+                        addTabs({id: id,title: title,close: true,url: href});
+                    }
+
+                });
+            }
+            event.preventDefault();
+        });
+
+        $.get("{{ route('welcome') }}", function(result){
+            addTabs({id: '999999999',title: '欢迎页',close: false,url: "{{ route('welcome') }}",content:result});
+        });
 
         /* if($.cookie('tabs_cookies')){
             tabs_cookies = $.cookie('tabs_cookies').split('||');

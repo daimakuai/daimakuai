@@ -7,6 +7,7 @@ use Jblv\Admin\Facades\Admin;
 use Jblv\Admin\Layout\Column;
 use Jblv\Admin\Layout\Content;
 use Jblv\Admin\Layout\Row;
+use Jblv\Admin\Controllers\Dashboard;
 use Jblv\Admin\Widgets\Box;
 use Jblv\Admin\Widgets\Chart\Bar;
 use Jblv\Admin\Widgets\Chart\Doughnut;
