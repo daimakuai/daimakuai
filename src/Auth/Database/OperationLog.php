@@ -3,6 +3,7 @@
 namespace Jblv\Admin\Auth\Database;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OperationLog extends Model
 {

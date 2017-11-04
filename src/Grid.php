@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
-use Jblv\Admin\Exception\Handle;
+use Jblv\Admin\Exception\Handler;
 use Jblv\Admin\Grid\Column;
 use Jblv\Admin\Grid\Displayers\Actions;
 use Jblv\Admin\Grid\Displayers\RowSelector;

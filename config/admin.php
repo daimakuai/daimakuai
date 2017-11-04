@@ -45,7 +45,7 @@ return [
     'secure' => false,
 
     /*
-     * Laravel-admin auth setting.
+     * daimakuai-admin auth setting.
      */
     'auth' => [
         'guards' => [

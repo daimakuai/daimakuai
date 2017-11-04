@@ -26,7 +26,7 @@
 </style>
 
 <div class="title">
-    Laravel-admin
+    daimakuai-admin
 </div>
 <div class="links">
     <a href="https://github.com/happyonion/daimakuai" target="_blank">Github</a>

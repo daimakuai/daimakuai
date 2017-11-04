@@ -4,6 +4,7 @@ namespace Jblv\Admin\Grid;
 
 use Closure;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Jblv\Admin\Grid;

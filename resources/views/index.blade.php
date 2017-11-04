@@ -359,7 +359,8 @@
         //addTabs({id: '999999999',title: '欢迎页',close: false,url: '{{ route('welcome') }}'});
 
         $('body').delegate('a','click',function(event){
-            if(this.href!="#" && this.href){
+            console.log('3333'+this.className);
+            if(this.href!="#" && this.href && this.className=="openTab"){
                 href = this.href;
                 id = this.id;
                 if(id==""){

@@ -12,11 +12,11 @@ class Listbox extends MultipleSelect
     protected $settings = [];
 
     protected static $css = [
-        '/packages/admin/AdminLTE/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css',
+        '/vendor/daimakuai-admin/bootstrap-duallistbox/dist/bootstrap-duallistbox.min.css',
     ];
 
     protected static $js = [
-        '/packages/admin/AdminLTE//bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js',
+        '/vendor/daimakuai-admin/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js',
     ];
 
     public function settings(array $settings)
