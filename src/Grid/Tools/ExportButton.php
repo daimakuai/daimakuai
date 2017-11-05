@@ -60,6 +60,7 @@ SCRIPT;
         $selectedRows = trans('admin.selected_rows');
 
         $page = request('page', 1);
+
         return <<<EOT
 
 <div class="btn-group pull-right" style="margin-right: 10px">

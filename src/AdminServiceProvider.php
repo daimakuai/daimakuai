@@ -23,11 +23,11 @@ class AdminServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'admin.auth'        => \Jblv\Admin\Middleware\Authenticate::class,
-        'admin.pjax'        => \Jblv\Admin\Middleware\Pjax::class,
-        'admin.log'         => \Jblv\Admin\Middleware\LogOperation::class,
-        'admin.permission'  => \Jblv\Admin\Middleware\Permission::class,
-        'admin.bootstrap'   => \Jblv\Admin\Middleware\Bootstrap::class,
+        'admin.auth'       => \Jblv\Admin\Middleware\Authenticate::class,
+        'admin.pjax'       => \Jblv\Admin\Middleware\Pjax::class,
+        'admin.log'        => \Jblv\Admin\Middleware\LogOperation::class,
+        'admin.permission' => \Jblv\Admin\Middleware\Permission::class,
+        'admin.bootstrap'  => \Jblv\Admin\Middleware\Bootstrap::class,
     ];
 
     /**

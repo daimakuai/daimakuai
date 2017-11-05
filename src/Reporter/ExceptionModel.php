@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class ExceptionModel extends Model
 {
     public static $methodColor = [
-        'GET'       => 'green',
-        'POST'      => 'yellow',
-        'PUT'       => 'blue',
-        'DELETE'    => 'red',
-        'PATCH'     => 'black',
-        'OPTIONS'   => 'grey',
+        'GET'     => 'green',
+        'POST'    => 'yellow',
+        'PUT'     => 'blue',
+        'DELETE'  => 'red',
+        'PATCH'   => 'black',
+        'OPTIONS' => 'grey',
     ];
 
     /**

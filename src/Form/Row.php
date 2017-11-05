@@ -2,7 +2,6 @@
 
 namespace Jblv\Admin\Form;
 
-
 use Illuminate\Contracts\Support\Renderable;
 use Jblv\Admin\Form;
 

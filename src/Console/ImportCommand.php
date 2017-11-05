@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Console;
 
-use Jblv\Admin\Admin;
 use Illuminate\Console\Command;
+use Jblv\Admin\Admin;
 
 class ImportCommand extends Command
 {

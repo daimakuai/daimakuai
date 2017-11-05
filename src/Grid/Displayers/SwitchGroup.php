@@ -76,6 +76,7 @@ EOT;
 
         $checked = $this->states['on']['value'] == $this->row->$name ? 'checked' : '';
         $value = $this->row->$name ? $this->states['on']['value'] : $this->states['off']['value'];
+
         return <<<EOT
 <tr style="height: 28px;">
     <td><strong><small>$label:</small></strong>&nbsp;&nbsp;&nbsp;</td>
