@@ -2,7 +2,6 @@
 
 namespace Jblv\Admin\Tree;
 
-
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;

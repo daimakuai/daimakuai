@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Request;
 use Jblv\Admin\Facades\Admin;
 use Jblv\Admin\Grid\Filter\AbstractFilter;
 
-
 /**
  * Class Filter.
  *
@@ -204,7 +203,7 @@ class Filter
             return '';
         }
 
-            $script = <<<'EOT'
+        $script = <<<'EOT'
 
 $("#filter-modal .submit").click(function () {
     $("#filter-modal").modal('toggle');
@@ -216,8 +215,8 @@ EOT;
         Admin::script($script);
 
         return view($this->view)->with([
-            'action'    => $this->action ?: $this->urlWithoutFilters(),
-            'filters'   => $this->filters,
+            'action'  => $this->action ?: $this->urlWithoutFilters(),
+            'filters' => $this->filters,
         ]);
     }
 

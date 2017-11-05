@@ -2,7 +2,6 @@
 
 namespace Jblv\Admin\Middleware;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Jblv\Admin\Auth\Database\OperationLog as OperationLogModel;

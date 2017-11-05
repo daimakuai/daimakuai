@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Grid\Filter\Presenter;
 
-use Jblv\Admin\Facades\Admin;
 use Illuminate\Contracts\Support\Arrayable;
+use Jblv\Admin\Facades\Admin;
 
 class Radio extends Presenter
 {

@@ -51,8 +51,8 @@ class HasMany extends Field
      * @var array
      */
     protected $views = [
-        'default'   => 'admin::form.hasmany',
-        'tab'       => 'admin::form.hasmanytab',
+        'default' => 'admin::form.hasmany',
+        'tab'     => 'admin::form.hasmanytab',
     ];
 
     /**
@@ -495,9 +495,9 @@ EOT;
         $this->setupScript($script);
 
         return parent::render()->with([
-            'forms'         => $this->buildRelatedForms(),
-            'template'      => $template,
-            'relationName'  => $this->relationName,
+            'forms'        => $this->buildRelatedForms(),
+            'template'     => $template,
+            'relationName' => $this->relationName,
         ]);
     }
 }

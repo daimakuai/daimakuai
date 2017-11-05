@@ -158,12 +158,12 @@ class Grid
      * @var array
      */
     protected $options = [
-        'usePagination'     => true,
-        'useFilter'         => true,
-        'useExporter'       => true,
-        'useActions'        => true,
-        'useRowSelector'    => true,
-        'allowCreate'       => true,
+        'usePagination'  => true,
+        'useFilter'      => true,
+        'useExporter'    => true,
+        'useActions'     => true,
+        'useRowSelector' => true,
+        'allowCreate'    => true,
     ];
 
     /**
@@ -895,19 +895,19 @@ class Grid
     public static function registerColumnDisplayer()
     {
         $map = [
-            'editable'      => \Jblv\Admin\Grid\Displayers\Editable::class,
-            'switch'        => \Jblv\Admin\Grid\Displayers\SwitchDisplay::class,
-            'switchGroup'   => \Jblv\Admin\Grid\Displayers\SwitchGroup::class,
-            'select'        => \Jblv\Admin\Grid\Displayers\Select::class,
-            'image'         => \Jblv\Admin\Grid\Displayers\Image::class,
-            'label'         => \Jblv\Admin\Grid\Displayers\Label::class,
-            'button'        => \Jblv\Admin\Grid\Displayers\Button::class,
-            'link'          => \Jblv\Admin\Grid\Displayers\Link::class,
-            'badge'         => \Jblv\Admin\Grid\Displayers\Badge::class,
-            'progressBar'   => \Jblv\Admin\Grid\Displayers\ProgressBar::class,
-            'radio'         => \Jblv\Admin\Grid\Displayers\Radio::class,
-            'checkbox'      => \Jblv\Admin\Grid\Displayers\Checkbox::class,
-            'orderable'     => \Jblv\Admin\Grid\Displayers\Orderable::class,
+            'editable'    => \Jblv\Admin\Grid\Displayers\Editable::class,
+            'switch'      => \Jblv\Admin\Grid\Displayers\SwitchDisplay::class,
+            'switchGroup' => \Jblv\Admin\Grid\Displayers\SwitchGroup::class,
+            'select'      => \Jblv\Admin\Grid\Displayers\Select::class,
+            'image'       => \Jblv\Admin\Grid\Displayers\Image::class,
+            'label'       => \Jblv\Admin\Grid\Displayers\Label::class,
+            'button'      => \Jblv\Admin\Grid\Displayers\Button::class,
+            'link'        => \Jblv\Admin\Grid\Displayers\Link::class,
+            'badge'       => \Jblv\Admin\Grid\Displayers\Badge::class,
+            'progressBar' => \Jblv\Admin\Grid\Displayers\ProgressBar::class,
+            'radio'       => \Jblv\Admin\Grid\Displayers\Radio::class,
+            'checkbox'    => \Jblv\Admin\Grid\Displayers\Checkbox::class,
+            'orderable'   => \Jblv\Admin\Grid\Displayers\Orderable::class,
         ];
 
         foreach ($map as $abstract => $class) {

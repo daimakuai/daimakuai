@@ -5,7 +5,7 @@ return [
     /*
      * Daimakuai name.
      */
-    'name'  => 'Daimakuai',
+    'name' => 'Daimakuai',
 
     /*
      * Daimakuai url prefix.
@@ -19,9 +19,9 @@ return [
 
         'prefix' => 'admin',
 
-        'namespace'     => 'App\\Admin\\Controllers',
+        'namespace' => 'App\\Admin\\Controllers',
 
-        'middleware'    => ['web', 'admin'],
+        'middleware' => ['web', 'admin'],
     ],
 
     /*
@@ -32,7 +32,7 @@ return [
     /*
      * Daimakuai title.
      */
-    'title'  => 'Admin',
+    'title' => 'Admin',
 
     /*
      * Use `https`.
@@ -61,13 +61,13 @@ return [
     /*
      * Daimakuai upload setting.
      */
-    'upload'  => [
+    'upload' => [
 
         'disk' => 'admin',
 
-        'directory'  => [
-            'image'  => 'image',
-            'file'   => 'file',
+        'directory' => [
+            'image' => 'image',
+            'file'  => 'file',
         ],
 
         'host' => 'http://localhost:8000/upload/',
@@ -79,7 +79,7 @@ return [
     'database' => [
 
         // Database connection for following tables.
-        'connection'  => '',
+        'connection' => '',
 
         // User tables and model.
         'users_table' => 'admin_users',
@@ -91,8 +91,8 @@ return [
         'permissions_table' => 'admin_permissions',
         'permissions_model' => Jblv\Admin\Auth\Database\Permission::class,
 
-        'menu_table'  => 'admin_menu',
-        'menu_model'  => Jblv\Admin\Auth\Database\Menu::class,
+        'menu_table' => 'admin_menu',
+        'menu_model' => Jblv\Admin\Auth\Database\Menu::class,
 
         'operation_log_table'    => 'admin_operation_log',
         'user_permissions_table' => 'admin_user_permissions',
@@ -104,7 +104,7 @@ return [
     /*
      * By setting this option to open or close operation log in daimakuai.
      */
-    'operation_log'   => [
+    'operation_log' => [
 
         'enable' => true,
 
@@ -122,7 +122,7 @@ return [
     /*
      * @see https://adminlte.io/docs/2.4/layout
      */
-    'skin'    => 'skin-blue-light',
+    'skin' => 'skin-blue-light',
 
     /*
     |---------------------------------------------------------|
@@ -133,12 +133,12 @@ return [
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
      */
-    'layout'  => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['sidebar-mini', 'sidebar-collapse'],
 
     /*
      * Version displayed in footer.
      */
-    'version'   => '1.2.x',
+    'version' => '1.2.x',
 
     /*
      * Settings for extensions.
