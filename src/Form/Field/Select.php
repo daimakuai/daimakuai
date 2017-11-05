@@ -10,11 +10,11 @@ use Jblv\Admin\Form\Field;
 class Select extends Field
 {
     protected static $css = [
-        '/packages/admin/AdminLTE/plugins/select2/select2.min.css',
+        '/vendor/daimakuai-admin/AdminLTE/plugins/select2/select2.min.css',
     ];
 
     protected static $js = [
-        '/packages/admin/AdminLTE/plugins/select2/select2.full.min.js',
+        '/vendor/daimakuai-admin/AdminLTE/plugins/select2/select2.full.min.js',
     ];
 
     public function render()

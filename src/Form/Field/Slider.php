@@ -7,12 +7,12 @@ use Jblv\Admin\Form\Field;
 class Slider extends Field
 {
     protected static $css = [
-        '/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.css',
-        '/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.skinNice.css',
+        '/vendor/daimakuai-admin/AdminLTE/plugins/ionslider/ion.rangeSlider.css',
+        '/vendor/daimakuai-admin/AdminLTE/plugins/ionslider/ion.rangeSlider.skinNice.css',
     ];
 
     protected static $js = [
-        '/packages/admin/AdminLTE/plugins/ionslider/ion.rangeSlider.min.js',
+        '/vendor/daimakuai-admin/AdminLTE/plugins/ionslider/ion.rangeSlider.min.js',
     ];
 
     protected $options = [

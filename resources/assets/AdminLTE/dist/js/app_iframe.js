@@ -11,7 +11,7 @@ var App = function () {
 
     var resizeHandlers = [];
 
-    var basePath = '/packages/admin/AdminLTE/';
+    var basePath = '/vendor/daimakuai-admin/AdminLTE/';
 
     var globalImgPath = 'dist/img/';
 

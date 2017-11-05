@@ -5,7 +5,7 @@ namespace Jblv\Admin\Form\Field;
 class Mobile extends Text
 {
     protected static $js = [
-        '/packages/admin/AdminLTE/plugins/input-mask/jquery.inputmask.bundle.min.js',
+        '/vendor/daimakuai-admin/AdminLTE/plugins/input-mask/jquery.inputmask.bundle.min.js',
     ];
 
     /**

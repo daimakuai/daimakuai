@@ -4,7 +4,7 @@
             @if(url()->isValidUrl($item['uri']))
                 <a href="{{ $item['uri'] }}" target="_blank">
             @else
-                 <a href="{{ admin_base_path($item['uri']) }}" id="{{$item['id']}}" class="openTab">
+                 <a href="{{ admin_base_path($item['uri']) }}" id="{{$item['id']}}">
             @endif
                 <i class="fa {{$item['icon']}}"></i>
                 <span>{{$item['title']}}</span>

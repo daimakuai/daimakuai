@@ -7,32 +7,36 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/font-awesome/css/font-awesome.min.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/font-awesome/css/font-awesome.min.css") }}">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/AdminLTE/dist/css/skins/" . config('admin.skin') .".min.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/AdminLTE/dist/css/skins/" . config('admin.skin') .".min.css") }}">
 
     {!! Admin::css() !!}
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/nestable/nestable.css") }}">
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/toastr/build/toastr.min.css") }}">
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/bootstrap3-editable/css/bootstrap-editable.css") }}">
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/google-fonts/fonts.css") }}">
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/AdminLTE/dist/css/AdminLTE.min.css") }}">
-    <link rel="stylesheet" href="{{ admin_asset("/packages/admin/AdminLTE/dist/css/skins/all-skins.min.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/daimakuai-admin/daimakuai-admin.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/nprogress/nprogress.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/sweetalert/dist/sweetalert.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/nestable/nestable.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/toastr/build/toastr.min.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/bootstrap3-editable/css/bootstrap-editable.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/google-fonts/fonts.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/AdminLTE/dist/css/AdminLTE.min.css") }}">
+    {{--<link rel="stylesheet" href="{{ admin_asset("/vendor/daimakuai-admin/AdminLTE/dist/css/skins/all-skins.min.css") }}">--}}
 
     <!-- REQUIRED JS SCRIPTS -->
 
-    <script src="{{ admin_asset ("/packages/admin/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js") }}"></script>
-    <script src="{{ admin_asset ("/packages/admin/AdminLTE/bootstrap/js/bootstrap.min.js") }}"></script>
-    <script src="{{ admin_asset ("/packages/admin/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/plugins/jQuery/jQuery-2.2.3.min.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/bootstrap/js/bootstrap.min.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js") }}"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="{{ admin_asset ("/packages/admin/AdminLTE/plugins/fastclick/fastclick.js") }}"></script>
-    <script src="{{ admin_asset ("/packages/admin/AdminLTE/dist/js/app.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/plugins/fastclick/fastclick.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/dist/js/app.min.js") }}"></script>
 
-    <script src="{{ admin_asset ("/packages/admin/AdminLTE/dist/js/app_iframe.js") }}"></script>
-    <script src="{{ admin_asset ("/packages/admin/jquery-pjax/jquery.pjax.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/dist/js/app_iframe.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/jquery-pjax/jquery.pjax.js") }}"></script>
+    <script src="{{ admin_asset ("/vendor/daimakuai-admin/nprogress/nprogress.js") }}"></script>
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -48,42 +52,48 @@
 
     @include('admin::partials.sidebar')
 
+
     <div class="content-wrapper" id="pjax-container">
 
+    @yield('content')
+    {!! Admin::script() !!}
+
         <!--bootstrap tab风格 多标签页-->
-        <div class="content-tabs">
-            <button class="roll-nav roll-left tabLeft" onclick="scrollTabLeft()">
-                <i class="fa fa-backward"></i>
-            </button>
-            <nav class="page-tabs menuTabs tab-ui-menu" id="tab-menu">
-                <div class="page-tabs-content" style="margin-left: 0px;">
+        {{--<div class="content-tabs">--}}
+            {{--<button class="roll-nav roll-left tabLeft" onclick="scrollTabLeft()">--}}
+                {{--<i class="fa fa-backward"></i>--}}
+            {{--</button>--}}
+            {{--<nav class="page-tabs menuTabs tab-ui-menu" id="tab-menu">--}}
+                {{--<div class="page-tabs-content" style="margin-left: 0px;">--}}
 
-                </div>
-            </nav>
-            <button class="roll-nav roll-right tabRight" onclick="scrollTabRight()">
-                <i class="fa fa-forward" style="margin-left: 3px;"></i>
-            </button>
-            <div class="btn-group roll-nav roll-right">
-                <button class="dropdown tabClose" data-toggle="dropdown">
-                    页签操作<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right" style="min-width: 128px;">
-                    <li><a class="tabReload" href="javascript:refreshTab();">刷新当前</a></li>
-                    <li><a class="tabCloseCurrent" href="javascript:closeCurrentTab();">关闭当前</a></li>
-                    <li><a class="tabCloseAll" href="javascript:closeOtherTabs(true);">全部关闭</a></li>
-                    <li><a class="tabCloseOther" href="javascript:closeOtherTabs();">除此之外全部关闭</a></li>
-                </ul>
-            </div>
-            <button class="roll-nav roll-right fullscreen" onclick="App.handleFullScreen()"><i
-                        class="fa fa-arrows-alt"></i></button>
-        </div>
-        <div class="content-iframe " style="background-color: #ffffff; ">
-            <div class="tab-content " id="tab-content">
+                {{--</div>--}}
+            {{--</nav>--}}
+            {{--<button class="roll-nav roll-right tabRight" onclick="scrollTabRight()">--}}
+                {{--<i class="fa fa-forward" style="margin-left: 3px;"></i>--}}
+            {{--</button>--}}
+            {{--<div class="btn-group roll-nav roll-right">--}}
+                {{--<button class="dropdown tabClose" data-toggle="dropdown">--}}
+                    {{--页签操作<i class="fa fa-caret-down" style="padding-left: 3px;"></i>--}}
+                {{--</button>--}}
+                {{--<ul class="dropdown-menu dropdown-menu-right" style="min-width: 128px;">--}}
+                    {{--<li><a class="tabReload" href="javascript:refreshTab();">刷新当前</a></li>--}}
+                    {{--<li><a class="tabCloseCurrent" href="javascript:closeCurrentTab();">关闭当前</a></li>--}}
+                    {{--<li><a class="tabCloseAll" href="javascript:closeOtherTabs(true);">全部关闭</a></li>--}}
+                    {{--<li><a class="tabCloseOther" href="javascript:closeOtherTabs();">除此之外全部关闭</a></li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+            {{--<button class="roll-nav roll-right fullscreen" onclick="App.handleFullScreen()"><i--}}
+                        {{--class="fa fa-arrows-alt"></i></button>--}}
+        {{--</div>--}}
+        {{--<div class="content-iframe " style="background-color: #ffffff; " >--}}
+            {{--<div class="tab-content " id="tab-content">--}}
+              {{----}}
+            {{--</div>--}}
+        {{--</div>--}}
 
-            </div>
-        </div>
 
     </div>
+
 
     @include('admin::partials.footer')
 
@@ -286,132 +296,20 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-<script src="{{ admin_asset ("/packages/admin/AdminLTE/dist/js/demo.js") }}"></script>
-<script src="{{ admin_asset ("/packages/admin/AdminLTE/plugins/chartjs/Chart.min.js") }}"></script>
-<script src="{{ admin_asset ("/packages/admin/nestable/jquery.nestable.js") }}"></script>
-<script src="{{ admin_asset ("/packages/admin/toastr/build/toastr.min.js") }}"></script>
-<script src="{{ admin_asset ("/packages/admin/bootstrap3-editable/js/bootstrap-editable.min.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/dist/js/demo.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/daimakuai-admin/AdminLTE/plugins/chartjs/Chart.min.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/daimakuai-admin/nestable/jquery.nestable.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/daimakuai-admin/toastr/build/toastr.min.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/daimakuai-admin/bootstrap3-editable/js/bootstrap-editable.min.js") }}"></script>
+<script src="{{ admin_asset ("/vendor/daimakuai-admin/sweetalert/dist/sweetalert.min.js") }}"></script>
 
 {!! Admin::js() !!}
 
 <script>
-
     function LA() {}
     LA.token = "{{ csrf_token() }}";
-
-    $.fn.editable.defaults.params = function (params) {
-        params._token = '{{ csrf_token() }}';
-        params._editable = 1;
-        params._method = 'PUT';
-        return params;
-    };
-
-    toastr.options = {
-        closeButton: true,
-        progressBar: true,
-        showMethod: 'slideDown',
-        timeOut: 4000
-    };
-
-    $.pjax.defaults.timeout = 5000;
-    $.pjax.defaults.maxCacheLength = 0;
-    $(document).pjax('a:not(a[target="_blank"])', {
-        container: '#pjax-container'
-    });
-
-    $(document).on('submit', 'form[pjax-container]', function(event) {
-        $.pjax.submit(event, '#pjax-container')
-    });
-
-    $(document).on("pjax:popstate", function() {
-
-        $(document).one("pjax:end", function(event) {
-            $(event.target).find("script[data-exec-on-popstate]").each(function() {
-                $.globalEval(this.text || this.textContent || this.innerHTML || '');
-            });
-        });
-    });
-
-    $(document).on('pjax:send', function(xhr) {
-        if(xhr.relatedTarget && xhr.relatedTarget.tagName && xhr.relatedTarget.tagName.toLowerCase() === 'form') {
-            $submit_btn = $('form[pjax-container] :submit');
-            if($submit_btn) {
-                $submit_btn.button('loading')
-            }
-        }
-    })
-
-    $(document).on('pjax:complete', function(xhr) {
-        if(xhr.relatedTarget && xhr.relatedTarget.tagName && xhr.relatedTarget.tagName.toLowerCase() === 'form') {
-            $submit_btn = $('form[pjax-container] :submit');
-            if($submit_btn) {
-                $submit_btn.button('reset')
-            }
-        }
-    })
-
-    $(function(){
-
-        App.setbasePath("/packages/admin/AdminLTE/");
-        App.setGlobalImgPath("dist/img/");
-        //App.setRememberTabs(true);
-
-        //addTabs({id: '999999999',title: '欢迎页',close: false,url: '{{ route('welcome') }}'});
-
-        $('body').delegate('a','click',function(event){
-            console.log('3333'+this.className);
-            if(this.href!="#" && this.href && this.className=="openTab"){
-                href = this.href;
-                id = this.id;
-                if(id==""){
-                    id = Math.random() * 200;
-                }
-                title = this.innerText;
-                if(title==""){
-                    title = '新页面';
-                }
-                $.get(this.href, function(result){
-                    if(result){
-                        addTabs({id: id,title: title,close: true,url: href,content:result});
-                    }else{
-                        addTabs({id: id,title: title,close: true,url: href});
-                    }
-
-                });
-            }
-            event.preventDefault();
-        });
-
-        $.get("{{ route('welcome') }}", function(result){
-            addTabs({id: '999999999',title: '欢迎页',close: false,url: "{{ route('welcome') }}",content:result});
-        });
-
-        /* if($.cookie('tabs_cookies')){
-            tabs_cookies = $.cookie('tabs_cookies').split('||');
-        }else{
-            tabs_cookies = [];
-            //tabs_cookies.push();
-        }
-
-        $.each(tabs_cookies, function(i, v) {
-            value = JSON.parse(v);
-            if(value.id){
-                addTabs(value);
-            }
-        });*/
-
-
-
-        App.fixIframeCotent();
-
-        $('.sidebar-menu li:not(.treeview) > a').on('click', function(){
-            var $parent = $(this).parent().addClass('active');
-            $parent.siblings('.treeview.active').find('> a').trigger('click');
-            $parent.siblings().removeClass('active').find('li').removeClass('active');
-        });
-    });
-
 </script>
+<script src="{{ admin_asset ("/vendor/daimakuai-admin/daimakuai-admin/daimakuai-admin.js") }}"></script>
 
 </body>
 </html>

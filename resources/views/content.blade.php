@@ -1,4 +1,4 @@
-@extends('admin::right')
+@extends('admin::index')
 
 @section('content')
     <section class="content-header">
