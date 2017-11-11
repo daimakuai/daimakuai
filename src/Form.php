@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Validator;
-use Jblv\Admin\Exception\Handle;
+use Jblv\Admin\Exception\Handler;
 use Jblv\Admin\Form\Builder;
 use Jblv\Admin\Form\Field;
 use Jblv\Admin\Form\Field\File;
