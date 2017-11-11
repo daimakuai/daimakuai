@@ -27,18 +27,11 @@ Installation
 First, install laravel, and make sure that the database connection settings are correct.
 
 ```
-Laravel 5.1
+Laravel 5.5
 composer require jblv/daimakuai "dev-master"
 
-Laravel 5.2
-composer require jblv/daimakuai "1.2.x"
-
-Laravel 5.3
-composer require jblv/daimakuai "1.3.x"
-
 Laravel 5.4
-composer require jblv/daimakuai "1.4.*"
-```
+composer require jblv/daimakuai "1.0.x"
 
 In`config/app.php`add`ServiceProvider`:
 
