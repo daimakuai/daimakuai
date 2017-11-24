@@ -41,7 +41,7 @@ class IndexTest extends TestCase
 
     public function testClickMenu()
     {
-                $this->visit('admin/')
+        $this->visit('admin/')
                 ->click('Users')
                 ->seePageis('admin/auth/users')
                 ->click('Roles')
