@@ -48,9 +48,9 @@ class IndexTest extends TestCase
 //                ->seePageis('admin/auth/roles')
 //                ->click('Permission')
 //                ->seePageis('admin/auth/permissions')
-                ->click('菜单')
-                ->seePageis('admin/auth/menu');
-//                ->click('Operation log')
-//                ->seePageis('admin/auth/logs');
+                ->click('Mernu')
+                ->seePageis('admin/auth/menu')
+                ->click('Operation log')
+                ->seePageis('admin/auth/logs');
     }
 }
