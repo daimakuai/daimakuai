@@ -93,7 +93,7 @@ class MigrationCreator extends BaseMigrationCreator
                 $column .= "->comment('{$field['comment']}')";
             }
 
-            if (array_get($field, 'nullable') == 'on') {
+            if ('on' === array_get($field, 'nullable')) {
                 $column .= '->nullable()';
             }
 
