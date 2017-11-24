@@ -122,6 +122,5 @@ class AdminTablesSeeder extends Seeder
 
         // add role to menu.
         Menu::find(2)->roles()->save(Role::first());
-        Menu::find(8)->roles()->save(Role::first());
     }
 }

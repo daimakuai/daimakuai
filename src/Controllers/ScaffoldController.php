@@ -30,7 +30,7 @@ class ScaffoldController extends Controller
 
             $action = URL::current();
 
-            $content->row(view('laravel-admin-helpers::scaffold', compact('dbTypes', 'action')));
+            $content->row(view('daimakuai-ext-helpers::scaffold', compact('dbTypes', 'action')));
         });
     }
 

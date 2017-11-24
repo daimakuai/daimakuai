@@ -46,48 +46,48 @@ class Dashboard
     {
         $extensions = [
             'helpers' => [
-                'name' => 'laravel-admin-ext/helpers',
-                'link' => 'https://github.com/laravel-admin-extensions/helpers',
+                'name' => 'daimakuai-ext/helpers',
+                'link' => 'https://github.com/daimakuai-ext/helpers',
                 'icon' => 'gears',
             ],
             'log-viewer' => [
-                'name' => 'laravel-admin-ext/log-viewer',
-                'link' => 'https://github.com/laravel-admin-extensions/log-viewer',
+                'name' => 'daimakuai-ext/log-viewer',
+                'link' => 'https://github.com/daimakuai-ext/log-viewer',
                 'icon' => 'database',
             ],
             'backup' => [
-                'name' => 'laravel-admin-ext/backup',
-                'link' => 'https://github.com/laravel-admin-extensions/backup',
+                'name' => 'daimakuai-ext/backup',
+                'link' => 'https://github.com/daimakuai-ext/backup',
                 'icon' => 'copy',
             ],
             'config' => [
-                'name' => 'laravel-admin-ext/config',
-                'link' => 'https://github.com/laravel-admin-extensions/config',
+                'name' => 'daimakuai-ext/config',
+                'link' => 'https://github.com/daimakuai-ext/config',
                 'icon' => 'toggle-on',
             ],
             'api-tester' => [
-                'name' => 'laravel-admin-ext/api-tester',
-                'link' => 'https://github.com/laravel-admin-extensions/api-tester',
+                'name' => 'daimakuai-ext/api-tester',
+                'link' => 'https://github.com/daimakuai-ext/api-tester',
                 'icon' => 'sliders',
             ],
             'media-manager' => [
-                'name' => 'laravel-admin-ext/media-manager',
-                'link' => 'https://github.com/laravel-admin-extensions/media-manager',
+                'name' => 'daimakuai-ext/media-manager',
+                'link' => 'https://github.com/daimakuai-ext/media-manager',
                 'icon' => 'file',
             ],
             'scheduling' => [
-                'name' => 'laravel-admin-ext/scheduling',
-                'link' => 'https://github.com/laravel-admin-extensions/scheduling',
+                'name' => 'daimakuai-ext/scheduling',
+                'link' => 'https://github.com/daimakuai-ext/scheduling',
                 'icon' => 'clock-o',
             ],
             'reporter' => [
-                'name' => 'laravel-admin-ext/reporter',
-                'link' => 'https://github.com/laravel-admin-extensions/reporter',
+                'name' => 'daimakuai-ext/reporter',
+                'link' => 'https://github.com/daimakuai-ext/reporter',
                 'icon' => 'bug',
             ],
             'translation' => [
-                'name' => 'laravel-admin-ext/translation',
-                'link' => 'https://github.com/laravel-admin-extensions/translation',
+                'name' => 'daimakuai-ext/translation',
+                'link' => 'https://github.com/daimakuai-ext/translation',
                 'icon' => 'language',
             ],
         ];

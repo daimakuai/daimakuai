@@ -9,7 +9,7 @@ return [
     /*
      * Daimakuai url prefix.
      */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>Dmk</b>',
 
     /*
      * Route configration.

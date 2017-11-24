@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Laravel\BrowserKitTesting\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
@@ -38,7 +40,7 @@ class TestCase extends BaseTestCase
         $this->app['config']->set('database.connections.mysql.host', env('MYSQL_HOST', 'localhost'));
         $this->app['config']->set('database.connections.mysql.database', 'daimakuai');
         $this->app['config']->set('database.connections.mysql.username', 'root');
-        $this->app['config']->set('database.connections.mysql.password', '');
+        $this->app['config']->set('database.connections.mysql.password', 'root');
         $this->app['config']->set('app.key', 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
         $this->app['config']->set('filesystems', require __DIR__.'/config/filesystems.php');
         $this->app['config']->set('admin', $adminConfig);

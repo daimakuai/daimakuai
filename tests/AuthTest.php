@@ -42,7 +42,7 @@ class AuthTest extends TestCase
 //            ->see('Email')
 //            ->see('Last Login')
 //            ->see('Powered by')
-            ->see('dashboard');
+            ->see('Daimakuai');
 
 //        $this
 //            ->see('<span>Admin</span>')

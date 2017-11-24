@@ -4,12 +4,12 @@ return [
     /*
      * Dai Ma Kuai name.
      */
-    'name' => 'Daimauai',
+    'name'      => 'Daimakuai',
 
     /*
      * Logo in admin panel header.
      */
-    'logo' => '<b>DaiMaKuai</b> Laravel',
+    'logo'      => '<b>DaiMaKuai</b> ©',
 
     /*
      * Mini-logo in admin panel header.
@@ -37,20 +37,20 @@ return [
      */
     'title' => 'Admin',
 
-    /*
+    /**
      * Use `https`.
      */
     'secure' => false,
 
     /*
-     * daimakuai-admin auth setting.
+     * Daimakuai auth setting.
      */
     'auth' => [
         'guards' => [
             'admin' => [
                 'driver' => 'session',
                 'provider' => 'admin',
-            ],
+            ]
         ],
 
         'providers' => [
@@ -112,7 +112,7 @@ return [
     'operation_log' => [
         'enable' => true,
 
-        /*
+        /**
          * Routes that will not log to database.
          *
          * All method to path like: admin/auth/logs
@@ -120,11 +120,18 @@ return [
          */
         'except' => [
             'admin/auth/logs*',
-        ],
+        ]
     ],
 
     /*
-     * @see https://adminlte.io/docs/2.4/layout
+    |---------------------------------------------------------|
+    | SKINS         | skin-blue                               |
+    |               | skin-black                              |
+    |               | skin-purple                             |
+    |               | skin-yellow                             |
+    |               | skin-red                                |
+    |               | skin-green                              |
+    |---------------------------------------------------------|
      */
     'skin' => 'skin-blue-light',
 
@@ -137,16 +144,28 @@ return [
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
      */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout'  => ['sidebar-mini'],
 
     /*
      * Version displayed in footer.
      */
-    'version' => '1.2.x',
+    'version'   => '1.2.0',
 
-    /*
-     * Settings for extensions.
-     */
+
     'extensions' => [
-    ],
+
+        'media-manager' => [
+            'disk' => 'uploads'
+        ],
+
+        'api-tester' => [
+            'prefix' => 'api',
+
+            'guard'  => 'api',
+
+            'user_retriever' => function ($id) {
+                return \App\User::find($id);
+            },
+        ]
+    ]
 ];

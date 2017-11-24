@@ -41,16 +41,16 @@ class IndexTest extends TestCase
 
     public function testClickMenu()
     {
-        //        $this->visit('admin/')
-//            ->click('Users')
-//            ->seePageis('admin/auth/users')
-//            ->click('Roles')
-//            ->seePageis('admin/auth/roles')
-//            ->click('Permission')
-//            ->seePageis('admin/auth/permissions')
-//            ->click('Menu')
-//            ->seePageis('admin/auth/menu')
-//            ->click('Operation log')
-//            ->seePageis('admin/auth/logs');
+                $this->visit('admin/')
+//                ->click('Users')
+//                ->seePageis('admin/auth/users')
+//                ->click('Roles')
+//                ->seePageis('admin/auth/roles')
+//                ->click('Permission')
+//                ->seePageis('admin/auth/permissions')
+                ->click('菜单')
+                ->seePageis('admin/auth/menu');
+//                ->click('Operation log')
+//                ->seePageis('admin/auth/logs');
     }
 }

@@ -1,6 +1,6 @@
 - Laravel Version: #.#.#
 - PHP Version:
-- Laravel-admin: #.#.#
+- daimakuai-ext: #.#.#
 
 ### Description:
 
