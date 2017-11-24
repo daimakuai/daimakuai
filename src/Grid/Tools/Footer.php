@@ -42,7 +42,7 @@ class Footer extends AbstractTool
 
     protected function hasRowSelectorColumn()
     {
-        return $this->grid->columns()->first()->getName() == Grid\Column::SELECT_COLUMN_NAME;
+        return Grid\Column::SELECT_COLUMN_NAME === $this->grid->columns()->first()->getName();
     }
 
     protected function fillTds()

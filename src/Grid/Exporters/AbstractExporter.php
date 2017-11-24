@@ -77,17 +77,17 @@ abstract class AbstractExporter implements ExporterInterface
      */
     public function withScope($scope)
     {
-        if ($scope == Grid\Exporter::SCOPE_ALL) {
+        if (Grid\Exporter::SCOPE_ALL === $scope) {
             return $this;
         }
 
         list($scope, $args) = explode(':', $scope);
 
-        if ($scope == Grid\Exporter::SCOPE_CURRENT_PAGE) {
+        if (Grid\Exporter::SCOPE_CURRENT_PAGE === $scope) {
             $this->grid->model()->usePaginate(true);
         }
 
-        if ($scope == Grid\Exporter::SCOPE_SELECTED_ROWS) {
+        if (Grid\Exporter::SCOPE_SELECTED_ROWS === $scope) {
             $selected = explode(',', $args);
             $this->grid->model()->whereIn($this->grid->getKeyName(), $selected);
         }

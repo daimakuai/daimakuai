@@ -30,8 +30,6 @@ class InstallCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle()
     {
@@ -42,22 +40,18 @@ class InstallCommand extends Command
 
     /**
      * Create tables and seed it.
-     *
-     * @return void
      */
     public function initDatabase()
     {
         $this->call('migrate');
 
-        if (Administrator::count() == 0) {
+        if (0 === Administrator::count()) {
             $this->call('db:seed', ['--class' => \Jblv\Admin\Auth\Database\AdminTablesSeeder::class]);
         }
     }
 
     /**
      * Initialize the admin directory.
-     *
-     * @return void
      */
     protected function initAdminDirectory()
     {
@@ -88,8 +82,6 @@ class InstallCommand extends Command
 
     /**
      * Create HomeController.
-     *
-     * @return void
      */
     public function createHomeController()
     {
@@ -105,8 +97,6 @@ class InstallCommand extends Command
 
     /**
      * Create HomeController.
-     *
-     * @return void
      */
     public function createExampleController()
     {
@@ -122,8 +112,6 @@ class InstallCommand extends Command
 
     /**
      * Create AuthController.
-     *
-     * @return void
      */
     public function createAuthController()
     {
@@ -139,8 +127,6 @@ class InstallCommand extends Command
 
     /**
      * Create AdministratorController.
-     *
-     * @return void
      */
     public function createAdministratorController()
     {
@@ -158,8 +144,6 @@ class InstallCommand extends Command
 
     /**
      * Create menu file.
-     *
-     * @return void
      */
     protected function createMenuFile()
     {
@@ -172,8 +156,6 @@ class InstallCommand extends Command
 
     /**
      * Create routes file.
-     *
-     * @return void
      */
     protected function createBootstrapFile()
     {
@@ -186,8 +168,6 @@ class InstallCommand extends Command
 
     /**
      * Create routes file.
-     *
-     * @return void
      */
     protected function createRoutesFile()
     {
@@ -200,8 +180,6 @@ class InstallCommand extends Command
 
     /**
      * Copy language files to admin directory.
-     *
-     * @return void
      */
     protected function copyLanguageFiles()
     {

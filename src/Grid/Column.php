@@ -451,7 +451,7 @@ class Column
         $type = 'desc';
 
         if ($this->isSorted()) {
-            $type = $this->sort['type'] == 'desc' ? 'asc' : 'desc';
+            $type = 'desc' === $this->sort['type'] ? 'asc' : 'desc';
             $icon .= "-amount-{$this->sort['type']}";
         }
 
@@ -476,7 +476,7 @@ class Column
             return false;
         }
 
-        return isset($this->sort['column']) && $this->sort['column'] == $this->name;
+        return isset($this->sort['column']) && $this->sort['column'] === $this->name;
     }
 
     /**

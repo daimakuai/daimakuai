@@ -209,7 +209,7 @@ class Field implements Renderable
     {
         return [
             'css' => static::$css,
-            'js'  => static::$js,
+            'js' => static::$js,
         ];
     }
 
@@ -253,7 +253,7 @@ class Field implements Renderable
         if (is_string($column)) {
             $name = explode('.', $column);
 
-            if (count($name) == 1) {
+            if (1 === count($name)) {
                 return $name[0];
             }
 
@@ -297,8 +297,6 @@ class Field implements Renderable
      * Fill data to the field.
      *
      * @param array $data
-     *
-     * @return void
      */
     public function fill($data)
     {
@@ -322,8 +320,6 @@ class Field implements Renderable
      * Set original value to the field.
      *
      * @param array $data
-     *
-     * @return void
      */
     public function setOriginal($data)
     {
@@ -429,8 +425,6 @@ class Field implements Renderable
      * Remove a specific rule.
      *
      * @param string $rule
-     *
-     * @return void
      */
     protected function removeRule($rule)
     {
@@ -726,13 +720,13 @@ class Field implements Renderable
     {
         if ($this->horizontal) {
             return [
-                'label'      => "col-sm-{$this->width['label']}",
-                'field'      => "col-sm-{$this->width['field']}",
+                'label' => "col-sm-{$this->width['label']}",
+                'field' => "col-sm-{$this->width['field']}",
                 'form-group' => 'form-group ',
             ];
         }
 
-        return ['label' =>'', 'field' => '', 'form-group' => ''];
+        return ['label' => '', 'field' => '', 'form-group' => ''];
     }
 
     /**
@@ -843,7 +837,7 @@ class Field implements Renderable
         }
 
         foreach ($delClass as $del) {
-            if (($key = array_search($del, $this->elementClass))) {
+            if (($key = array_search($del, $this->elementClass, true))) {
                 unset($this->elementClass[$key]);
             }
         }
@@ -859,17 +853,17 @@ class Field implements Renderable
     protected function variables()
     {
         return array_merge($this->variables, [
-            'id'            => $this->id,
-            'name'          => $this->elementName ?: $this->formatName($this->column),
-            'help'          => $this->help,
-            'class'         => $this->getElementClassString(),
-            'value'         => $this->value(),
-            'label'         => $this->label,
-            'viewClass'     => $this->getViewElementClasses(),
-            'column'        => $this->column,
-            'errorKey'      => $this->getErrorKey(),
-            'attributes'    => $this->formatAttributes(),
-            'placeholder'   => $this->getPlaceholder(),
+            'id' => $this->id,
+            'name' => $this->elementName ?: $this->formatName($this->column),
+            'help' => $this->help,
+            'class' => $this->getElementClassString(),
+            'value' => $this->value(),
+            'label' => $this->label,
+            'viewClass' => $this->getViewElementClasses(),
+            'column' => $this->column,
+            'errorKey' => $this->getErrorKey(),
+            'attributes' => $this->formatAttributes(),
+            'placeholder' => $this->getPlaceholder(),
         ]);
     }
 
@@ -927,7 +921,7 @@ class Field implements Renderable
      */
     public function __call($method, $arguments)
     {
-        if ($method === 'default') {
+        if ('default' === $method) {
             return $this->setDefault(array_get($arguments, 0));
         }
     }

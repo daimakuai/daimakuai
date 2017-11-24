@@ -51,8 +51,8 @@ class HasMany extends Field
      * @var array
      */
     protected $views = [
-        'default'   => 'admin::form.hasmany',
-        'tab'       => 'admin::form.hasmanytab',
+        'default' => 'admin::form.hasmany',
+        'tab' => 'admin::form.hasmanytab',
     ];
 
     /**
@@ -67,12 +67,12 @@ class HasMany extends Field
 
         $this->column = $relationName;
 
-        if (count($arguments) == 1) {
+        if (1 === count($arguments)) {
             $this->label = $this->formatLabel();
             $this->builder = $arguments[0];
         }
 
-        if (count($arguments) == 2) {
+        if (2 === count($arguments)) {
             list($this->label, $this->builder) = $arguments;
         }
     }
@@ -178,8 +178,6 @@ class HasMany extends Field
      *
      * @param array $input
      * @param array $column $column is the column name array set
-     *
-     * @return void.
      */
     protected function resetInputKey(array &$input, array $column)
     {
@@ -204,7 +202,6 @@ class HasMany extends Field
          * in the HasMany relation, has many data/field set, $set is field set in the below
          */
         foreach ($input[$this->column] as $index => $set) {
-
             /*
              * foreach the field set to find the corresponding $column
              */
@@ -292,7 +289,7 @@ class HasMany extends Field
     /**
      * Set view mode.
      *
-     * @param string $mode currently support `tab` mode.
+     * @param string $mode currently support `tab` mode
      *
      * @return $this
      *
@@ -347,7 +344,7 @@ class HasMany extends Field
          */
         if ($values = old($this->column)) {
             foreach ($values as $key => $data) {
-                if ($data[NestedForm::REMOVE_FLAG_NAME] == 1) {
+                if (1 === $data[NestedForm::REMOVE_FLAG_NAME]) {
                     continue;
                 }
 
@@ -370,8 +367,6 @@ class HasMany extends Field
      * Setup script for this field in different view mode.
      *
      * @param string $script
-     *
-     * @return void
      */
     protected function setupScript($script)
     {
@@ -384,8 +379,6 @@ class HasMany extends Field
      * Setup default template script.
      *
      * @param string $templateScript
-     *
-     * @return void
      */
     protected function setupScriptForDefaultView($templateScript)
     {
@@ -426,8 +419,6 @@ EOT;
      * Setup tab template script.
      *
      * @param string $templateScript
-     *
-     * @return void
      */
     protected function setupScriptForTabView($templateScript)
     {
@@ -495,9 +486,9 @@ EOT;
         $this->setupScript($script);
 
         return parent::render()->with([
-            'forms'         => $this->buildRelatedForms(),
-            'template'      => $template,
-            'relationName'  => $this->relationName,
+            'forms' => $this->buildRelatedForms(),
+            'template' => $template,
+            'relationName' => $this->relationName,
         ]);
     }
 }

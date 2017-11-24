@@ -24,7 +24,7 @@ class Date extends Text
 
     public function prepare($value)
     {
-        if ($value === '') {
+        if ('' === $value) {
             $value = null;
         }
 

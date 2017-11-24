@@ -2,7 +2,6 @@
 
 namespace Jblv\Admin;
 
-
 use Illuminate\Support\Facades\Route;
 use Jblv\Admin\Auth\Database\Menu;
 use Jblv\Admin\Auth\Database\Permission;
@@ -11,7 +10,7 @@ abstract class Extension
 {
     public static function config($key, $default = null)
     {
-        $name = array_search(get_called_class(), Admin::$extensions);
+        $name = array_search(get_called_class(), Admin::$extensions, true);
 
         $key = sprintf('admin.extensions.%s.%s', strtolower($name), $key);
 
@@ -40,19 +39,19 @@ abstract class Extension
 
         Menu::create([
             'parent_id' => $parentId,
-            'order'     => $lastOrder + 1,
-            'title'     => $title,
-            'icon'      => $icon,
-            'uri'       => $uri,
+            'order' => $lastOrder + 1,
+            'title' => $title,
+            'icon' => $icon,
+            'uri' => $uri,
         ]);
     }
 
     protected static function createPermission($name, $slug, $path)
     {
         Permission::create([
-            'name'          => $name,
-            'slug'          => $slug,
-            'http_path'     => '/'.trim($path, '/'),
+            'name' => $name,
+            'slug' => $slug,
+            'http_path' => '/'.trim($path, '/'),
         ]);
     }
 }

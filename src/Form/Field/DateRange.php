@@ -38,7 +38,7 @@ class DateRange extends Field
 
     public function prepare($value)
     {
-        if ($value === '') {
+        if ('' === $value) {
             $value = null;
         }
 

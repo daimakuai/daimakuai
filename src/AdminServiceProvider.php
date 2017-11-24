@@ -23,11 +23,11 @@ class AdminServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'admin.auth'        => \Jblv\Admin\Middleware\Authenticate::class,
-        'admin.pjax'        => \Jblv\Admin\Middleware\Pjax::class,
-        'admin.log'         => \Jblv\Admin\Middleware\LogOperation::class,
-        'admin.permission'  => \Jblv\Admin\Middleware\Permission::class,
-        'admin.bootstrap'   => \Jblv\Admin\Middleware\Bootstrap::class,
+        'admin.auth' => \Jblv\Admin\Middleware\Authenticate::class,
+        'admin.pjax' => \Jblv\Admin\Middleware\Pjax::class,
+        'admin.log' => \Jblv\Admin\Middleware\LogOperation::class,
+        'admin.permission' => \Jblv\Admin\Middleware\Permission::class,
+        'admin.bootstrap' => \Jblv\Admin\Middleware\Bootstrap::class,
     ];
 
     /**
@@ -47,8 +47,6 @@ class AdminServiceProvider extends ServiceProvider
 
     /**
      * Boot the service provider.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -69,8 +67,6 @@ class AdminServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -83,8 +79,6 @@ class AdminServiceProvider extends ServiceProvider
 
     /**
      * Setup auth configuration.
-     *
-     * @return void
      */
     protected function loadAdminAuthConfig()
     {
@@ -93,8 +87,6 @@ class AdminServiceProvider extends ServiceProvider
 
     /**
      * Register the route middleware.
-     *
-     * @return void
      */
     protected function registerRouteMiddleware()
     {

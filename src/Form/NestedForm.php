@@ -174,8 +174,6 @@ class NestedForm
      * Set original data for each field.
      *
      * @param string $key
-     *
-     * @return void
      */
     protected function setFieldOriginalValue($key)
     {
@@ -197,7 +195,7 @@ class NestedForm
      */
     protected function prepareRecord($record)
     {
-        if ($record[static::REMOVE_FLAG_NAME] == 1) {
+        if (1 === $record[static::REMOVE_FLAG_NAME]) {
             return $record;
         }
 
@@ -217,7 +215,7 @@ class NestedForm
                 $value = $field->prepare($value);
             }
 
-            if (($field instanceof \Jblv\Admin\Form\Field\Hidden) || $value != $field->original()) {
+            if (($field instanceof \Jblv\Admin\Form\Field\Hidden) || $value !== $field->original()) {
                 if (is_array($columns)) {
                     foreach ($columns as $name => $column) {
                         array_set($prepared, $column, $value[$name]);
@@ -311,7 +309,6 @@ class NestedForm
 
         /* @var Field $field */
         foreach ($this->fields() as $field) {
-
             //when field render, will push $script to Admin
             $html .= $field->render();
 

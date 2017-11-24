@@ -2,16 +2,16 @@
 
 namespace Jblv\Admin\Helpers\Controllers;
 
-use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Helpers\Scaffold\ControllerCreator;
-use Jblv\Admin\Helpers\Scaffold\MigrationCreator;
-use Jblv\Admin\Helpers\Scaffold\ModelCreator;
-use Jblv\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\MessageBag;
+use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Helpers\Scaffold\ControllerCreator;
+use Jblv\Admin\Helpers\Scaffold\MigrationCreator;
+use Jblv\Admin\Helpers\Scaffold\ModelCreator;
+use Jblv\Admin\Layout\Content;
 
 class ScaffoldController extends Controller
 {
@@ -40,43 +40,41 @@ class ScaffoldController extends Controller
         $message = '';
 
         try {
-
             // 1. Create model.
-            if (in_array('model', $request->get('create'))) {
+            if (in_array('model', $request->get('create'), true)) {
                 $modelCreator = new ModelCreator($request->get('table_name'), $request->get('model_name'));
 
                 $paths['model'] = $modelCreator->create(
                     $request->get('primary_key'),
-                    $request->get('timestamps') == 'on',
-                    $request->get('soft_deletes') == 'on'
+                    'on' === $request->get('timestamps'),
+                    'on' === $request->get('soft_deletes')
                 );
             }
 
             // 2. Create controller.
-            if (in_array('controller', $request->get('create'))) {
+            if (in_array('controller', $request->get('create'), true)) {
                 $paths['controller'] = (new ControllerCreator($request->get('controller_name')))
                     ->create($request->get('model_name'));
             }
 
             // 3. Create migration.
-            if (in_array('migration', $request->get('create'))) {
+            if (in_array('migration', $request->get('create'), true)) {
                 $migrationName = 'create_'.$request->get('table_name').'_table';
 
                 $paths['migration'] = (new MigrationCreator(app('files')))->buildBluePrint(
                     $request->get('fields'),
                     $request->get('primary_key', 'id'),
-                    $request->get('timestamps') == 'on',
-                    $request->get('soft_deletes') == 'on'
+                    'on' === $request->get('timestamps'),
+                    'on' === $request->get('soft_deletes')
                 )->create($migrationName, database_path('migrations'), $request->get('table_name'));
             }
 
             // 4. Run migrate.
-            if (in_array('migrate', $request->get('create'))) {
+            if (in_array('migrate', $request->get('create'), true)) {
                 Artisan::call('migrate');
                 $message = Artisan::output();
             }
         } catch (\Exception $exception) {
-
             // Delete generated files if exception thrown.
             app('files')->delete($paths);
 
@@ -89,7 +87,7 @@ class ScaffoldController extends Controller
     protected function backWithException(\Exception $exception)
     {
         $error = new MessageBag([
-            'title'   => 'Error',
+            'title' => 'Error',
             'message' => $exception->getMessage(),
         ]);
 
@@ -107,7 +105,7 @@ class ScaffoldController extends Controller
         $messages[] = "<br />$message";
 
         $success = new MessageBag([
-            'title'   => 'Success',
+            'title' => 'Success',
             'message' => implode('<br />', $messages),
         ]);
 

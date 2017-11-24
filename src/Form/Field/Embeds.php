@@ -24,12 +24,12 @@ class Embeds extends Field
     {
         $this->column = $column;
 
-        if (count($arguments) == 1) {
+        if (1 === count($arguments)) {
             $this->label = $this->formatLabel();
             $this->builder = $arguments[0];
         }
 
-        if (count($arguments) == 2) {
+        if (2 === count($arguments)) {
             list($this->label, $this->builder) = $arguments;
         }
     }
@@ -172,8 +172,6 @@ class Embeds extends Field
      *
      * @param array $input
      * @param array $column $column is the column name array set
-     *
-     * @return void.
      */
     public function resetInputKey(array &$input, array $column)
     {

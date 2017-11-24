@@ -2,7 +2,6 @@
 
 namespace Jblv\Admin\Middleware;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Jblv\Admin\Auth\Database\OperationLog as OperationLogModel;
@@ -23,10 +22,10 @@ class LogOperation
         if ($this->shouldLogOperation($request)) {
             $log = [
                 'user_id' => Admin::user()->id,
-                'path'    => $request->path(),
-                'method'  => $request->method(),
-                'ip'      => $request->getClientIp(),
-                'input'   => json_encode($request->input()),
+                'path' => $request->path(),
+                'method' => $request->method(),
+                'ip' => $request->getClientIp(),
+                'input' => json_encode($request->input()),
             ];
 
             OperationLogModel::create($log);
@@ -57,7 +56,7 @@ class LogOperation
     protected function inExceptArray($request)
     {
         foreach (config('admin.operation_log.except') as $except) {
-            if ($except !== '/') {
+            if ('/' !== $except) {
                 $except = trim($except, '/');
             }
 
@@ -71,7 +70,7 @@ class LogOperation
             $methods = array_map('strtoupper', $methods);
 
             if ($request->is($except) &&
-                (empty($methods) || in_array($request->method(), $methods))) {
+                (empty($methods) || in_array($request->method(), $methods, true))) {
                 return true;
             }
         }

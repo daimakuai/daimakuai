@@ -382,7 +382,7 @@ class Form
         // ajax but not pjax
         if ($request->ajax() && !$request->pjax()) {
             return response()->json([
-                'status'  => true,
+                'status' => true,
                 'message' => $message,
             ]);
         }
@@ -507,7 +507,7 @@ class Form
 
         if ($this->handleOrderable($id, $data)) {
             return response([
-                'status'  => true,
+                'status' => true,
                 'message' => trans('admin.update_succeeded'),
             ]);
         }
@@ -615,7 +615,7 @@ class Form
             $model = $this->model->find($id);
 
             if ($model instanceof Sortable) {
-                $input['_orderable'] == 1 ? $model->moveOrderUp() : $model->moveOrderDown();
+                1 === $input['_orderable'] ? $model->moveOrderUp() : $model->moveOrderDown();
 
                 return true;
             }
@@ -628,8 +628,6 @@ class Form
      * Update relation data.
      *
      * @param array $relationsData
-     *
-     * @return void
      */
     protected function updateRelation($relationsData)
     {
@@ -655,6 +653,7 @@ class Form
                     if (isset($prepared[$name])) {
                         $relation->sync($prepared[$name]);
                     }
+
                     break;
                 case \Illuminate\Database\Eloquent\Relations\HasOne::class:
 
@@ -671,6 +670,7 @@ class Form
                     }
 
                     $related->save();
+
                     break;
                 case \Illuminate\Database\Eloquent\Relations\MorphOne::class:
                     $related = $this->model->$name;
@@ -681,6 +681,7 @@ class Form
                         $related->setAttribute($column, $value);
                     }
                     $related->save();
+
                     break;
                 case \Illuminate\Database\Eloquent\Relations\HasMany::class:
                 case \Illuminate\Database\Eloquent\Relations\MorphMany::class:
@@ -692,7 +693,7 @@ class Form
 
                         $instance = $relation->findOrNew(array_get($related, $keyName));
 
-                        if ($related[static::REMOVE_FLAG_NAME] == 1) {
+                        if (1 === $related[static::REMOVE_FLAG_NAME]) {
                             $instance->delete();
 
                             continue;
@@ -714,7 +715,7 @@ class Form
      * Prepare input data for update.
      *
      * @param array $updates
-     * @param bool  $oneToOneRelation If column is one-to-one relation.
+     * @param bool  $oneToOneRelation if column is one-to-one relation
      *
      * @return array
      */
@@ -784,6 +785,7 @@ class Form
         foreach ($inserts as $column => $value) {
             if (is_null($field = $this->getFieldByColumn($column))) {
                 unset($inserts[$column]);
+
                 continue;
             }
 
@@ -825,8 +827,6 @@ class Form
      * Set submitted callback.
      *
      * @param Closure $callback
-     *
-     * @return void
      */
     public function submitted(Closure $callback)
     {
@@ -837,8 +837,6 @@ class Form
      * Set saving callback.
      *
      * @param Closure $callback
-     *
-     * @return void
      */
     public function saving(Closure $callback)
     {
@@ -849,8 +847,6 @@ class Form
      * Set saved callback.
      *
      * @param callable $callback
-     *
-     * @return void
      */
     public function saved(Closure $callback)
     {
@@ -908,18 +904,16 @@ class Form
         return $this->builder->fields()->first(
             function (Field $field) use ($column) {
                 if (is_array($field->column())) {
-                    return in_array($column, $field->column());
+                    return in_array($column, $field->column(), true);
                 }
 
-                return $field->column() == $column;
+                return $field->column() === $column;
             }
         );
     }
 
     /**
      * Set original data for each field.
-     *
-     * @return void
      */
     protected function setFieldOriginalValue()
     {
@@ -936,8 +930,6 @@ class Form
      * Set all fields value in form.
      *
      * @param $id
-     *
-     * @return void
      */
     protected function setFieldValue($id)
     {
@@ -958,8 +950,6 @@ class Form
      * Don't snake case attributes.
      *
      * @param Model $model
-     *
-     * @return void
      */
     protected static function doNotSnakeAttributes(Model $model)
     {
@@ -1151,7 +1141,7 @@ class Form
     {
         $segments = explode('/', trim(app('request')->getUri(), '/'));
 
-        if ($slice != 0) {
+        if (0 !== $slice) {
             $segments = array_slice($segments, 0, $slice);
         }
 
@@ -1191,58 +1181,56 @@ class Form
 
     /**
      * Register builtin fields.
-     *
-     * @return void
      */
     public static function registerBuiltinFields()
     {
         $map = [
-            'button'            => \Jblv\Admin\Form\Field\Button::class,
-            'checkbox'          => \Jblv\Admin\Form\Field\Checkbox::class,
-            'color'             => \Jblv\Admin\Form\Field\Color::class,
-            'currency'          => \Jblv\Admin\Form\Field\Currency::class,
-            'date'              => \Jblv\Admin\Form\Field\Date::class,
-            'dateRange'         => \Jblv\Admin\Form\Field\DateRange::class,
-            'datetime'          => \Jblv\Admin\Form\Field\Datetime::class,
-            'dateTimeRange'     => \Jblv\Admin\Form\Field\DatetimeRange::class,
-            'datetimeRange'     => \Jblv\Admin\Form\Field\DatetimeRange::class,
-            'decimal'           => \Jblv\Admin\Form\Field\Decimal::class,
-            'display'           => \Jblv\Admin\Form\Field\Display::class,
-            'divider'           => \Jblv\Admin\Form\Field\Divide::class,
-            'divide'            => \Jblv\Admin\Form\Field\Divide::class,
-            'embeds'            => \Jblv\Admin\Form\Field\Embeds::class,
-            'editor'            => \Jblv\Admin\Form\Field\Editor::class,
-            'email'             => \Jblv\Admin\Form\Field\Email::class,
-            'file'              => \Jblv\Admin\Form\Field\File::class,
-            'hasMany'           => \Jblv\Admin\Form\Field\HasMany::class,
-            'hidden'            => \Jblv\Admin\Form\Field\Hidden::class,
-            'id'                => \Jblv\Admin\Form\Field\Id::class,
-            'image'             => \Jblv\Admin\Form\Field\Image::class,
-            'ip'                => \Jblv\Admin\Form\Field\Ip::class,
-            'map'               => \Jblv\Admin\Form\Field\Map::class,
-            'mobile'            => \Jblv\Admin\Form\Field\Mobile::class,
-            'month'             => \Jblv\Admin\Form\Field\Month::class,
-            'multipleSelect'    => \Jblv\Admin\Form\Field\MultipleSelect::class,
-            'number'            => \Jblv\Admin\Form\Field\Number::class,
-            'password'          => \Jblv\Admin\Form\Field\Password::class,
-            'radio'             => \Jblv\Admin\Form\Field\Radio::class,
-            'rate'              => \Jblv\Admin\Form\Field\Rate::class,
-            'select'            => \Jblv\Admin\Form\Field\Select::class,
-            'slider'            => \Jblv\Admin\Form\Field\Slider::class,
-            'switch'            => \Jblv\Admin\Form\Field\SwitchField::class,
-            'text'              => \Jblv\Admin\Form\Field\Text::class,
-            'textarea'          => \Jblv\Admin\Form\Field\Textarea::class,
-            'time'              => \Jblv\Admin\Form\Field\Time::class,
-            'timeRange'         => \Jblv\Admin\Form\Field\TimeRange::class,
-            'url'               => \Jblv\Admin\Form\Field\Url::class,
-            'year'              => \Jblv\Admin\Form\Field\Year::class,
-            'html'              => \Jblv\Admin\Form\Field\Html::class,
-            'tags'              => \Jblv\Admin\Form\Field\Tags::class,
-            'icon'              => \Jblv\Admin\Form\Field\Icon::class,
-            'multipleFile'      => \Jblv\Admin\Form\Field\MultipleFile::class,
-            'multipleImage'     => \Jblv\Admin\Form\Field\MultipleImage::class,
-            'captcha'           => \Jblv\Admin\Form\Field\Captcha::class,
-	    'listbox'           => \Jblv\Admin\Form\Field\Listbox::class,
+            'button' => \Jblv\Admin\Form\Field\Button::class,
+            'checkbox' => \Jblv\Admin\Form\Field\Checkbox::class,
+            'color' => \Jblv\Admin\Form\Field\Color::class,
+            'currency' => \Jblv\Admin\Form\Field\Currency::class,
+            'date' => \Jblv\Admin\Form\Field\Date::class,
+            'dateRange' => \Jblv\Admin\Form\Field\DateRange::class,
+            'datetime' => \Jblv\Admin\Form\Field\Datetime::class,
+            'dateTimeRange' => \Jblv\Admin\Form\Field\DatetimeRange::class,
+            'datetimeRange' => \Jblv\Admin\Form\Field\DatetimeRange::class,
+            'decimal' => \Jblv\Admin\Form\Field\Decimal::class,
+            'display' => \Jblv\Admin\Form\Field\Display::class,
+            'divider' => \Jblv\Admin\Form\Field\Divide::class,
+            'divide' => \Jblv\Admin\Form\Field\Divide::class,
+            'embeds' => \Jblv\Admin\Form\Field\Embeds::class,
+            'editor' => \Jblv\Admin\Form\Field\Editor::class,
+            'email' => \Jblv\Admin\Form\Field\Email::class,
+            'file' => \Jblv\Admin\Form\Field\File::class,
+            'hasMany' => \Jblv\Admin\Form\Field\HasMany::class,
+            'hidden' => \Jblv\Admin\Form\Field\Hidden::class,
+            'id' => \Jblv\Admin\Form\Field\Id::class,
+            'image' => \Jblv\Admin\Form\Field\Image::class,
+            'ip' => \Jblv\Admin\Form\Field\Ip::class,
+            'map' => \Jblv\Admin\Form\Field\Map::class,
+            'mobile' => \Jblv\Admin\Form\Field\Mobile::class,
+            'month' => \Jblv\Admin\Form\Field\Month::class,
+            'multipleSelect' => \Jblv\Admin\Form\Field\MultipleSelect::class,
+            'number' => \Jblv\Admin\Form\Field\Number::class,
+            'password' => \Jblv\Admin\Form\Field\Password::class,
+            'radio' => \Jblv\Admin\Form\Field\Radio::class,
+            'rate' => \Jblv\Admin\Form\Field\Rate::class,
+            'select' => \Jblv\Admin\Form\Field\Select::class,
+            'slider' => \Jblv\Admin\Form\Field\Slider::class,
+            'switch' => \Jblv\Admin\Form\Field\SwitchField::class,
+            'text' => \Jblv\Admin\Form\Field\Text::class,
+            'textarea' => \Jblv\Admin\Form\Field\Textarea::class,
+            'time' => \Jblv\Admin\Form\Field\Time::class,
+            'timeRange' => \Jblv\Admin\Form\Field\TimeRange::class,
+            'url' => \Jblv\Admin\Form\Field\Url::class,
+            'year' => \Jblv\Admin\Form\Field\Year::class,
+            'html' => \Jblv\Admin\Form\Field\Html::class,
+            'tags' => \Jblv\Admin\Form\Field\Tags::class,
+            'icon' => \Jblv\Admin\Form\Field\Icon::class,
+            'multipleFile' => \Jblv\Admin\Form\Field\MultipleFile::class,
+            'multipleImage' => \Jblv\Admin\Form\Field\MultipleImage::class,
+            'captcha' => \Jblv\Admin\Form\Field\Captcha::class,
+        'listbox' => \Jblv\Admin\Form\Field\Listbox::class,
         ];
 
         foreach ($map as $abstract => $class) {
@@ -1255,8 +1243,6 @@ class Form
      *
      * @param string $abstract
      * @param string $class
-     *
-     * @return void
      */
     public static function extend($abstract, $class)
     {
@@ -1318,7 +1304,7 @@ class Form
 
         return static::$collectedAssets = [
             'css' => $css->flatten()->unique()->filter()->toArray(),
-            'js'  => $js->flatten()->unique()->filter()->toArray(),
+            'js' => $js->flatten()->unique()->filter()->toArray(),
         ];
     }
 

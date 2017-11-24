@@ -1,16 +1,15 @@
 <?php
 
 return [
-
     /*
      * Dai Ma Kuai name.
      */
-    'name'      => 'Daimauai',
+    'name' => 'Daimauai',
 
     /*
      * Logo in admin panel header.
      */
-    'logo'      => '<b>DaiMaKuai</b> Laravel',
+    'logo' => '<b>DaiMaKuai</b> Laravel',
 
     /*
      * Mini-logo in admin panel header.
@@ -21,12 +20,11 @@ return [
      * Daimakuai url prefix.
      */
     'route' => [
-
         'prefix' => 'admin',
 
-        'namespace'     => 'App\\Admin\\Controllers',
+        'namespace' => 'App\\Admin\\Controllers',
 
-        'middleware'    => ['web', 'admin'],
+        'middleware' => ['web', 'admin'],
     ],
 
     /*
@@ -37,7 +35,7 @@ return [
     /*
      * Daimakuai html title.
      */
-    'title'  => 'Admin',
+    'title' => 'Admin',
 
     /*
      * Use `https`.
@@ -50,7 +48,7 @@ return [
     'auth' => [
         'guards' => [
             'admin' => [
-                'driver'   => 'session',
+                'driver' => 'session',
                 'provider' => 'admin',
             ],
         ],
@@ -58,7 +56,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => Jblv\Admin\Auth\Database\Administrator::class,
+                'model' => Jblv\Admin\Auth\Database\Administrator::class,
             ],
         ],
     ],
@@ -66,13 +64,12 @@ return [
     /*
      * Daimakuai upload setting.
      */
-    'upload'  => [
-
+    'upload' => [
         'disk' => 'admin',
 
-        'directory'  => [
-            'image'  => 'image',
-            'file'   => 'file',
+        'directory' => [
+            'image' => 'image',
+            'file' => 'file',
         ],
 
         'host' => 'http://localhost:8000/upload/',
@@ -82,9 +79,8 @@ return [
      * Daimakuai database setting.
      */
     'database' => [
-
         // Database connection for following tables.
-        'connection'  => '',
+        'connection' => '',
 
         // User tables and model.
         'users_table' => 'admin_users',
@@ -99,22 +95,21 @@ return [
         'permissions_model' => Jblv\Admin\Auth\Database\Permission::class,
 
         // Menu table and model.
-        'menu_table'  => 'admin_menu',
-        'menu_model'  => Jblv\Admin\Auth\Database\Menu::class,
+        'menu_table' => 'admin_menu',
+        'menu_model' => Jblv\Admin\Auth\Database\Menu::class,
 
         // Pivot table for table above.
-        'operation_log_table'    => 'admin_operation_log',
+        'operation_log_table' => 'admin_operation_log',
         'user_permissions_table' => 'admin_user_permissions',
-        'role_users_table'       => 'admin_role_users',
+        'role_users_table' => 'admin_role_users',
         'role_permissions_table' => 'admin_role_permissions',
-        'role_menu_table'        => 'admin_role_menu',
+        'role_menu_table' => 'admin_role_menu',
     ],
 
     /*
      * By setting this option to open or close operation log in daimakuai.
      */
-    'operation_log'   => [
-
+    'operation_log' => [
         'enable' => true,
 
         /*
@@ -131,7 +126,7 @@ return [
     /*
      * @see https://adminlte.io/docs/2.4/layout
      */
-    'skin'    => 'skin-blue-light',
+    'skin' => 'skin-blue-light',
 
     /*
     |---------------------------------------------------------|
@@ -142,17 +137,16 @@ return [
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
      */
-    'layout'  => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['sidebar-mini', 'sidebar-collapse'],
 
     /*
      * Version displayed in footer.
      */
-    'version'   => '1.2.x',
+    'version' => '1.2.x',
 
     /*
      * Settings for extensions.
      */
     'extensions' => [
-
     ],
 ];

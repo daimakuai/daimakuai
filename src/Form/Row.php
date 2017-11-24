@@ -2,7 +2,6 @@
 
 namespace Jblv\Admin\Form;
 
-
 use Illuminate\Contracts\Support\Renderable;
 use Jblv\Admin\Form;
 
@@ -90,7 +89,7 @@ class Row implements Renderable
         $field->disableHorizontal();
 
         $this->fields[] = [
-            'width'   => $this->defaultFieldWidth,
+            'width' => $this->defaultFieldWidth,
             'element' => $field,
         ];
 

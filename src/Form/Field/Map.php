@@ -20,7 +20,7 @@ class Map extends Field
      */
     public static function getAssets()
     {
-        if (config('app.locale') == 'zh-CN') {
+        if ('zh-CN' === config('app.locale')) {
             $js = '//map.qq.com/api/js?v=2.exp';
         } else {
             $js = '//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key='.env('GOOGLE_API_KEY');
@@ -43,7 +43,7 @@ class Map extends Field
          * Google map is blocked in mainland China
          * people in China can use Tencent map instead(;
          */
-        if (config('app.locale') == 'zh-CN') {
+        if ('zh-CN' === config('app.locale')) {
             $this->useTencentMap();
         } else {
             $this->useGoogleMap();

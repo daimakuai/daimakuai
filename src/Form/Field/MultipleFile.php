@@ -189,7 +189,7 @@ class MultipleFile extends Field
         foreach ($files as $index => $file) {
             $config[] = [
                 'caption' => basename($file),
-                'key'     => $index,
+                'key' => $index,
             ];
         }
 
@@ -208,7 +208,7 @@ class MultipleFile extends Field
         $this->setupDefaultOptions();
 
         if (!empty($this->value)) {
-            $this->options(['initialPreview' =>$this->preview()]);
+            $this->options(['initialPreview' => $this->preview()]);
             $this->setupPreviewOptions();
         }
 
@@ -224,7 +224,7 @@ EOT;
     /**
      * Destroy original files.
      *
-     * @return string.
+     * @return string
      */
     public function destroy($key)
     {

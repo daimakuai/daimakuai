@@ -35,8 +35,8 @@ class Tree implements Renderable
      * @var string
      */
     protected $view = [
-        'tree'      => 'admin::tree',
-        'branch'    => 'admin::tree.branch',
+        'tree' => 'admin::tree',
+        'branch' => 'admin::tree.branch',
     ];
 
     /**
@@ -107,8 +107,6 @@ class Tree implements Renderable
 
     /**
      * Initialize branch callback.
-     *
-     * @return void
      */
     protected function initBranchCallback()
     {
@@ -164,8 +162,6 @@ class Tree implements Renderable
 
     /**
      * Disable create.
-     *
-     * @return void
      */
     public function disableCreate()
     {
@@ -174,8 +170,6 @@ class Tree implements Renderable
 
     /**
      * Disable save.
-     *
-     * @return void
      */
     public function disableSave()
     {
@@ -184,8 +178,6 @@ class Tree implements Renderable
 
     /**
      * Disable refresh.
-     *
-     * @return void
      */
     public function disableRefresh()
     {
@@ -203,7 +195,7 @@ class Tree implements Renderable
     {
         $tree = json_decode($serialize, true);
 
-        if (json_last_error() != JSON_ERROR_NONE) {
+        if (JSON_ERROR_NONE !== json_last_error()) {
             throw new \InvalidArgumentException(json_last_error_msg());
         }
 
@@ -327,12 +319,12 @@ SCRIPT;
     public function variables()
     {
         return [
-            'id'        => $this->elementId,
-            'tools'     => $this->tools->render(),
-            'items'     => $this->getItems(),
+            'id' => $this->elementId,
+            'tools' => $this->tools->render(),
+            'items' => $this->getItems(),
             'useCreate' => $this->useCreate,
-            'useSave'   => $this->useSave,
-            'useRefresh'=> $this->useRefresh,
+            'useSave' => $this->useSave,
+            'useRefresh' => $this->useRefresh,
         ];
     }
 
@@ -340,8 +332,6 @@ SCRIPT;
      * Setup grid tools.
      *
      * @param Closure $callback
-     *
-     * @return void
      */
     public function tools(Closure $callback)
     {
@@ -358,9 +348,9 @@ SCRIPT;
         Admin::script($this->script());
 
         view()->share([
-            'path'           => $this->path,
-            'keyName'        => $this->model->getKeyName(),
-            'branchView'     => $this->view['branch'],
+            'path' => $this->path,
+            'keyName' => $this->model->getKeyName(),
+            'branchView' => $this->view['branch'],
             'branchCallback' => $this->branchCallback,
         ]);
 

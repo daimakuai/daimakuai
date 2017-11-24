@@ -1,7 +1,6 @@
 <?php
 
 if (!function_exists('admin_path')) {
-
     /**
      * Get admin path.
      *
@@ -41,14 +40,13 @@ if (!function_exists('admin_base_path')) {
     {
         $prefix = '/'.trim(config('admin.route.prefix'), '/');
 
-        $prefix = ($prefix == '/') ? '' : $prefix;
+        $prefix = ('/' === $prefix) ? '' : $prefix;
 
         return $prefix.'/'.trim($path, '/');
     }
 }
 
 if (!function_exists('admin_toastr')) {
-
     /**
      * Flash a toastr message bag to session.
      *
@@ -67,7 +65,6 @@ if (!function_exists('admin_toastr')) {
 }
 
 if (!function_exists('admin_asset')) {
-
     /**
      * @param $path
      *

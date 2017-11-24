@@ -158,12 +158,12 @@ class Grid
      * @var array
      */
     protected $options = [
-        'usePagination'     => true,
-        'useFilter'         => true,
-        'useExporter'       => true,
-        'useActions'        => true,
-        'useRowSelector'    => true,
-        'allowCreate'       => true,
+        'usePagination' => true,
+        'useFilter' => true,
+        'useExporter' => true,
+        'useActions' => true,
+        'useRowSelector' => true,
+        'allowCreate' => true,
     ];
 
     /**
@@ -200,8 +200,6 @@ class Grid
 
     /**
      * Setup grid filter.
-     *
-     * @return void
      */
     protected function setupFilter()
     {
@@ -210,8 +208,6 @@ class Grid
 
     /**
      * Setup grid exporter.
-     *
-     * @return void
      */
     protected function setupExporter()
     {
@@ -265,7 +261,7 @@ class Grid
     {
         $relationName = $relationColumn = '';
 
-        if (strpos($name, '.') !== false) {
+        if (false !== strpos($name, '.')) {
             list($relationName, $relationColumn) = explode('.', $name);
 
             $relation = $this->model()->eloquent()->$relationName();
@@ -298,11 +294,11 @@ class Grid
      */
     public function columns($columns = [])
     {
-        if (func_num_args() == 0) {
+        if (0 === func_num_args()) {
             return $this->columns;
         }
 
-        if (func_num_args() == 1 && is_array($columns)) {
+        if (1 === func_num_args() && is_array($columns)) {
             foreach ($columns as $column => $label) {
                 $this->column($column, $label);
             }
@@ -345,8 +341,6 @@ class Grid
      * Paginate the grid.
      *
      * @param int $perPage
-     *
-     * @return void
      */
     public function paginate($perPage = 20)
     {
@@ -425,8 +419,6 @@ class Grid
 
     /**
      * Add `actions` column for grid.
-     *
-     * @return void
      */
     protected function appendActionsColumn()
     {
@@ -462,8 +454,6 @@ class Grid
 
     /**
      * Prepend checkbox column for grid.
-     *
-     * @return void
      */
     protected function prependRowSelectorColumn()
     {
@@ -487,8 +477,6 @@ class Grid
 
     /**
      * Build the grid.
-     *
-     * @return void
      */
     public function build()
     {
@@ -576,8 +564,6 @@ class Grid
      * Build the grid rows.
      *
      * @param array $data
-     *
-     * @return void
      */
     protected function buildRows(array $data)
     {
@@ -610,8 +596,6 @@ class Grid
      * Setup grid tools.
      *
      * @param Closure $callback
-     *
-     * @return void
      */
     public function tools(Closure $callback)
     {
@@ -773,8 +757,6 @@ class Grid
 
     /**
      * Get the table columns for grid.
-     *
-     * @return void
      */
     protected function setDbColumns()
     {
@@ -889,25 +871,23 @@ class Grid
 
     /**
      * Register column displayers.
-     *
-     * @return void.
      */
     public static function registerColumnDisplayer()
     {
         $map = [
-            'editable'      => \Jblv\Admin\Grid\Displayers\Editable::class,
-            'switch'        => \Jblv\Admin\Grid\Displayers\SwitchDisplay::class,
-            'switchGroup'   => \Jblv\Admin\Grid\Displayers\SwitchGroup::class,
-            'select'        => \Jblv\Admin\Grid\Displayers\Select::class,
-            'image'         => \Jblv\Admin\Grid\Displayers\Image::class,
-            'label'         => \Jblv\Admin\Grid\Displayers\Label::class,
-            'button'        => \Jblv\Admin\Grid\Displayers\Button::class,
-            'link'          => \Jblv\Admin\Grid\Displayers\Link::class,
-            'badge'         => \Jblv\Admin\Grid\Displayers\Badge::class,
-            'progressBar'   => \Jblv\Admin\Grid\Displayers\ProgressBar::class,
-            'radio'         => \Jblv\Admin\Grid\Displayers\Radio::class,
-            'checkbox'      => \Jblv\Admin\Grid\Displayers\Checkbox::class,
-            'orderable'     => \Jblv\Admin\Grid\Displayers\Orderable::class,
+            'editable' => \Jblv\Admin\Grid\Displayers\Editable::class,
+            'switch' => \Jblv\Admin\Grid\Displayers\SwitchDisplay::class,
+            'switchGroup' => \Jblv\Admin\Grid\Displayers\SwitchGroup::class,
+            'select' => \Jblv\Admin\Grid\Displayers\Select::class,
+            'image' => \Jblv\Admin\Grid\Displayers\Image::class,
+            'label' => \Jblv\Admin\Grid\Displayers\Label::class,
+            'button' => \Jblv\Admin\Grid\Displayers\Button::class,
+            'link' => \Jblv\Admin\Grid\Displayers\Link::class,
+            'badge' => \Jblv\Admin\Grid\Displayers\Badge::class,
+            'progressBar' => \Jblv\Admin\Grid\Displayers\ProgressBar::class,
+            'radio' => \Jblv\Admin\Grid\Displayers\Radio::class,
+            'checkbox' => \Jblv\Admin\Grid\Displayers\Checkbox::class,
+            'orderable' => \Jblv\Admin\Grid\Displayers\Orderable::class,
         ];
 
         foreach ($map as $abstract => $class) {

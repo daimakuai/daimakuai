@@ -61,7 +61,7 @@ class Editable extends AbstractDisplayer
         foreach ($options as $key => $value) {
             $source[] = [
                 'value' => $key,
-                'text'  => $value,
+                'text' => $value,
             ];
         }
 
@@ -118,10 +118,10 @@ class Editable extends AbstractDisplayer
         $this->type = 'combodate';
 
         $this->addOptions([
-            'format'        => $format,
-            'viewformat'    => $format,
-            'template'      => $format,
-            'combodate'     => [
+            'format' => $format,
+            'viewformat' => $format,
+            'template' => $format,
+            'combodate' => [
                 'maxYear' => 2035,
             ],
         ]);
@@ -147,11 +147,11 @@ class Editable extends AbstractDisplayer
         Admin::script("$('.$class').editable($options);");
 
         $attributes = [
-            'href'       => '#',
-            'class'      => "$class",
-            'data-type'  => $this->type,
-            'data-pk'    => "{$this->getKey()}",
-            'data-url'   => "{$this->grid->resource()}/{$this->getKey()}",
+            'href' => '#',
+            'class' => "$class",
+            'data-type' => $this->type,
+            'data-pk' => "{$this->getKey()}",
+            'data-url' => "{$this->grid->resource()}/{$this->getKey()}",
             'data-value' => "{$this->value}",
         ];
 
@@ -159,7 +159,7 @@ class Editable extends AbstractDisplayer
             return "$name='$attribute'";
         })->implode(' ');
 
-        $html = $this->type === 'select' ? '' : $this->value;
+        $html = 'select' === $this->type ? '' : $this->value;
 
         return "<a $attributes>{$html}</a>";
     }

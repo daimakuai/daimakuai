@@ -27,8 +27,6 @@ class Paginator extends AbstractTool
 
     /**
      * Initialize work for Paginator.
-     *
-     * @return void
      */
     protected function initPaginator()
     {
@@ -68,7 +66,7 @@ class Paginator extends AbstractTool
     {
         $parameters = [
             'first' => $this->paginator->firstItem(),
-            'last'  => $this->paginator->lastItem(),
+            'last' => $this->paginator->lastItem(),
             'total' => $this->paginator->total(),
         ];
 

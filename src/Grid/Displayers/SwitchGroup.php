@@ -8,7 +8,7 @@ use Jblv\Admin\Facades\Admin;
 class SwitchGroup extends AbstractDisplayer
 {
     protected $states = [
-        'on'  => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
+        'on' => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
         'off' => ['value' => 0, 'text' => 'OFF', 'color' => 'default'],
     ];
 
@@ -74,8 +74,9 @@ EOT;
 
         $key = $this->row->{$this->grid->getKeyName()};
 
-        $checked = $this->states['on']['value'] == $this->row->$name ? 'checked' : '';
+        $checked = $this->states['on']['value'] === $this->row->$name ? 'checked' : '';
         $value = $this->row->$name ? $this->states['on']['value'] : $this->states['off']['value'];
+
         return <<<EOT
 <tr style="height: 28px;">
     <td><strong><small>$label:</small></strong>&nbsp;&nbsp;&nbsp;</td>

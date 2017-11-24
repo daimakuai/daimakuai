@@ -224,22 +224,18 @@ class Admin
 
     /**
      * Register the auth routes.
-     *
-     * @return void
      */
     public function registerAuthRoutes()
     {
         $attributes = [
-            'prefix'        => config('admin.route.prefix'),
-            'namespace'     => 'Jblv\Admin\Controllers',
-            'middleware'    => config('admin.route.middleware'),
+            'prefix' => config('admin.route.prefix'),
+            'namespace' => 'Jblv\Admin\Controllers',
+            'middleware' => config('admin.route.middleware'),
         ];
 
         Route::group($attributes, function ($router) {
-
             /* @var \Illuminate\Routing\Router $router */
             $router->group([], function ($router) {
-
                 /* @var \Illuminate\Routing\Router $router */
                 $router->resource('auth/users', 'UserController');
                 $router->resource('auth/roles', 'RoleController');

@@ -31,8 +31,6 @@ class PerPageSelector extends AbstractTool
 
     /**
      * Do initialize work.
-     *
-     * @return void
      */
     protected function initialize()
     {
@@ -68,7 +66,7 @@ class PerPageSelector extends AbstractTool
         Admin::script($this->script());
 
         $options = $this->getOptions()->map(function ($option) {
-            $selected = ($option == $this->perPage) ? 'selected' : '';
+            $selected = ($option === $this->perPage) ? 'selected' : '';
             $url = app('request')->fullUrlWithQuery([$this->perPageName => $option]);
 
             return "<option value=\"$url\" $selected>$option</option>";

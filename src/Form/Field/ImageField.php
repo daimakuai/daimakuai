@@ -63,7 +63,7 @@ trait ImageField
         }
 
         $this->interventionCalls[] = [
-            'method'    => $method,
+            'method' => $method,
             'arguments' => $arguments,
         ];
 
