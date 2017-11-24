@@ -4,12 +4,12 @@ return [
     /*
      * Dai Ma Kuai name.
      */
-    'name'      => 'Daimakuai',
+    'name' => 'Daimakuai',
 
     /*
      * Logo in admin panel header.
      */
-    'logo'      => '<b>DaiMaKuai</b> ©',
+    'logo' => '<b>DaiMaKuai</b> ©',
 
     /*
      * Mini-logo in admin panel header.
@@ -37,7 +37,7 @@ return [
      */
     'title' => 'Admin',
 
-    /**
+    /*
      * Use `https`.
      */
     'secure' => false,
@@ -50,7 +50,7 @@ return [
             'admin' => [
                 'driver' => 'session',
                 'provider' => 'admin',
-            ]
+            ],
         ],
 
         'providers' => [
@@ -112,7 +112,7 @@ return [
     'operation_log' => [
         'enable' => true,
 
-        /**
+        /*
          * Routes that will not log to database.
          *
          * All method to path like: admin/auth/logs
@@ -120,7 +120,7 @@ return [
          */
         'except' => [
             'admin/auth/logs*',
-        ]
+        ],
     ],
 
     /*
@@ -144,28 +144,26 @@ return [
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
      */
-    'layout'  => ['sidebar-mini'],
+    'layout' => ['sidebar-mini'],
 
     /*
      * Version displayed in footer.
      */
-    'version'   => '1.2.0',
-
+    'version' => '1.2.0',
 
     'extensions' => [
-
         'media-manager' => [
-            'disk' => 'uploads'
+            'disk' => 'uploads',
         ],
 
         'api-tester' => [
             'prefix' => 'api',
 
-            'guard'  => 'api',
+            'guard' => 'api',
 
             'user_retriever' => function ($id) {
                 return \App\User::find($id);
             },
-        ]
-    ]
+        ],
+    ],
 ];
