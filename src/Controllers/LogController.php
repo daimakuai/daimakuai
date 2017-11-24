@@ -70,12 +70,12 @@ class LogController extends Controller
 
         if (OperationLog::destroy(array_filter($ids))) {
             return response()->json([
-                'status'  => true,
+                'status' => true,
                 'message' => trans('admin.delete_succeeded'),
             ]);
         } else {
             return response()->json([
-                'status'  => false,
+                'status' => false,
                 'message' => trans('admin.delete_failed'),
             ]);
         }

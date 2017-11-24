@@ -98,8 +98,6 @@ abstract class AbstractFilter
 
     /**
      * Setup default presenter.
-     *
-     * @return void
      */
     protected function setupDefaultPresenter()
     {
@@ -131,7 +129,7 @@ abstract class AbstractFilter
     {
         $columns = explode('.', $column);
 
-        if (count($columns) == 1) {
+        if (1 === count($columns)) {
             return $columns[0];
         }
 
@@ -189,7 +187,7 @@ abstract class AbstractFilter
     public function previous($step = 1)
     {
         return $this->siblings(
-            array_search($this, $this->parent->filters()) - $step
+            array_search($this, $this->parent->filters(), true) - $step
         );
     }
 
@@ -203,7 +201,7 @@ abstract class AbstractFilter
     public function next($step = 1)
     {
         return $this->siblings(
-            array_search($this, $this->parent->filters()) + $step
+            array_search($this, $this->parent->filters(), true) + $step
         );
     }
 
@@ -410,7 +408,7 @@ abstract class AbstractFilter
     {
         $column = explode('.', $this->column);
 
-        if (count($column) == 1) {
+        if (1 === count($column)) {
             return [$this->query => func_get_args()];
         }
 
@@ -441,10 +439,10 @@ abstract class AbstractFilter
     protected function variables()
     {
         return array_merge([
-            'id'        => $this->id,
-            'name'      => $this->formatName($this->column),
-            'label'     => $this->label,
-            'value'     => $this->value ?: $this->defaultValue,
+            'id' => $this->id,
+            'name' => $this->formatName($this->column),
+            'label' => $this->label,
+            'value' => $this->value ?: $this->defaultValue,
             'presenter' => $this->presenter(),
         ], $this->presenter()->variables());
     }

@@ -42,7 +42,7 @@ class Permission extends Model
      *
      * @return BelongsToMany
      */
-    public function roles() : BelongsToMany
+    public function roles(): BelongsToMany
     {
         $pivotTable = config('admin.database.role_permissions_table');
 
@@ -58,7 +58,7 @@ class Permission extends Model
      *
      * @return bool
      */
-    public function shouldPassThrough(Request $request) : bool
+    public function shouldPassThrough(Request $request): bool
     {
         if (empty($this->http_method) && empty($this->http_path)) {
             return true;
@@ -94,7 +94,7 @@ class Permission extends Model
      *
      * @return bool
      */
-    protected function matchRequest(array $match, Request $request) : bool
+    protected function matchRequest(array $match, Request $request): bool
     {
         if (!$request->is(trim($match['path'], '/'))) {
             return false;

@@ -66,8 +66,6 @@ class Actions extends AbstractDisplayer
 
     /**
      * Disable delete.
-     *
-     * @return void.
      */
     public function disableDelete()
     {
@@ -76,8 +74,6 @@ class Actions extends AbstractDisplayer
 
     /**
      * Disable edit.
-     *
-     * @return void.
      */
     public function disableEdit()
     {
@@ -88,8 +84,6 @@ class Actions extends AbstractDisplayer
      * Set resource of current resource.
      *
      * @param $resource
-     *
-     * @return void
      */
     public function setResource($resource)
     {

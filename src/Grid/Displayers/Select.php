@@ -42,7 +42,7 @@ EOT;
         $optionsHtml = '';
 
         foreach ($options as $option => $text) {
-            $selected = $option == $this->value ? 'selected' : '';
+            $selected = $option === $this->value ? 'selected' : '';
             $optionsHtml .= "<option value=\"$option\" $selected>$text</option>";
         }
 

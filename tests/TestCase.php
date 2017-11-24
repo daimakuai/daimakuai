@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Str;
 use Laravel\BrowserKitTesting\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
@@ -76,8 +75,6 @@ class TestCase extends BaseTestCase
 
     /**
      * run package database migrations.
-     *
-     * @return void
      */
     public function migrateTestTables()
     {

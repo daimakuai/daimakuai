@@ -40,7 +40,7 @@ class Authenticate
         ];
 
         foreach ($excepts as $except) {
-            if ($except !== '/') {
+            if ('/' !== $except) {
                 $except = trim($except, '/');
             }
 

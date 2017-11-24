@@ -15,7 +15,7 @@ class SwitchField extends Field
     ];
 
     protected $states = [
-        'on'  => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
+        'on' => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
         'off' => ['value' => 0, 'text' => 'OFF', 'color' => 'default'],
     ];
 
@@ -40,8 +40,9 @@ class SwitchField extends Field
     public function render()
     {
         foreach ($this->states as $state => $option) {
-            if ($this->value() == $option['value']) {
+            if ($this->value() === $option['value']) {
                 $this->value = $state;
+
                 break;
             }
         }

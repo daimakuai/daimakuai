@@ -2,8 +2,8 @@
 
 namespace Jblv\Admin\Console;
 
-use Jblv\Admin\Admin;
 use Illuminate\Console\Command;
+use Jblv\Admin\Admin;
 
 class ImportCommand extends Command
 {
@@ -23,8 +23,6 @@ class ImportCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle()
     {

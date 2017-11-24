@@ -120,15 +120,15 @@ class Exporter
     {
         $query = '';
 
-        if ($scope == static::SCOPE_ALL) {
+        if ($scope === static::SCOPE_ALL) {
             $query = 'all';
         }
 
-        if ($scope == static::SCOPE_CURRENT_PAGE) {
+        if ($scope === static::SCOPE_CURRENT_PAGE) {
             $query = "page:$args";
         }
 
-        if ($scope == static::SCOPE_SELECTED_ROWS) {
+        if ($scope === static::SCOPE_SELECTED_ROWS) {
             $query = "selected:$args";
         }
 

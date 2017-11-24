@@ -2,10 +2,7 @@
 
 namespace Jblv\Admin\Helpers\Controllers;
 
-
 use Exception;
-use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Layout\Content;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
@@ -13,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Str;
+use Jblv\Admin\Facades\Admin;
+use Jblv\Admin\Layout\Content;
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Manager;
 use Symfony\Component\Console\Helper\Table;
@@ -82,9 +81,9 @@ class TerminalController extends Controller
 
         foreach (config('database.connections') as $name => $_) {
             $dbs[] = [
-                'option'   => $name,
-                'value'    => "db:$name",
-                'selected' => $name == config('database.default'),
+                'option' => $name,
+                'value' => "db:$name",
+                'selected' => $name === config('database.default'),
             ];
         }
 
@@ -94,8 +93,8 @@ class TerminalController extends Controller
 
         foreach ($connections as $name => $_) {
             $redis[] = [
-                'value'     => "redis:$name",
-                'option'    => $name,
+                'value' => "redis:$name",
+                'option' => $name,
             ];
         }
 
@@ -121,13 +120,13 @@ class TerminalController extends Controller
     {
         list($type, $connection) = explode(':', $connection);
 
-        if ($type == 'redis') {
+        if ('redis' === $type) {
             return $this->execRedisCommand($connection, $query);
         }
 
         $config = config('database.connections.'.$connection);
 
-        if ($config['driver'] == 'mongodb') {
+        if ('mongodb' === $config['driver']) {
             return $this->execMongodbQuery($config, $query);
         }
 
@@ -158,7 +157,7 @@ class TerminalController extends Controller
             "<pre>%s \n%d %s in set (%s sec)</pre>\r\n",
             $this->table(array_keys(current($result)), $result),
             count($result),
-            count($result) == 1 ? 'row' : 'rows',
+            1 === count($result) ? 'row' : 'rows',
             number_format($log['time'] / 1000, 2)
         );
     }
@@ -223,7 +222,7 @@ class TerminalController extends Controller
         }
 
         foreach ($groups as $key => $group) {
-            if (count($group) === 1) {
+            if (1 === count($group)) {
                 $others[] = $group[0];
 
                 unset($groups[$key]);

@@ -12,7 +12,7 @@ class Radio extends AbstractDisplayer
         $name = $this->column->getName();
 
         foreach ($options as $value => $label) {
-            $checked = ($value == $this->value) ? 'checked' : '';
+            $checked = ($value === $this->value) ? 'checked' : '';
             $radios .= <<<EOT
 <div class="radio">
     <label>

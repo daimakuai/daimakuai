@@ -87,9 +87,9 @@ class Form implements Renderable
     protected function initFormAttributes()
     {
         $this->attributes = [
-            'method'         => 'POST',
-            'action'         => '',
-            'class'          => 'form-horizontal',
+            'method' => 'POST',
+            'action' => '',
+            'class' => 'form-horizontal',
             'accept-charset' => 'UTF-8',
             'pjax-container' => true,
         ];
@@ -214,8 +214,8 @@ class Form implements Renderable
         }
 
         return [
-            'fields'        => $this->fields,
-            'attributes'    => $this->formatAttribute(),
+            'fields' => $this->fields,
+            'attributes' => $this->formatAttribute(),
         ];
     }
 

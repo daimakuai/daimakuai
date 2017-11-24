@@ -22,8 +22,6 @@ class UninstallCommand extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return void
      */
     public function handle()
     {
@@ -38,8 +36,6 @@ class UninstallCommand extends Command
 
     /**
      * Remove files and directories.
-     *
-     * @return void
      */
     protected function removeFilesAndDirectories()
     {

@@ -39,12 +39,12 @@ trait ModelForm
     {
         if ($this->form()->destroy($id)) {
             return response()->json([
-                'status'  => true,
+                'status' => true,
                 'message' => trans('admin.delete_succeeded'),
             ]);
         } else {
             return response()->json([
-                'status'  => false,
+                'status' => false,
                 'message' => trans('admin.delete_failed'),
             ]);
         }

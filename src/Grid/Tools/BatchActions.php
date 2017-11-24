@@ -70,8 +70,6 @@ class BatchActions extends AbstractTool
 
     /**
      * Setup scripts of batch actions.
-     *
-     * @return void
      */
     protected function setUpScripts()
     {

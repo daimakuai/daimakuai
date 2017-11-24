@@ -93,8 +93,6 @@ class Model
      * Don't snake case attributes.
      *
      * @param EloquentModel $model
-     *
-     * @return void
      */
     protected static function doNotSnakeAttributes(EloquentModel $model)
     {
@@ -226,7 +224,7 @@ class Model
         $this->setSort();
 
         $this->queries->reject(function ($query) {
-            return $query['method'] == 'paginate';
+            return 'paginate' === $query['method'];
         })->each(function ($query) {
             $this->model = $this->model->{$query['method']}(...$query['arguments']);
         });
@@ -295,8 +293,6 @@ class Model
      * If current page is greater than last page, then redirect to last page.
      *
      * @param LengthAwarePaginator $paginator
-     *
-     * @return void
      */
     protected function handleInvalidPage(LengthAwarePaginator $paginator)
     {
@@ -311,25 +307,23 @@ class Model
 
     /**
      * Set the grid paginate.
-     *
-     * @return void
      */
     protected function setPaginate()
     {
         $paginate = $this->findQueryByMethod('paginate');
 
         $this->queries = $this->queries->reject(function ($query) {
-            return $query['method'] == 'paginate';
+            return 'paginate' === $query['method'];
         });
 
         if (!$this->usePaginate) {
             $query = [
-                'method'    => 'get',
+                'method' => 'get',
                 'arguments' => [],
             ];
         } else {
             $query = [
-                'method'    => 'paginate',
+                'method' => 'paginate',
                 'arguments' => $this->resolvePerPage($paginate),
             ];
         }
@@ -373,14 +367,12 @@ class Model
     protected function findQueryByMethod($method)
     {
         return $this->queries->first(function ($query) use ($method) {
-            return $query['method'] == $method;
+            return $query['method'] === $method;
         });
     }
 
     /**
      * Set the grid sort.
-     *
-     * @return void
      */
     protected function setSort()
     {
@@ -399,7 +391,7 @@ class Model
             $this->resetOrderBy();
 
             $this->queries->push([
-                'method'    => 'orderBy',
+                'method' => 'orderBy',
                 'arguments' => [$this->sort['column'], $this->sort['type']],
             ]);
         }
@@ -409,27 +401,25 @@ class Model
      * Set relation sort.
      *
      * @param string $column
-     *
-     * @return void
      */
     protected function setRelationSort($column)
     {
         list($relationName, $relationColumn) = explode('.', $column);
 
         if ($this->queries->contains(function ($query) use ($relationName) {
-            return $query['method'] == 'with' && in_array($relationName, $query['arguments']);
+            return 'with' === $query['method'] && in_array($relationName, $query['arguments'], true);
         })) {
             $relation = $this->model->$relationName();
 
             $this->queries->push([
-                'method'    => 'join',
+                'method' => 'join',
                 'arguments' => $this->joinParameters($relation),
             ]);
 
             $this->resetOrderBy();
 
             $this->queries->push([
-                'method'    => 'orderBy',
+                'method' => 'orderBy',
                 'arguments' => [
                     $relation->getRelated()->getTable().'.'.$relationColumn,
                     $this->sort['type'],
@@ -440,13 +430,11 @@ class Model
 
     /**
      * Reset orderBy query.
-     *
-     * @return void
      */
     public function resetOrderBy()
     {
         $this->queries = $this->queries->reject(function ($query) {
-            return $query['method'] == 'orderBy';
+            return 'orderBy' === $query['method'];
         });
     }
 
@@ -495,7 +483,7 @@ class Model
     public function __call($method, $arguments)
     {
         $this->queries->push([
-            'method'    => $method,
+            'method' => $method,
             'arguments' => $arguments,
         ]);
 

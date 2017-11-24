@@ -16,7 +16,7 @@ class Checkbox extends AbstractDisplayer
         }
 
         foreach ($options as $value => $label) {
-            $checked = in_array($value, $this->value) ? 'checked' : '';
+            $checked = in_array($value, $this->value, true) ? 'checked' : '';
             $radios .= <<<EOT
 <div class="checkbox">
     <label>

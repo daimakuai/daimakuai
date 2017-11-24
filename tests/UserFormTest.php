@@ -40,22 +40,22 @@ class UserFormTest extends TestCase
     public function testSubmitForm()
     {
         $data = [
-            'username'              => 'John Doe',
-            'email'                 => 'hello@world.com',
-            'mobile'                => '13421234123',
-            'password'              => '123456',
+            'username' => 'John Doe',
+            'email' => 'hello@world.com',
+            'mobile' => '13421234123',
+            'password' => '123456',
             'password_confirmation' => '123456',
             //"avatar"   => "test.jpg",
-            'profile'  => [
+            'profile' => [
                 'first_name' => 'John',
-                'last_name'  => 'Doe',
-                'postcode'   => '123456',
-                'address'    => 'Jinshajiang RD',
-                'latitude'   => '131.2123123456',
-                'longitude'  => '21.342123456',
-                'color'      => '#ffffff',
-                'start_at'   => date('Y-m-d H:i:s', time()),
-                'end_at'     => date('Y-m-d H:i:s', time()),
+                'last_name' => 'Doe',
+                'postcode' => '123456',
+                'address' => 'Jinshajiang RD',
+                'latitude' => '131.2123123456',
+                'longitude' => '21.342123456',
+                'color' => '#ffffff',
+                'start_at' => date('Y-m-d H:i:s', time()),
+                'end_at' => date('Y-m-d H:i:s', time()),
             ],
         ];
 

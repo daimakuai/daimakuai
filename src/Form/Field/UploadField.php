@@ -45,8 +45,6 @@ trait UploadField
 
     /**
      * Initialize the storage instance.
-     *
-     * @return void.
      */
     protected function initStorage()
     {
@@ -55,23 +53,21 @@ trait UploadField
 
     /**
      * Set default options form image field.
-     *
-     * @return void
      */
     protected function setupDefaultOptions()
     {
         $defaultOptions = [
-            'overwriteInitial'     => false,
+            'overwriteInitial' => false,
             'initialPreviewAsData' => true,
-            'browseLabel'          => trans('admin.browse'),
-            'showRemove'           => false,
-            'showUpload'           => false,
+            'browseLabel' => trans('admin.browse'),
+            'showRemove' => false,
+            'showUpload' => false,
 //            'initialCaption'       => $this->initialCaption($this->value),
-            'deleteExtraData'      => [
+            'deleteExtraData' => [
                 $this->formatName($this->column) => static::FILE_DELETE_FLAG,
-                static::FILE_DELETE_FLAG         => '',
-                '_token'                         => csrf_token(),
-                '_method'                        => 'PUT',
+                static::FILE_DELETE_FLAG => '',
+                '_token' => csrf_token(),
+                '_method' => 'PUT',
             ],
         ];
 
@@ -84,8 +80,6 @@ trait UploadField
 
     /**
      * Set preview options form image field.
-     *
-     * @return void
      */
     protected function setupPreviewOptions()
     {
@@ -95,7 +89,7 @@ trait UploadField
 
         $this->options([
             //'initialPreview'        => $this->preview(),
-            'initialPreviewConfig'  => $this->initialPreviewConfig(),
+            'initialPreviewConfig' => $this->initialPreviewConfig(),
         ]);
     }
 
@@ -136,7 +130,7 @@ trait UploadField
     {
         if (!array_key_exists($disk, config('filesystems.disks'))) {
             $error = new MessageBag([
-                'title'   => 'Config error.',
+                'title' => 'Config error.',
                 'message' => "Disk [$disk] not configured, please add a disk config in `config/filesystems.php`.",
             ]);
 
@@ -265,8 +259,6 @@ trait UploadField
      * If name already exists, rename it.
      *
      * @param $file
-     *
-     * @return void
      */
     public function renameIfExists(UploadedFile $file)
     {
@@ -305,8 +297,6 @@ trait UploadField
 
     /**
      * Destroy original files.
-     *
-     * @return void.
      */
     public function destroy()
     {

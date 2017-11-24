@@ -43,7 +43,7 @@ class Builder
      */
     protected $options = [
         'enableSubmit' => true,
-        'enableReset'  => true,
+        'enableReset' => true,
     ];
 
     /**
@@ -121,8 +121,6 @@ class Builder
      * Set the builder mode.
      *
      * @param string $mode
-     *
-     * @return void
      */
     public function setMode($mode = 'create')
     {
@@ -138,15 +136,13 @@ class Builder
      */
     public function isMode($mode)
     {
-        return $this->mode == $mode;
+        return $this->mode === $mode;
     }
 
     /**
      * Set resource Id.
      *
      * @param $id
-     *
-     * @return void
      */
     public function setResourceId($id)
     {
@@ -158,10 +154,10 @@ class Builder
      */
     public function getResource($slice = null)
     {
-        if ($this->mode == self::MODE_CREATE) {
+        if (self::MODE_CREATE === $this->mode) {
             return $this->form->resource(-1);
         }
-        if ($slice !== null) {
+        if (null !== $slice) {
             return $this->form->resource($slice);
         }
 
@@ -250,7 +246,7 @@ class Builder
     public function field($name)
     {
         return $this->fields()->first(function (Field $field) use ($name) {
-            return $field->column() == $name;
+            return $field->column() === $name;
         });
     }
 
@@ -284,8 +280,6 @@ class Builder
 
     /**
      * @param Field $field
-     *
-     * @return void
      */
     public function addHiddenField(Field $field)
     {
@@ -318,7 +312,7 @@ class Builder
      */
     public function option($option, $value = null)
     {
-        if (func_num_args() == 1) {
+        if (1 === func_num_args()) {
             return array_get($this->options, $option);
         }
 
@@ -332,15 +326,15 @@ class Builder
      */
     public function title()
     {
-        if ($this->mode == static::MODE_CREATE) {
+        if ($this->mode === static::MODE_CREATE) {
             return trans('admin.create');
         }
 
-        if ($this->mode == static::MODE_EDIT) {
+        if ($this->mode === static::MODE_EDIT) {
             return trans('admin.edit');
         }
 
-        if ($this->mode == static::MODE_VIEW) {
+        if ($this->mode === static::MODE_VIEW) {
             return trans('admin.view');
         }
 
@@ -365,14 +359,12 @@ class Builder
 
     /**
      * Add field for store redirect url after update or store.
-     *
-     * @return void
      */
     protected function addRedirectUrlField()
     {
         $previous = URL::previous();
 
-        if (!$previous || $previous == URL::current()) {
+        if (!$previous || $previous === URL::current()) {
             return;
         }
 
@@ -392,7 +384,7 @@ class Builder
     {
         $attributes = [];
 
-        if ($this->mode == self::MODE_EDIT) {
+        if (self::MODE_EDIT === $this->mode) {
             $this->addHiddenField((new Form\Field\Hidden('_method'))->value('PUT'));
         }
 
@@ -436,7 +428,7 @@ class Builder
      */
     public function submitButton()
     {
-        if ($this->mode == self::MODE_VIEW) {
+        if (self::MODE_VIEW === $this->mode) {
             return '';
         }
 
@@ -475,8 +467,6 @@ EOT;
 
     /**
      * Remove reserved fields like `id` `created_at` `updated_at` in form fields.
-     *
-     * @return void
      */
     protected function removeReservedFields()
     {
@@ -491,7 +481,7 @@ EOT;
         ];
 
         $this->fields = $this->fields()->reject(function (Field $field) use ($reservedColumns) {
-            return in_array($field->column(), $reservedColumns);
+            return in_array($field->column(), $reservedColumns, true);
         });
     }
 
@@ -534,9 +524,9 @@ SCRIPT;
         }
 
         $data = [
-            'form'     => $this,
-            'tabObj'   => $tabObj,
-            'width'    => $this->width,
+            'form' => $this,
+            'tabObj' => $tabObj,
+            'width' => $this->width,
         ];
 
         return view($this->view, $data)->render();

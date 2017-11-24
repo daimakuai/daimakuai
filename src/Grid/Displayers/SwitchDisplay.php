@@ -7,7 +7,7 @@ use Jblv\Admin\Admin;
 class SwitchDisplay extends AbstractDisplayer
 {
     protected $states = [
-        'on'  => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
+        'on' => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
         'off' => ['value' => 0, 'text' => 'OFF', 'color' => 'default'],
     ];
 
@@ -62,7 +62,7 @@ EOT;
 
         $key = $this->row->{$this->grid->getKeyName()};
 
-        $checked = $this->states['on']['value'] == $this->value ? 'checked' : '';
+        $checked = $this->states['on']['value'] === $this->value ? 'checked' : '';
 
         return <<<EOT
         <input type="checkbox" class="$class" $checked data-key="$key" />

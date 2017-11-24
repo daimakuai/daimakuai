@@ -113,7 +113,7 @@ class UserController extends Controller
             });
 
             $grid->actions(function ($actions) {
-                if ($actions->getKey() % 2 == 0) {
+                if (0 === $actions->getKey() % 2) {
                     $actions->append('<a href="/" class="btn btn-xs btn-danger">detail</a>');
                 }
             });

@@ -121,7 +121,7 @@ class AuthController extends Controller
             $form->ignore(['password_confirmation']);
 
             $form->saving(function (Form $form) {
-                if ($form->password && $form->model()->password != $form->password) {
+                if ($form->password && $form->model()->password !== $form->password) {
                     $form->password = bcrypt($form->password);
                 }
             });

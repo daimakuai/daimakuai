@@ -95,8 +95,6 @@ class Row
      * Set attributes.
      *
      * @param array $attributes
-     *
-     * @return null
      */
     public function setAttributes(array $attributes)
     {
@@ -135,8 +133,6 @@ class Row
      * Getter.
      *
      * @param $attr
-     *
-     * @return null
      */
     public function __get($attr)
     {

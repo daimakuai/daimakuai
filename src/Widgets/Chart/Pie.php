@@ -27,9 +27,9 @@ class Pie extends Chart
         }
 
         $this->data[] = [
-            'label'     => $label,
-            'value'     => $value,
-            'color'     => $color,
+            'label' => $label,
+            'value' => $value,
+            'color' => $color,
             'highlight' => $highlight,
         ];
 

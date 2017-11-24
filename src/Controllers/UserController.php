@@ -75,7 +75,7 @@ class UserController extends Controller
             $grid->updated_at(trans('admin.updated_at'));
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
-                if ($actions->getKey() == 1) {
+                if (1 === $actions->getKey()) {
                     $actions->disableDelete();
                 }
             });
@@ -116,7 +116,7 @@ class UserController extends Controller
             $form->display('updated_at', trans('admin.updated_at'));
 
             $form->saving(function (Form $form) {
-                if ($form->password && $form->model()->password != $form->password) {
+                if ($form->password && $form->model()->password !== $form->password) {
                     $form->password = bcrypt($form->password);
                 }
             });

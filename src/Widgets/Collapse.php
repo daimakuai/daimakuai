@@ -37,7 +37,7 @@ class Collapse extends Widget implements Renderable
     public function add($title, $content)
     {
         $this->items[] = [
-            'title'   => $title,
+            'title' => $title,
             'content' => $content,
         ];
 
@@ -47,9 +47,9 @@ class Collapse extends Widget implements Renderable
     protected function variables()
     {
         return [
-            'id'            => $this->id,
-            'items'         => $this->items,
-            'attributes'    => $this->formatAttributes(),
+            'id' => $this->id,
+            'items' => $this->items,
+            'attributes' => $this->formatAttributes(),
         ];
     }
 

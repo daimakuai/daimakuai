@@ -31,7 +31,7 @@ class DateTime extends Presenter
      *
      * @return mixed
      */
-    protected function getOptions(array  $options) : array
+    protected function getOptions(array  $options): array
     {
         $options['format'] = array_get($options, 'format', $this->format);
         $options['locale'] = array_get($options, 'locale', config('app.locale'));
@@ -46,7 +46,7 @@ class DateTime extends Presenter
         Admin::script($script);
     }
 
-    public function variables() : array
+    public function variables(): array
     {
         $this->prepare();
 

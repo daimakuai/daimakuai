@@ -40,7 +40,7 @@ $columns = [
 $sql_details = [
     'user' => '',
     'pass' => '',
-    'db'   => '',
+    'db' => '',
     'host' => '',
 ];
 

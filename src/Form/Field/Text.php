@@ -27,7 +27,7 @@ class Text extends Field
 
         return parent::render()->with([
             'prepend' => $this->prepend,
-            'append'  => $this->append,
+            'append' => $this->append,
         ]);
     }
 }

@@ -79,8 +79,6 @@ class Tools implements Renderable
 
     /**
      * Disable refresh button.
-     *
-     * @return void
      */
     public function disableRefreshButton()
     {
@@ -91,8 +89,6 @@ class Tools implements Renderable
 
     /**
      * Disable batch actions.
-     *
-     * @return void
      */
     public function disableBatchActions()
     {
