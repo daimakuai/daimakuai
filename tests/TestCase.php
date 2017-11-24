@@ -31,9 +31,9 @@ class TestCase extends BaseTestCase
     public function setUp()
     {
         parent::setUp();
-        
+
         $adminConfig = require __DIR__.'/config/admin.php';
-        
+
         $this->app['config']->set('database.default', 'mysql');
         $this->app['config']->set('database.connections.mysql.host', env('MYSQL_HOST', 'localhost'));
         $this->app['config']->set('database.connections.mysql.database', 'laravel_admin');
