@@ -45,9 +45,11 @@ Then run these commands to finnish install：
 
 ```
 Laravel 5.5
+
 php artisan vendor:publish --provider="Jblv\Admin\AdminServiceProvider"
 
 Laravel 5.4
+
 php artisan vendor:publish --tag=daimakuai
 
 

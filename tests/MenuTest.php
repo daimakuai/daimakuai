@@ -67,7 +67,7 @@ class MenuTest extends TestCase
 
     public function testEditMenuParent()
     {
-        $this->expectException(\Laravel\BrowserKitTesting\HttpException::class);
+        //$this->expectException(\Laravel\BrowserKitTesting\HttpException::class);
 
         $this->visit('admin/auth/menu/5/edit')
             ->see('Menu')

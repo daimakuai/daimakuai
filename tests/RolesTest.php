@@ -96,9 +96,9 @@ class RolesTest extends TestCase
 
         $this->visit('admin/auth/roles/2/edit')
             ->see('Roles')
-            ->submitForm('Submit', ['name' => 'blablabla'])
+            ->submitForm('Submit', ['name' => 'daimakuai'])
             ->seePageIs('admin/auth/roles')
-            ->seeInDatabase(config('admin.database.roles_table'), ['name' => 'blablabla'])
-            ->assertEquals(1, Role::count());
+            ->seeInDatabase(config('admin.database.roles_table'), ['name' => 'daimakuai'])
+            ->assertEquals(2, Role::count());
     }
 }
