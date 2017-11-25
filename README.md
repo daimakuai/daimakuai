@@ -60,8 +60,6 @@ php artisan admin:install
 ```
 
 
-```
-
 启动服务后，在浏览器打开 `http://localhost/admin/` ,使用用户名 `admin` 和密码 `admin`登陆.
 
 默认配置
