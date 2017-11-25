@@ -17,7 +17,13 @@ Daimakuai
 截图
 ------------
 
-![daimakuai](https://raw.githubusercontent.com/happyonion/daimakuai/master/screen.png)
+PC端访问
+
+![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen.png)
+
+手机端访问
+
+![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen-1.png)
 
 安装
 ------------
