@@ -18,8 +18,13 @@ Daimakuai
 Screenshots
 ------------
 
+PC端访问
 
-![daimakuai](https://raw.githubusercontent.com/happyonion/daimakuai/master/screen.png)
+![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen.png)
+
+手机端访问
+
+![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen-1.png)
 
 Installation
 ------------
