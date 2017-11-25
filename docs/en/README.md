@@ -18,11 +18,11 @@ Daimakuai
 Screenshots
 ------------
 
-PC端访问
+PC View
 
 ![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen.png)
 
-手机端访问
+Phone View
 
 ![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen-1.png)
 
