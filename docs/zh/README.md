@@ -25,18 +25,13 @@ Daimakuai
 首先确保安装好了`laravel`，并且数据库连接设置正确。
 
 ```
-Laravel 5.1
+Laravel 5.5
+
 composer require jblv/daimakuai "dev-master"
 
-Laravel 5.2
-composer require jblv/daimakuai "1.2.*"
-
-Laravel 5.3
-composer require jblv/daimakuai "1.3.*"
-
 Laravel 5.4
-composer require jblv/daimakuai "1.4.*"
-```
+
+composer require jblv/daimakuai "1.0.x"
 
 在`config/app.php`加入`ServiceProvider`:
 
@@ -46,9 +41,19 @@ Jblv\Admin\Providers\AdminServiceProvider::class
 
 然后运行下面的命令完成安装：
 
-```
+Laravel 5.5
+
+php artisan vendor:publish --provider="Jblv\Admin\AdminServiceProvider"
+
+Laravel 5.4
+
 php artisan vendor:publish --tag=daimakuai
+
+
 php artisan admin:install
+```
+
+
 ```
 
 启动服务后，在浏览器打开 `http://localhost/admin/` ,使用用户名 `admin` 和密码 `admin`登陆.

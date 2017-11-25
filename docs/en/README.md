@@ -18,7 +18,13 @@ Daimakuai
 Screenshots
 ------------
 
-![daimakuai](https://raw.githubusercontent.com/happyonion/daimakuai/master/screen.png)
+PC端访问
+
+![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen.png)
+
+手机端访问
+
+![daimakuai](https://raw.githubusercontent.com/daimakuai/daimakuai/master/screen-1.png)
 
 Installation
 ------------
@@ -26,18 +32,13 @@ Installation
 First, install laravel, and make sure that the database connection settings are correct.
 
 ```
-Laravel 5.1
+Laravel 5.5
+
 composer require jblv/daimakuai "dev-master"
 
-Laravel 5.2
-composer require jblv/daimakuai "1.2.*"
-
-Laravel 5.3
-composer require jblv/daimakuai "1.3.*"
-
 Laravel 5.4
-composer require jblv/daimakuai "1.4.*"
-```
+
+composer require jblv/daimakuai "1.0.x"
 
 In`config/app.php`add`ServiceProvider`:
 
@@ -48,11 +49,23 @@ Jblv\Admin\Providers\AdminServiceProvider::class
 Then run these commands to finnish install：
 
 ```
+Laravel 5.5
+
+php artisan vendor:publish --provider="Jblv\Admin\AdminServiceProvider"
+
+Laravel 5.4
+
 php artisan vendor:publish --tag=daimakuai
+
+
 php artisan admin:install
 ```
 
 open `http://localhost/admin/` in browser,use username `admin` and password `admin` to login.
+
+Default Settings
+------------
+The file in `config/admin.php` contains an array of settings, you can find the default settings in there.
 
 Documentation
 ------------
@@ -132,7 +145,7 @@ $router->resource('users', UserController::class);
 
 Open `http://localhost:8000/admin/auth/menu`, add menu link and refresh the page, then you can find a link item in left menu bar.
 
-#### 3.build grid and form
+#### 4.build grid and form
 
 The rest needs to be done is open `app/Admin/Contollers/UserController.php`, find `form()` and `grid()` method and write few lines of code with `model-grid` and `model-form`，for more detail, please read [model-grid](/docs/en/model-grid.md) and [model-form](/docs/en/model-form.md).
 
