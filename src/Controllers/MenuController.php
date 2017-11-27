@@ -25,8 +25,8 @@ class MenuController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-            $content->header(trans('admin::lang.menu'));
-            $content->description(trans('admin::lang.list'));
+            $content->header(trans('admin.lang.menu'));
+            $content->description(trans('admin.:lang.list'));
 
             $content->row(function (Row $row) {
                 $row->column(6, $this->treeView()->render());
