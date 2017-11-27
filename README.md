@@ -33,11 +33,11 @@ PC端访问
 ```
 Laravel 5.5
 
-composer require jblv/daimakuai "dev-master"
+composer require jblv/daimakuai "dev-master" -vvv
 
 Laravel 5.4
 
-composer require jblv/daimakuai "1.0.x"
+composer require jblv/daimakuai "1.0.x"  -vvv
 
 在`config/app.php`加入`ServiceProvider`:
 
