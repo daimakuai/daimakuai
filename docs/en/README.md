@@ -3,11 +3,11 @@ Daimakuai
 
 [![Build Status](https://travis-ci.org/daimakuai/daimakuai.svg?branch=master)](https://travis-ci.org/daimakuai/daimakuai)
 [![StyleCI](https://styleci.io/repos/90640492/shield?branch=master)](https://styleci.io/repos/90640492)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/happyonion/daimakuai/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/happyonion/daimakuai/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/daimakuai/daimakuai/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daimakuai/daimakuai/?branch=master)
 [![Packagist](https://img.shields.io/packagist/l/jblv/daimakuai.svg?maxAge=2592000)](https://packagist.org/packages/jblv/daimakuai)
 <a href="https://packagist.org/packages/jblv/daimakuai"><img src="https://poser.pugx.org/jblv/daimakuai/v/stable.svg" alt="Latest Stable Version"></a>
 [![Total Downloads](https://img.shields.io/packagist/dt/jblv/daimakuai.svg?style=flat-square)](https://packagist.org/packages/jblv/daimakuai)
-[![Awesome Laravel](https://img.shields.io/badge/Awesome-Laravel-brightgreen.svg)](https://github.com/happyonion/daimakuai)
+[![Awesome Laravel](https://img.shields.io/badge/Awesome-Laravel-brightgreen.svg)](https://github.com/daimakuai/daimakuai)
 
 `daimakuai` is administrative interface builder for laravel which can help you build CRUD backends just with few lines of code.
 

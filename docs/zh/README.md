@@ -3,11 +3,11 @@ Daimakuai
 
 [![Build Status](https://travis-ci.org/daimakuai/daimakuai.svg?branch=master)](https://travis-ci.org/daimakuai/daimakuai)
 [![StyleCI](https://styleci.io/repos/90640492/shield?branch=master)](https://styleci.io/repos/90640492)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/happyonion/daimakuai/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/happyonion/daimakuai/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/daimakuai/daimakuai/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daimakuai/daimakuai/?branch=master)
 [![Packagist](https://img.shields.io/packagist/l/jblv/daimakuai.svg?maxAge=2592000)](https://packagist.org/packages/jblv/daimakuai)
 <a href="https://packagist.org/packages/jblv/daimakuai"><img src="https://poser.pugx.org/jblv/daimakuai/v/stable.svg" alt="Latest Stable Version"></a>
 [![Total Downloads](https://img.shields.io/packagist/dt/jblv/daimakuai.svg?style=flat-square)](https://packagist.org/packages/jblv/daimakuai)
-[![Awesome Laravel](https://img.shields.io/badge/Awesome-Laravel-brightgreen.svg)](https://github.com/happyonion/daimakuai)
+[![Awesome Laravel](https://img.shields.io/badge/Awesome-Laravel-brightgreen.svg)](https://github.com/daimakuai/daimakuai)
 
 `daimakuai` 是一个可以快速帮你构建后台管理的工具，它提供的页面组件和表单元素等功能，能帮助你使用很少的代码就实现功能完善的后台管理功能。
 

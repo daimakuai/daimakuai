@@ -50,7 +50,9 @@ class Builder
      * Modes constants.
      */
     const MODE_VIEW = 'view';
+
     const MODE_EDIT = 'edit';
+
     const MODE_CREATE = 'create';
 
     /**
