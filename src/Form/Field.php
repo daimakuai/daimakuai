@@ -297,6 +297,8 @@ class Field implements Renderable
      * Fill data to the field.
      *
      * @param array $data
+     *
+     * @return void
      */
     public function fill($data)
     {
@@ -320,6 +322,8 @@ class Field implements Renderable
      * Set original value to the field.
      *
      * @param array $data
+     *
+     * @return void
      */
     public function setOriginal($data)
     {
@@ -425,6 +429,8 @@ class Field implements Renderable
      * Remove a specific rule.
      *
      * @param string $rule
+     *
+     * @return void
      */
     protected function removeRule($rule)
     {
@@ -732,7 +738,7 @@ class Field implements Renderable
     /**
      * Set form element class.
      *
-     * @param string $class
+     * @param string|array $class
      *
      * @return $this
      */
@@ -837,7 +843,7 @@ class Field implements Renderable
         }
 
         foreach ($delClass as $del) {
-            if (($key = array_search($del, $this->elementClass, true))) {
+            if (($key = array_search($del, $this->elementClass))) {
                 unset($this->elementClass[$key]);
             }
         }
@@ -911,18 +917,5 @@ class Field implements Renderable
     public function __toString()
     {
         return $this->render()->render();
-    }
-
-    /**
-     * @param $method
-     * @param $arguments
-     *
-     * @return $this
-     */
-    public function __call($method, $arguments)
-    {
-        if ('default' === $method) {
-            return $this->setDefault(array_get($arguments, 0));
-        }
     }
 }

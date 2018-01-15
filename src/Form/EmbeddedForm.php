@@ -162,7 +162,7 @@ class EmbeddedForm
     protected function prepareValue($key, $record)
     {
         $field = $this->fields->first(function (Field $field) use ($key) {
-            return in_array($key, (array) $field->column(), true);
+            return in_array($key, (array) $field->column());
         });
 
         if (method_exists($field, 'prepare')) {
@@ -176,6 +176,8 @@ class EmbeddedForm
      * Set original data for each field.
      *
      * @param string $key
+     *
+     * @return void
      */
     protected function setFieldOriginalValue($key)
     {
@@ -215,7 +217,7 @@ class EmbeddedForm
     {
         $jsonKey = $field->column();
 
-        $elementName = $elementClass = $errorKey = '';
+        $elementName = $elementClass = $errorKey = [];
 
         if (is_array($jsonKey)) {
             foreach ($jsonKey as $index => $name) {

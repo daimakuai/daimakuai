@@ -200,6 +200,8 @@ class Grid
 
     /**
      * Setup grid filter.
+     *
+     * @return void
      */
     protected function setupFilter()
     {
@@ -208,6 +210,8 @@ class Grid
 
     /**
      * Setup grid exporter.
+     *
+     * @return void
      */
     protected function setupExporter()
     {
@@ -341,6 +345,8 @@ class Grid
      * Paginate the grid.
      *
      * @param int $perPage
+     *
+     * @return void
      */
     public function paginate($perPage = 20)
     {
@@ -419,6 +425,8 @@ class Grid
 
     /**
      * Add `actions` column for grid.
+     *
+     * @return void
      */
     protected function appendActionsColumn()
     {
@@ -454,6 +462,8 @@ class Grid
 
     /**
      * Prepend checkbox column for grid.
+     *
+     * @return void
      */
     protected function prependRowSelectorColumn()
     {
@@ -477,6 +487,8 @@ class Grid
 
     /**
      * Build the grid.
+     *
+     * @return void
      */
     public function build()
     {
@@ -564,6 +576,8 @@ class Grid
      * Build the grid rows.
      *
      * @param array $data
+     *
+     * @return void
      */
     protected function buildRows(array $data)
     {
@@ -596,6 +610,8 @@ class Grid
      * Setup grid tools.
      *
      * @param Closure $callback
+     *
+     * @return void
      */
     public function tools(Closure $callback)
     {
@@ -672,11 +688,23 @@ class Grid
     }
 
     /**
-     * Disable creation.
+     * Alias for method `disableCreateButton`.
+     *
+     * @return $this
+     *
+     * @deprecated
+     */
+    public function disableCreation()
+    {
+        return $this->disableCreateButton();
+    }
+
+    /**
+     * Remove create button on grid.
      *
      * @return $this
      */
-    public function disableCreation()
+    public function disableCreateButton()
     {
         return $this->option('allowCreate', false);
     }
@@ -757,6 +785,8 @@ class Grid
 
     /**
      * Get the table columns for grid.
+     *
+     * @return void
      */
     protected function setDbColumns()
     {
@@ -871,6 +901,8 @@ class Grid
 
     /**
      * Register column displayers.
+     *
+     * @return void.
      */
     public static function registerColumnDisplayer()
     {

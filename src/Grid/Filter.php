@@ -54,6 +54,13 @@ class Filter
     protected $useIdFilter = true;
 
     /**
+     * Id filter was removed.
+     *
+     * @var bool
+     */
+    protected $idFilterRemoved = false;
+
+    /**
      * Action of search form.
      *
      * @var string
@@ -106,8 +113,9 @@ class Filter
      */
     public function removeIDFilterIfNeeded()
     {
-        if (!$this->useIdFilter) {
+        if (!$this->useIdFilter && !$this->idFilterRemoved) {
             array_shift($this->filters);
+            $this->idFilterRemoved = true;
         }
     }
 
@@ -121,7 +129,7 @@ class Filter
         $inputs = array_dot(Input::all());
 
         $inputs = array_filter($inputs, function ($input) {
-            return '' !== $input && !is_null($input);
+            return $input !== '' && !is_null($input);
         });
 
         if (empty($inputs)) {
@@ -152,11 +160,23 @@ class Filter
      *
      * @return AbstractFilter
      */
-    public function addFilter(AbstractFilter $filter)
+    protected function addFilter(AbstractFilter $filter)
     {
         $filter->setParent($this);
 
         return $this->filters[] = $filter;
+    }
+
+    /**
+     * Use a custom filter.
+     *
+     * @param AbstractFilter $filter
+     *
+     * @return AbstractFilter
+     */
+    public function use(AbstractFilter $filter)
+    {
+        return $this->addFilter($filter);
     }
 
     /**
@@ -240,7 +260,7 @@ EOT;
         $query = $request->query();
         array_forget($query, $columns);
 
-        $question = '/' === $request->getBaseUrl().$request->getPathInfo() ? '/?' : '?';
+        $question = $request->getBaseUrl().$request->getPathInfo() == '/' ? '/?' : '?';
 
         return count($request->query()) > 0
             ? $request->url().$question.http_build_query($query)
@@ -257,7 +277,7 @@ EOT;
      */
     public function __call($method, $arguments)
     {
-        if (in_array($method, $this->supports, true)) {
+        if (in_array($method, $this->supports)) {
             $className = '\\Jblv\\Admin\\Grid\\Filter\\'.ucfirst($method);
 
             return $this->addFilter(new $className(...$arguments));
