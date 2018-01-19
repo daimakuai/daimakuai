@@ -129,7 +129,7 @@ class Filter
         $inputs = array_dot(Input::all());
 
         $inputs = array_filter($inputs, function ($input) {
-            return $input !== '' && !is_null($input);
+            return '' !== $input && !is_null($input);
         });
 
         if (empty($inputs)) {
@@ -260,7 +260,7 @@ EOT;
         $query = $request->query();
         array_forget($query, $columns);
 
-        $question = $request->getBaseUrl().$request->getPathInfo() == '/' ? '/?' : '?';
+        $question = '/' === $request->getBaseUrl().$request->getPathInfo() ? '/?' : '?';
 
         return count($request->query()) > 0
             ? $request->url().$question.http_build_query($query)
@@ -277,7 +277,7 @@ EOT;
      */
     public function __call($method, $arguments)
     {
-        if (in_array($method, $this->supports)) {
+        if (in_array($method, $this->supports, true)) {
             $className = '\\Jblv\\Admin\\Grid\\Filter\\'.ucfirst($method);
 
             return $this->addFilter(new $className(...$arguments));

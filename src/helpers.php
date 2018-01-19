@@ -24,9 +24,10 @@ if (!function_exists('admin_url')) {
      */
     function admin_url($path = '')
     {
-		if (\Illuminate\Support\Facades\URL::isValidUrl($path)) {
+        if (\Illuminate\Support\Facades\URL::isValidUrl($path)) {
             return $path;
         }
+
         return url(admin_base_path($path));
     }
 }

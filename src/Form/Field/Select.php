@@ -232,7 +232,7 @@ EOT;
     public function render()
     {
         $configs = array_merge([
-            'allowClear'  => true,
+            'allowClear' => true,
             'placeholder' => $this->label,
         ], $this->config);
 
@@ -254,7 +254,7 @@ EOT;
 
         return parent::render()->with([
             'options' => $this->options,
-            'groups'  => $this->groups,
+            'groups' => $this->groups,
         ]);
     }
 }

@@ -123,8 +123,6 @@ class Builder
      * Set the builder mode.
      *
      * @param string $mode
-     *
-     * @return void
      */
     public function setMode($mode = 'create')
     {
@@ -140,15 +138,13 @@ class Builder
      */
     public function isMode($mode)
     {
-        return $this->mode == $mode;
+        return $this->mode === $mode;
     }
 
     /**
      * Set resource Id.
      *
      * @param $id
-     *
-     * @return void
      */
     public function setResourceId($id)
     {
@@ -252,7 +248,7 @@ class Builder
     public function field($name)
     {
         return $this->fields()->first(function (Field $field) use ($name) {
-            return $field->column() == $name;
+            return $field->column() === $name;
         });
     }
 
@@ -286,8 +282,6 @@ class Builder
 
     /**
      * @param Field $field
-     *
-     * @return void
      */
     public function addHiddenField(Field $field)
     {
@@ -367,8 +361,6 @@ class Builder
 
     /**
      * Add field for store redirect url after update or store.
-     *
-     * @return void
      */
     protected function addRedirectUrlField()
     {
@@ -446,7 +438,7 @@ class Builder
             return '';
         }
 
-        if ($this->mode == self::MODE_EDIT) {
+        if (self::MODE_EDIT === $this->mode) {
             $text = trans('admin.save');
         } else {
             $text = trans('admin.submit');
@@ -481,8 +473,6 @@ EOT;
 
     /**
      * Remove reserved fields like `id` `created_at` `updated_at` in form fields.
-     *
-     * @return void
      */
     protected function removeReservedFields()
     {
@@ -497,7 +487,7 @@ EOT;
         ];
 
         $this->fields = $this->fields()->reject(function (Field $field) use ($reservedColumns) {
-            return in_array($field->column(), $reservedColumns);
+            return in_array($field->column(), $reservedColumns, true);
         });
     }
 

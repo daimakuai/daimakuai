@@ -148,8 +148,6 @@ trait HasPermissions
 
     /**
      * Detach models from the relationship.
-     *
-     * @return void
      */
     protected static function boot()
     {
