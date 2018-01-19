@@ -199,8 +199,8 @@ class Content implements Renderable
         $items = [
             'header' => $this->header,
             'description' => $this->description,
-            'breadcrumb'  => $this->breadcrumb,
-            'content'     => $this->build(),
+            'breadcrumb' => $this->breadcrumb,
+            'content' => $this->build(),
         ];
 
         return view('admin::content', $items)->render();

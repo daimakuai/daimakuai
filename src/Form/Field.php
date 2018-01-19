@@ -297,8 +297,6 @@ class Field implements Renderable
      * Fill data to the field.
      *
      * @param array $data
-     *
-     * @return void
      */
     public function fill($data)
     {
@@ -322,8 +320,6 @@ class Field implements Renderable
      * Set original value to the field.
      *
      * @param array $data
-     *
-     * @return void
      */
     public function setOriginal($data)
     {
@@ -429,8 +425,6 @@ class Field implements Renderable
      * Remove a specific rule.
      *
      * @param string $rule
-     *
-     * @return void
      */
     protected function removeRule($rule)
     {
@@ -843,7 +837,7 @@ class Field implements Renderable
         }
 
         foreach ($delClass as $del) {
-            if (($key = array_search($del, $this->elementClass))) {
+            if (($key = array_search($del, $this->elementClass, true))) {
                 unset($this->elementClass[$key]);
             }
         }

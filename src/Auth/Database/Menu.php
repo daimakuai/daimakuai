@@ -69,8 +69,6 @@ class Menu extends Model
 
     /**
      * Detach models from the relationship.
-     *
-     * @return void
      */
     protected static function boot()
     {
