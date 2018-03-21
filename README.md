@@ -1,6 +1,8 @@
 Daimakuai
 =====
 
+[![Join the chat at https://gitter.im/daimakuai/daimakuai](https://badges.gitter.im/daimakuai/daimakuai.svg)](https://gitter.im/daimakuai/daimakuai?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/daimakuai/daimakuai.svg?branch=master)](https://travis-ci.org/daimakuai/daimakuai)
 [![StyleCI](https://styleci.io/repos/90640492/shield?branch=master)](https://styleci.io/repos/90640492)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/daimakuai/daimakuai/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/daimakuai/daimakuai/?branch=master)
