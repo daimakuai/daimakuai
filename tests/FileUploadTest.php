@@ -70,46 +70,46 @@ class FileUploadTest extends TestCase
         File::cleanDirectory(public_path('upload/file'));
     }
 
-   /* public function testUpdateFile()
-    {
-        File::cleanDirectory(public_path('upload/file'));
+    /* public function testUpdateFile()
+     {
+         File::cleanDirectory(public_path('upload/file'));
 
-        $this->uploadFiles();
+         $this->uploadFiles();
 
-        $old = FileModel::first();
+         $old = FileModel::first();
 
-        $this->visit('admin/files/1/edit')
-            ->see('ID')
-            ->see('Created At')
-            ->see('Updated At')
-            ->seeElement('input[name=file1]')
-            ->seeElement('input[name=file2]')
-            ->seeElement('input[name=file3]')
-            ->seeElement('input[name=file4]')
-            ->seeElement('input[name=file5]')
-            ->seeElement('input[name=file6]')
+         $this->visit('admin/files/1/edit')
+             ->see('ID')
+             ->see('Created At')
+             ->see('Updated At')
+             ->seeElement('input[name=file1]')
+             ->seeElement('input[name=file2]')
+             ->seeElement('input[name=file3]')
+             ->seeElement('input[name=file4]')
+             ->seeElement('input[name=file5]')
+             ->seeElement('input[name=file6]')
 //            ->seeInElement('a[href="/admin/files"]', 'List')
-            ->seeInElement('button[type=reset]', 'Reset')
-            ->seeInElement('button[type=submit]', 'Submit');
+             ->seeInElement('button[type=reset]', 'Reset')
+             ->seeInElement('button[type=submit]', 'Submit');
 
-        $this->attach(__DIR__.'/RolesTest.php', 'file3')
-            ->attach(__DIR__.'/MenuTest.php', 'file4')
-            ->attach(__DIR__.'/TestCase.php', 'file5')
-            ->press('Submit');
+         $this->attach(__DIR__.'/RolesTest.php', 'file3')
+             ->attach(__DIR__.'/MenuTest.php', 'file4')
+             ->attach(__DIR__.'/TestCase.php', 'file5')
+             ->press('Submit');
 
-        $new = FileModel::first();
+         $new = FileModel::first();
 
-        $this->assertEquals($old->id, $new->id);
-        $this->assertEquals($old->file1, $new->file1);
-        $this->assertEquals($old->file2, $new->file2);
-        $this->assertEquals($old->file6, $new->file6);
+         $this->assertEquals($old->id, $new->id);
+         $this->assertEquals($old->file1, $new->file1);
+         $this->assertEquals($old->file2, $new->file2);
+         $this->assertEquals($old->file6, $new->file6);
 
-        $this->assertNotEquals($old->file3, $new->file3);
-        $this->assertNotEquals($old->file4, $new->file4);
-        $this->assertNotEquals($old->file5, $new->file5);
+         $this->assertNotEquals($old->file3, $new->file3);
+         $this->assertNotEquals($old->file4, $new->file4);
+         $this->assertNotEquals($old->file5, $new->file5);
 
-        File::cleanDirectory(public_path('upload/file'));
-    }
+         File::cleanDirectory(public_path('upload/file'));
+     }
 */
     public function testDeleteFiles()
     {
