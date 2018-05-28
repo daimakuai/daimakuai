@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Jblv\Admin\Auth\Permission as Checker;
 use Jblv\Admin\Facades\Admin;
-use Jblv\Admin\Facades\Admin;
 
 class Permission
 {
