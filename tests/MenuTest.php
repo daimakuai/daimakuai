@@ -49,15 +49,15 @@ class MenuTest extends TestCase
             ->assertEquals(7, Menu::count());
     }
 
-    public function testEditMenu()
+    /*public function testEditMenu()
     {
-      /*  $this->visit('admin/auth/menu/1/edit')
+        $this->visit('admin/auth/menu/1/edit')
             ->see('Menu')
             ->submitForm('Submit', ['title' => 'blablabla'])
             ->seePageIs('admin/auth/menu')
             ->seeInDatabase(config('admin.database.menu_table'), ['title' => 'blablabla'])
-            ->assertEquals(7, Menu::count());*/
-    }
+            ->assertEquals(7, Menu::count());
+    }*/
 
     public function testShowPage()
     {
@@ -65,12 +65,12 @@ class MenuTest extends TestCase
             ->seePageIs('admin/auth/menu/1/edit');
     }
 
-    public function testEditMenuParent()
+   /* public function testEditMenuParent()
     {
         //$this->expectException(\Laravel\BrowserKitTesting\HttpException::class);
 
-       /* $this->visit('admin/auth/menu/5/edit')
+        $this->visit('admin/auth/menu/5/edit')
             ->see('Menu')
-            ->submitForm('Submit', ['parent_id' => 5]);*/
-    }
+            ->submitForm('Submit', ['parent_id' => 5]);
+    }*/
 }
