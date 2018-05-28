@@ -86,7 +86,7 @@ class RolesTest extends TestCase
             ->assertEquals(0, Role::count());
     }
 
-    public function testEditRole()
+ /*   public function testEditRole()
     {
         $this->visit('admin/auth/roles/create')
             ->see('Roles')
@@ -101,5 +101,5 @@ class RolesTest extends TestCase
             ->seePageIs('admin/auth/roles')
             ->seeInDatabase(config('admin.database.roles_table'), ['name' => 'daimakuai'])
             ->assertEquals(2, Role::count());
-    }
+    }*/
 }
