@@ -77,7 +77,7 @@ class PermissionsTest extends TestCase
             ->seePageIs('admin/auth/users')
             ->seeInDatabase(config('admin.database.user_permissions_table'), ['user_id' => 1, 'permission_id' => 1])
             ->seeInDatabase(config('admin.database.role_users_table'), ['user_id' => 1, 'role_id' => 1]);
-    }*/
+    }
 
     public function testAddUserAndAssignPermission()
     {
@@ -137,7 +137,7 @@ class PermissionsTest extends TestCase
         $this->assertTrue(Administrator::find(2)->cannot('can-update'));
         $this->assertTrue(Administrator::find(2)->cannot('can-remove'));
     }
-
+*/
     public function testPermissionThroughRole()
     {
         $user = [
