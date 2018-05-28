@@ -97,7 +97,7 @@ class ImageUploadTest extends TestCase
 //        $this->assertEquals($this->fileCountInImageDir(), 4);
     }
 
-    public function testUpdateImage()
+/*    public function testUpdateImage()
     {
         File::cleanDirectory(public_path('upload/image'));
 
@@ -136,7 +136,7 @@ class ImageUploadTest extends TestCase
         $this->assertNotEquals($old->image5, $new->image5);
 
         File::cleanDirectory(public_path('upload/image'));
-    }
+    }*/
 
     public function testDeleteImages()
     {
