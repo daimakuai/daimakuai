@@ -98,7 +98,7 @@ class PermissionsTest extends TestCase
 
         $this->visit('admin/auth/permissions/create')
             ->see('Permissions')
-            ->submitForm('Submit', ['slug' => 'can-update', 'name' => 'Can Update', 'http_path' => 'users/*/edit', 'http_method' => ['GET']])
+            ->submitForm('Submit', ['slug' => 'can-update', 'name' => 'Can Update', 'http_path' => 'users/edit', 'http_method' => ['GET']])
             ->seePageIs('admin/auth/permissions');
 
         $this->assertEquals(6, Permission::count());
