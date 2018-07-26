@@ -100,11 +100,11 @@ class ImageUploadTest extends TestCase
     /*    public function testUpdateImage()
         {
             File::cleanDirectory(public_path('upload/image'));
-    
+
             $this->uploadImages();
-    
+
             $old = Image::first();
-    
+
             $this->visit('admin/images/1/edit')
                 ->see('ID')
                 ->see('Created At')
@@ -118,23 +118,23 @@ class ImageUploadTest extends TestCase
     //            ->seeInElement('a[href="/admin/images"]', 'List')
                 ->seeInElement('button[type=reset]', 'Reset')
                 ->seeInElement('button[type=submit]', 'Submit');
-    
+
             $this->attach(__DIR__.'/assets/test.jpg', 'image3')
                 ->attach(__DIR__.'/assets/test.jpg', 'image4')
                 ->attach(__DIR__.'/assets/test.jpg', 'image5')
                 ->press('Submit');
-    
+
             $new = Image::first();
-    
+
             $this->assertEquals($old->id, $new->id);
             $this->assertEquals($old->image1, $new->image1);
             $this->assertEquals($old->image2, $new->image2);
             $this->assertEquals($old->image6, $new->image6);
-    
+
             $this->assertNotEquals($old->image3, $new->image3);
             $this->assertNotEquals($old->image4, $new->image4);
             $this->assertNotEquals($old->image5, $new->image5);
-    
+
             File::cleanDirectory(public_path('upload/image'));
         }*/
 
