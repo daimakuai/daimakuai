@@ -74,7 +74,7 @@ class UserSettingTest extends TestCase
         ];
 
         $this->visit('admin/auth/setting')
-            ->submitForm('Submit', $data)
+            ->submitForm('Save', $data)
             ->seePageIs('admin/auth/setting');
 
         $this->assertTrue(app('hash')->check($data['password'], Administrator::first()->makeVisible('password')->password));
