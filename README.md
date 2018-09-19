@@ -13,7 +13,7 @@ Daimakuai
 
 `daimakuai` 是一个可以快速帮你构建后台管理的工具，它提供的页面组件和表单元素等功能，能帮助你使用很少的代码就实现功能完善的后台管理功能。
 
-[Demo](http://demo.daimakuai.com/admin) 账号/密码:admin/admin
+[Demo](http://demo.daimakuai.com/admin) 账号/密码:admin/admin123
 
 
 截图
@@ -37,9 +37,6 @@ Laravel 5.5
 
 composer require jblv/daimakuai "dev-master" -vvv
 
-Laravel 5.4
-
-composer require jblv/daimakuai "1.0.x"  -vvv
 
 在`config/app.php`加入`ServiceProvider`:
 
@@ -53,9 +50,6 @@ Laravel 5.5
 
 php artisan vendor:publish --provider="Jblv\Admin\AdminServiceProvider"
 
-Laravel 5.4
-
-php artisan vendor:publish --tag=daimakuai
 
 
 php artisan admin:install
