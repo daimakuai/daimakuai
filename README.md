@@ -10,6 +10,9 @@ Daimakuai
 [![Total Downloads](https://img.shields.io/packagist/dt/jblv/daimakuai.svg?style=flat-square)](https://packagist.org/packages/jblv/daimakuai)
 [![Awesome Laravel](https://img.shields.io/badge/Awesome-Laravel-brightgreen.svg)](https://github.com/happyonion/daimakuai)
 [![Join the chat at https://gitter.im/daimakuai/daimakuai](https://badges.gitter.im/daimakuai/daimakuai.svg)](https://gitter.im/daimakuai/daimakuai?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+
+
 `daimakuai` 是一个可以快速帮你构建后台管理的工具，它提供的页面组件和表单元素等功能，能帮助你使用很少的代码就实现功能完善的后台管理功能。
 
 [Demo](http://demo.daimakuai.com/admin) 账号/密码:admin/admin123
