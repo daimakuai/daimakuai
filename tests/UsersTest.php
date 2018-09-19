@@ -64,7 +64,7 @@ class UsersTest extends TestCase
     public function testUpdateUser()
     {
         $this->visit('admin/auth/users/'.$this->user->id.'/edit')
-            ->see('Create')
+            ->see('Save')
             ->submitForm('Submit', ['name' => 'test', 'roles' => [1]])
             ->seePageIs('admin/auth/users')
             ->seeInDatabase(config('admin.database.users_table'), ['name' => 'test']);
@@ -82,7 +82,7 @@ class UsersTest extends TestCase
 
         $this->visit('admin/auth/users/'.$this->user->id.'/edit')
             ->see('Create')
-            ->submitForm('Submit', $data)
+            ->submitForm('Save', $data)
             ->seePageIs('admin/auth/users')
             ->visit('admin/auth/logout')
             ->dontSeeIsAuthenticated('admin')
