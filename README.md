@@ -37,6 +37,15 @@ Laravel 5.5
 
 composer require jblv/daimakuai "dev-master" -vvv
 
+如：
+
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+composer create-project laravel/laravel=5.5.* bbcshop -vvv
+
+composer require jblv/daimakuai "2.0" -vvv
+
+
 
 在`config/app.php`加入`ServiceProvider`:
 
