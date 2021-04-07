@@ -76,6 +76,17 @@ php artisan admin:install
 
 启动服务后，在浏览器打开 `http://localhost/admin/` ,使用用户名 `admin` 和密码 `admin`登陆.
 
+宝塔部署注意
+------------
+1、 伪静态增加:
+location / {  
+	try_files $uri $uri/ /index.php$is_args$query_string;  
+}  
+
+2、网站目录去掉 防跨站攻击(open_basedir)
+3、网站目录 选择根目录，运行目录选择 public
+
+
 默认配置
 ------------
 
