@@ -15,7 +15,7 @@ Daimakuai
 
 `daimakuai` 是一个可以快速帮你构建后台管理的工具，它提供的页面组件和表单元素等功能，能帮助你使用很少的代码就实现功能完善的后台管理功能。
 
-[Demo](http://dmk.75271.com/admin) 账号/密码:admin/admin123
+[Demo](http://demo.daimakuai.com/admin) 账号/密码:admin/admin123
 
 
 截图
@@ -32,21 +32,26 @@ PC端访问
 安装
 ------------
 
-首先确保安装好了`laravel`，并且数据库连接设置正确。
+
+首先确保安装好了 `Composer` `Laravel`，并且数据库连接设置正确，如果没有安装，请访问[安装Laravel](https://learnku.com/docs/laravel/5.5/installation/1282#installing-laravel)进行安装。
+
 
 ```
 Laravel 5.5
 
 composer require jblv/daimakuai "dev-master" -vvv
 
-如：
+示例如：
 
+> 修改composer为国内镜像，加速下载
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 composer create-project laravel/laravel=5.5.* bbcshop -vvv
 
 composer require jblv/daimakuai "2.0" -vvv
 
+注意:
+> bt宝塔服务器需要先关闭以下几个禁用函数: putenv  pcntl_signal proc_open
 
 
 在`config/app.php`加入`ServiceProvider`:
