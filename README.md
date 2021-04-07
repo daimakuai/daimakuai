@@ -64,6 +64,8 @@ Jblv\Admin\Providers\AdminServiceProvider::class
 
 Laravel 5.5
 
+> 安装前，对.env里的数据库等信息进行修改
+
 php artisan vendor:publish --provider="Jblv\Admin\AdminServiceProvider"
 
 
