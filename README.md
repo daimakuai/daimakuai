@@ -84,6 +84,7 @@ location / {
 }  
 
 2、网站目录去掉 防跨站攻击(open_basedir)
+
 3、网站目录 选择根目录，运行目录选择 public
 
 
